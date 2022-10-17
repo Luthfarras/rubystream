@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('temp/assets/vendors/owl-carousel-2/owl.theme.default.min.css') }}">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
+    <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('temp/assets/css/style.css') }}">
