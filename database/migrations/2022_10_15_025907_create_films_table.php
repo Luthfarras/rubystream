@@ -17,10 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('nama_film');
             $table->string('studio');
+            $table->string('cover');
             $table->integer('harga');
             $table->date('tahun_rilis');
             $table->text('aktor');
             $table->text('sinopsis');
+            $table->string('trailer');
+            $table->string('full_movie');
             $table->foreignId('genre_id');
             $table->foreign('genre_id')->references('id')->on('genres');
             $table->timestamps();
