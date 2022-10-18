@@ -3,12 +3,13 @@
 @section('content')
 
 <div class="form-group container">
-    <a class="btn btn-dark " href="#" data-toggle="modal" data-target="#inputModal">
+    <a class="btn btn-dark " href="{{ url('genre/create')}}" data-toggle="modal" data-target="#inputModal">
         Input Genre
     </a>
 </div>
 
-<form>
+<form action="{{ url('genre')}}" method="POST">
+    @csrf
     <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content text-white footer">
@@ -20,7 +21,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group container">
-                        <input type="text" class="form-control" id="genre" placeholder="Input Genre">
+                        <input type="text" class="form-control" placeholder="Input Genre" name="genre">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -41,10 +42,11 @@
     </tr>
   </thead>
   <tbody>
+    @foreach ($data as $genre)
     <tr>
-      <th style="border: 0;" scope="row">1</th>
+      <th style="border: 0;" scope="row">{{ $loop->iteration }}</th>
       <td style="border: 0;" >
-        <a href="dashboard">Belum</a>
+        <a href="dashboard">{{ $genre['genre']}}</a>
     </td>
       <td style="border: 0;" >
     <a class="btn btn-success" href="#" data-toggle="modal" data-target="#editModal">
@@ -55,6 +57,7 @@
         Delete
     </a>
     </td>
+    @endforeach
     </tr>
   </tbody>
 </table>
