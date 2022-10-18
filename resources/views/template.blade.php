@@ -46,7 +46,7 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="">Homepage</a></li>
+                                <li class="@if(Request::is('dashboard')) active @endif"><a href="/dashboard">Homepage</a></li>
                                 <li><a href="">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="">Categories</a></li>
@@ -57,8 +57,8 @@
                                         <li><a href="">Login</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="/film">List Film</a></li>
-                                <li><a href="/genre">Genre</a></li>
+                                <li class="@if(Request::is('film')) active @endif"><a href="/film">List Film</a></li>
+                                <li class="@if(Request::is('genre')) active @endif"><a href="/genre">Genre</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -102,7 +102,7 @@
             <div class="col-lg-6">
                 <div class="footer__nav">
                     <ul>
-                        <li class=""><a href="/dashboard">Homepage</a></li>
+                        <li><a href="/dashboard">Homepage</a></li>
                         <li><a href="/profile">Profile</a></li>
                         <li><a href="/film">List Film</a></li>
                         <li><a href="/genre">Genre</a></li>
