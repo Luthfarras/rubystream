@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FilmController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,4 @@ Route::get('dashboard', function () {
 Route::get('profile', function () {
     return view('profile');
 });
+Route::resource('film', FilmController::class);
