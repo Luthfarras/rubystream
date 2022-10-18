@@ -39,10 +39,10 @@ class GenreController extends Controller
     public function store(Request $request)
     {
         // Genre::create($request->all());
-        Genre::created([
-            'genre' => $request-> genres
-        ]);
-        // dd($request);
+        // Genre::created([
+        //     'genre' => $request-> genre
+        // ]);
+        dd($request);
     }
 
     /**

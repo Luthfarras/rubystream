@@ -8,7 +8,7 @@
     </a>
 </div>
 
-<form action="{{ url('genre')}}" method="POST">
+<!-- <form action="{{ url('genre')}}" method="POST">
     @csrf
     <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group container">
-                        <input type="text" class="form-control" placeholder="Input Genre" name="genre">
+                        <input type="text" class="form-control" id="genre" placeholder="Input Genre" name="genre">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -31,7 +31,7 @@
             </div>
         </div>
     </div>
-</form>
+</form> -->
 
 <table class="table container text-white">
   <thead>
@@ -62,7 +62,7 @@
   </tbody>
 </table>
 
-<form>    
+<!-- <form>    
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content text-white footer">
@@ -84,12 +84,12 @@
             </div>
         </div>
     </div>
-</form>
+</form> -->
 
-<form>    
+<!-- modal-dialog-centered -->
+<!-- <form>    
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-        <!-- modal-dialog-centered -->
             <div class="modal-content text-white footer">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to delete</h5>
@@ -109,6 +109,6 @@
             </div>
         </div>
     </div>
-</form>
+</form> -->
 
 @endsection
