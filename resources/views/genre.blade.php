@@ -35,20 +35,22 @@
 <table class="table container text-white">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name Genre</th>
-      <th scope="col">Update</th>
+      <th style="border: 0;" scope="col">#</th>
+      <th style="border: 0;" scope="col">Movie Genre</th>
+      <th style="border: 0;" scope="col">Update</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Belum</td>
-      <td>
+      <th style="border: 0;" scope="row">1</th>
+      <td style="border: 0;" >
+        <a href="dashboard">Belum</a>
+    </td>
+      <td style="border: 0;" >
     <a class="btn btn-success" href="#" data-toggle="modal" data-target="#editModal">
         Edit
     </a>
-        |
+        <!-- | -->
     <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#deleteModal">
         Delete
     </a>
@@ -83,7 +85,7 @@
 
 <form>    
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog" role="document">
         <!-- modal-dialog-centered -->
             <div class="modal-content text-white footer">
                 <div class="modal-header">
