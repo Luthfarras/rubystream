@@ -20,15 +20,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 // Route::resource('film', FilmController::class);
-// Route::get('/', function () {
-//     return view('template');
-// });
-// Route::get('dashboard', function () {
-//     return view('dashboard');
-// });
-// Route::get('profile', function () {
-//     return view('profile');
-// });
+Route::get('template', function () {
+    return view('template');
+});
+Route::get('film', function () {
+    return view('film');
+});
+Route::get('genre', function () {
+    return view('genre');
+});
+Route::get('dashboard', function () {
+    return view('dashboard');
+});
 
 Auth::routes();
 

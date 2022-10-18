@@ -1,5 +1,5 @@
 @extends('template')
 
 @section('content')
-<h1>Ini halaman genre</h1>
+<h1 class="text-white">Ini halaman genre</h1>
 @endsection
