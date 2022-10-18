@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -37,6 +38,14 @@ class LoginController extends Controller
     {
         return 'username';
     }
+
+    // public function authenticate()
+    // {
+    //     if (Auth::attempt(['username' => $username, 'password' => $password])) {
+    //         return redirect()->intended('dashboard');
+    //     }
+    // }
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
