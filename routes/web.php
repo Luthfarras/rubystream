@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,15 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/', function () {
-    return view('template');
+    return view('welcome');
 });
-Route::get('dashboard', function () {
-    return view('dashboard');
-});
-Route::get('profile', function () {
-    return view('profile');
-});
+// Route::get('/', function () {
+//     return view('template');
+// });
+// Route::get('dashboard', function () {
+//     return view('dashboard');
+// });
+// Route::get('profile', function () {
+//     return view('profile');
+// });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
