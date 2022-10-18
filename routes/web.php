@@ -2,11 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\FilmController;
-=======
 use App\Http\Controllers\HomeController;
->>>>>>> 0fb496af33f1f0042b0a363cf938a7125d5fc8e3
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +19,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< HEAD
-Route::resource('film', FilmController::class);
-=======
+// Route::resource('film', FilmController::class);
 // Route::get('/', function () {
 //     return view('template');
 // });
@@ -38,4 +33,3 @@ Route::resource('film', FilmController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
->>>>>>> 0fb496af33f1f0042b0a363cf938a7125d5fc8e3
