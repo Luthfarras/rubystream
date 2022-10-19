@@ -25,7 +25,7 @@ Route::get('template', function () {
     return view('template');
 });
 Route::get('film', function () {
-    return view('film');
+    return view('film/film');
 });
 Route::resource('genre', GenreController::class);
 // Route::get('genre', function () {

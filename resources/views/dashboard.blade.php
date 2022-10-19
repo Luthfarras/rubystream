@@ -1,6 +1,7 @@
 @extends('template')
 
 @section('hero')
+
 <div class="container">
     <div class="hero__slider owl-carousel">
         <div class="hero__items set-bg" data-setbg="{{ asset('anime-main/img/hero/hero-1.jpg') }}">
