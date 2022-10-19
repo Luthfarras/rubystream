@@ -64,22 +64,29 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('anime-main/img/trending/trend-1.jpg') }}">
-                                <div class="ep">18 / 18</div>
-                                <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            </div>
-                            <div class="product__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                            </div>
-                        </div>
-                    </div>
+                  @if(!empty($data))
+                  @foreach($data as $d)
+                  <div class="col-lg-4 col-md-6 col-sm-6">
+                      <div class="product__item">
+                          <div class="product__item__pic set-bg" data-setbg="{{ asset('img/'.$d->cover) }}">
+                              <!-- <div class="ep">18 / 18</div> -->
+                              <!-- <div class="comment"><i class="fa fa-comments"></i> 11</div> -->
+                              <!-- <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
+                          </div>
+                          <div class="product__item__text">
+                              <!-- <ul>
+                                  <li>Active</li>
+                                  <li>Movie</li>
+                              </ul> -->
+                              <h5><a href="#">{{ $d['nama_film'] }}</a></h5>
+                          </div>
+                      </div>
+                  </div>
+                  @endforeach
+                  @else
+                  <p>Data Kosong</p>
+                  @endif
+
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="{{ asset('anime-main/img/trending/trend-2.jpg') }}">

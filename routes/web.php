@@ -31,9 +31,11 @@ Route::resource('genre', GenreController::class);
 // Route::get('genre', function () {
 //     return view('genre');
 // });
-Route::get('dashboard', function () {
-    return view('dashboard');
-});
+// Route::get('dashboard', function () {
+//     return view('dashboard');
+// });
+Route::get('dashboard', [FilmController::class, 'index']);
+
 
 Auth::routes();
 
