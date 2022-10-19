@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Film;
 
 class FilmController extends Controller
 {
@@ -13,7 +14,8 @@ class FilmController extends Controller
      */
     public function index()
     {
-        //
+        $data = Film::all();
+        return view('dashboard', compact('data'));
     }
 
     /**
