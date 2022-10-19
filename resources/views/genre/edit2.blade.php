@@ -1,3 +1,6 @@
+@extends('template')
+@section('content')
+
 <form action="{{ route('genre.update', $data->id) }}" method="POST" >
   @csrf
   @method('PUT')
@@ -20,3 +23,5 @@
     </div>
   </div>
 </form>
+
+@endsection
