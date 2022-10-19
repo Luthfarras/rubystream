@@ -3,12 +3,11 @@
 @section('content')
 
 <div class="form-group container">
-    <a class="btn btn-dark " href="{{ url('genre/create')}}" data-toggle="modal" data-target="#inputModal">
-        Input Genre
-    </a>
+    <a class="btn btn-dark " href="{{ url('genre/create')}}">Input Genre 2</a>
+    <a class="btn btn-dark " href="{{ url('genre/create')}}" data-toggle="modal" data-target="#inputModal">Input Genre</a>
 </div>
 
-<!-- <form action="{{ url('genre')}}" method="POST">
+<form action="{{ url('genre')}}" method="POST">
     @csrf
     <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -21,7 +20,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group container">
-                        <input type="text" class="form-control" id="genre" placeholder="Input Genre" name="genre">
+                        <input type="text" class="form-control @error('genre') is-invalid @enderror" id="genre" placeholder="Input Genre" name="genre" value="{{old('genre')}}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -31,7 +30,7 @@
             </div>
         </div>
     </div>
-</form> -->
+</form>
 
 <table class="table container text-white">
   <thead>

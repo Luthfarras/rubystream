@@ -42,7 +42,15 @@ class GenreController extends Controller
         // Genre::created([
         //     'genre' => $request-> genre
         // ]);
-        dd($request);
+        // dd($request);
+
+        $validator = $request->validate([
+            'genre'=> 'required|string'
+        ]);
+
+        Genre::create($validator);
+        
+        return redirect('genre');
     }
 
     /**
