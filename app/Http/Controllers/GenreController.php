@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Genre;
 use Illuminate\Http\Request;
-use App\Models\Film;
 
-class FilmController extends Controller
+class GenreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,9 @@ class FilmController extends Controller
      */
     public function index()
     {
-        $data = Film::all();
-        return view('dashboard', compact('data'));
+        $data = Genre::all();
+        // dd($data);
+        return view('genre', compact('data'));
     }
 
     /**
@@ -25,7 +26,8 @@ class FilmController extends Controller
      */
     public function create()
     {
-        //
+        $data = Genre::all();
+        return view('genre.create', compact('data'));
     }
 
     /**
@@ -36,7 +38,19 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Genre::create($request->all());
+        // Genre::created([
+        //     'genre' => $request-> genre
+        // ]);
+        // dd($request);
+
+        $validator = $request->validate([
+            'genre'=> 'required|string'
+        ]);
+
+        Genre::create($validator);
+        
+        return redirect('genre');
     }
 
     /**

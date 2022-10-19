@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilmController;
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -26,12 +27,15 @@ Route::get('template', function () {
 Route::get('film', function () {
     return view('film');
 });
-Route::get('genre', function () {
-    return view('genre');
-});
-Route::get('dashboard', function () {
-    return view('dashboard');
-});
+Route::resource('genre', GenreController::class);
+// Route::get('genre', function () {
+//     return view('genre');
+// });
+// Route::get('dashboard', function () {
+//     return view('dashboard');
+// });
+Route::get('dashboard', [FilmController::class, 'index']);
+
 
 Auth::routes();
 
