@@ -38,12 +38,6 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        // Genre::create($request->all());
-        // Genre::created([
-        //     'genre' => $request-> genre
-        // ]);
-        // dd($request);
-
         $validator = $request->validate([
             'genre'=> 'required|string'
         ]);
@@ -72,7 +66,10 @@ class GenreController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Genre::find($id);
+
+        return view('genre.edit', compact('data'));
+        // dd($id);
     }
 
     /**
@@ -84,7 +81,10 @@ class GenreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request);
+        $data = Genre::find($id);
+        $data->update($request->all());
+        return redirect('genre');
     }
 
     /**
