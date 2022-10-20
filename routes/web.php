@@ -31,17 +31,11 @@ Route::resource('genre', GenreController::class);
 // Route::get('genre', function () {
 //     return view('genre');
 // });
-// Route::get('dashboard', function () {
-//     return view('dashboard');
-// });
-
-//coba
-Route::get('login2', function () {
-    return view('auth.login2');
+Route::get('profile', function () {
+    return view('profile');
 });
 
-
-Route::get('dashboard', [FilmController::class, 'index']);
+Route::get('dashboard', [FilmController::class, 'dashboard']);
 
 
 Auth::routes();
