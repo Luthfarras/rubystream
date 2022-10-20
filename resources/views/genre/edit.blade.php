@@ -4,7 +4,7 @@
 <form action="{{ route('genre.update', $data->id) }}" method="POST" >
   @csrf
   @method('PUT')
-  <div class="form-group">
+  <div class="form-group" style="height:50vh" >
   <!-- <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
   <div class="" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
