@@ -16,7 +16,7 @@ class GenreController extends Controller
     {
         $data = Genre::all();
         // dd($data);
-        return view('genre', compact('data'));
+        return view('genre/genre', compact('data'));
     }
 
     /**

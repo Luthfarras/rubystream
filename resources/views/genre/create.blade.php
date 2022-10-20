@@ -1,8 +1,9 @@
-<form action="{{ url('genre')}}" method="POST">
-    @csrf
     <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content text-white footer">
+
+            <form action="{{ url('genre')}}" method="POST">
+                    @csrf
                 <div class="modal-body">
                     <label>Ready to input</label>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -16,7 +17,8 @@
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
+            </form>
+
             </div>
         </div>
     </div>
-</form>
