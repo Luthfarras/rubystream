@@ -1,24 +1,21 @@
-    <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content text-white footer">
-
-            <form action="{{ url('genre')}}" method="POST">
-                    @csrf
                 <div class="modal-body">
-                    <label>Ready to input</label>
+                    <label>Ready to delete</label>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                     <div class="form-group mt-5">
-                        <input type="text" class="form-control @error('genre') is-invalid @enderror" id="genre" placeholder="Input Genre" name="genre" value="{{old('genre')}}">
+                        Are you sure delete it?
                     </div>
                     <div class="mt-5">
-                        <button type="submit" class="btn btn-dark text-white">Input</button>
+                        <a class="btn btn-danger" href="{{ route ('deletegenre',$genre->id)}}">Delete</a>
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
-            </form>
-
             </div>
         </div>
     </div>
+</form>

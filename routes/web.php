@@ -28,13 +28,16 @@ Route::get('film', function () {
     return view('film/film');
 });
 Route::resource('genre', GenreController::class);
+// Route::get('genreedit/{id}',[GenreController::class,'update'])->name('genreedit');
+Route::get('deletegenre/{id}',[GenreController::class,'destroy'])->name('deletegenre');
 // Route::get('genre', function () {
 //     return view('genre');
 // });
-// Route::get('dashboard', function () {
-//     return view('dashboard');
-// });
-Route::get('dashboard', [FilmController::class, 'index']);
+Route::get('profile', function () {
+    return view('profile');
+});
+
+Route::get('dashboard', [FilmController::class, 'dashboard']);
 
 
 Auth::routes();

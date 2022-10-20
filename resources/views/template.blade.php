@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="{{ asset('anime-main/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('anime-main/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('anime-main/css/style.css') }}" type="text/css">
+
+    <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css') }}">
+
 </head>
 
 <body>
@@ -66,7 +69,16 @@
                 <div class="col-lg-2">
                     <div class="header__right">
                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                        <a href="./login.html"><span class="icon_profile"></span></a>
+                        @guest
+                        @if (Route::has('login'))
+                        <a class="" href="{{ route('login') }}"><span class="icon_profile"></span></a>
+                        @endif
+                        @else
+                        <a class="" href="/profile"><span class="icon_profile"></span></a>
+
+                      @endguest
+
+                        <!-- <a href="./login.html"><span class="icon_profile"></span></a> -->
                     </div>
                 </div>
             </div>
@@ -141,6 +153,45 @@
 <script src="{{ asset('anime-main/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('anime-main/js/main.js') }}"></script>
 
+<script src="{{ asset('https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js') }}"></script>
+
+<script type="text/javascript" >
+  $(document).ready(function() {
+
+    var table = $ ('#datatable').DataTable();
+    
+    table.on('click', '.edit', function(){
+
+      $tr = $(this).closest('tr');
+      if ($($tr).hasClass('child')) {
+        $tr = $tr.prev('.parent');
+      }
+  
+    var data = table.row($tr).data();
+    console.log(data);
+
+    $('#genre').val(data[1]);
+  
+    $('editForm').attr('action', '/genre/'+data[0]);
+    $('editModal').modal('show');
+    });
+    
+    // table.on('click', '.delete', function(){
+    //   $tr = $(this).closest('tr');
+    //   if ($($tr).hasClass('child')) {
+    //     $tr = $tr.prev('.parent');
+    //   }
+    // });
+  
+    // var data = table.row($tr).data();
+    // console.log(data);
+  
+    // $('deleteForm').attr('action', '/genre/'+data[0]);
+    // $('deleteModal').modal('show');
+
+  });
+</script>
 
 </body>
 
