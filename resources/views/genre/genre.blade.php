@@ -29,14 +29,9 @@
         <a href="dashboard">{{ $genre['genre']}}</a>
     </td>
       <td style="border: 0;" >
-    <!-- <a class="btn btn-success edit" href="#"> EDIT </a> -->
     <a class="btn btn-success" href="{{route('genre.edit',$genre->id)}}">Edit</a>
-        <!-- | -->
-
     <!-- start delete -->
-    <!-- <a class="btn btn-danger" href="{{ route ('deletegenre',$genre->id)}}" data-toggle="modal" data-target="#deleteModal">Delete</a> -->
     <a class="btn btn-danger" href="{{ route ('deletegenre',$genre->id)}}">Delete</a>
-    @include('genre.delete')
     <!-- end delete -->
 
     </td>
