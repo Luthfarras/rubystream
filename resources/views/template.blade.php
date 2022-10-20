@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="{{ asset('anime-main/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('anime-main/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('anime-main/css/style.css') }}" type="text/css">
+
+    <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css') }}">
+
 </head>
 
 <body>
@@ -150,6 +153,45 @@
 <script src="{{ asset('anime-main/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('anime-main/js/main.js') }}"></script>
 
+<script src="{{ asset('https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js') }}"></script>
+
+<script type="text/javascript" >
+  $(document).ready(function() {
+
+    var table = $ ('#datatable').DataTable();
+    
+    table.on('click', '.edit', function(){
+
+      $tr = $(this).closest('tr');
+      if ($($tr).hasClass('child')) {
+        $tr = $tr.prev('.parent');
+      }
+  
+    var data = table.row($tr).data();
+    console.log(data);
+
+    $('#genre').val(data[1]);
+  
+    $('editForm').attr('action', '/genre/'+data[0]);
+    $('editModal').modal('show');
+    });
+    
+    // table.on('click', '.delete', function(){
+    //   $tr = $(this).closest('tr');
+    //   if ($($tr).hasClass('child')) {
+    //     $tr = $tr.prev('.parent');
+    //   }
+    // });
+  
+    // var data = table.row($tr).data();
+    // console.log(data);
+  
+    // $('deleteForm').attr('action', '/genre/'+data[0]);
+    // $('deleteModal').modal('show');
+
+  });
+</script>
 
 </body>
 

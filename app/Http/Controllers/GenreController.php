@@ -16,7 +16,7 @@ class GenreController extends Controller
     {
         $data = Genre::all();
         // dd($data);
-        return view('genre', compact('data'));
+        return view('genre/genre', compact('data'));
     }
 
     /**
@@ -66,7 +66,7 @@ class GenreController extends Controller
      */
     public function edit($id)
     {
-        $data = Genre::find($id);
+        $data = Genre::findOrFail($id);
 
         return view('genre.edit', compact('data'));
         // dd($id);
@@ -82,7 +82,7 @@ class GenreController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request);
-        $data = Genre::find($id);
+        $data = Genre::findOrFail($id);
         $data->update($request->all());
         return redirect('genre');
     }
@@ -95,6 +95,9 @@ class GenreController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Genre::findOrFail($id);
+        $data->delete();
+        return redirect('genre');
+        // dd($id);
     }
 }
