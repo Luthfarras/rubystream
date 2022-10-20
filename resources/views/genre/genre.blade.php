@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('content')
+@section('hero')
 
 <!-- start modal add -->
 <div class="form-group container">
@@ -11,7 +11,7 @@
 <!-- end modal add -->
 
 <!-- start table -->
-<div class="container text-light">
+<div class="container text-light" id="body">
 <div class="ms-auto me-auto">
 <table id="datatable" class="table text-white" style="width: 1500px;" >
   <thead>

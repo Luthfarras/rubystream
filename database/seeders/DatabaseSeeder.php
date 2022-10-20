@@ -71,9 +71,6 @@ class DatabaseSeeder extends Seeder
         'genre' => 'drama, horror'
       ]);
       Genre::create([
-        'genre' => 'drama'
-      ]);
-      Genre::create([
         'genre' => 'romantis'
       ]);
       Genre::create([
@@ -99,72 +96,6 @@ class DatabaseSeeder extends Seeder
       ]);
       Genre::create([
         'genre' => 'romantis'
-      ]);
-      Genre::create([
-        'genre' => 'comedy'
-      ]);
-      Genre::create([
-        'genre' => 'aksi'
-      ]);
-      Genre::create([
-        'genre' => 'drama'
-      ]);
-      Genre::create([
-        'genre' => 'romantis'
-      ]);
-      Genre::create([
-        'genre' => 'comedy'
-      ]);
-      Genre::create([
-        'genre' => 'aksi'
-      ]);
-      Genre::create([
-        'genre' => 'drama'
-      ]);
-      Genre::create([
-        'genre' => 'romantis'
-      ]);
-      Genre::create([
-        'genre' => 'comedy'
-      ]);
-      Genre::create([
-        'genre' => 'aksi'
-      ]);
-      Genre::create([
-        'genre' => 'drama'
-      ]);
-      Genre::create([
-        'genre' => 'drama'
-      ]);
-      Genre::create([
-        'genre' => 'romantis'
-      ]);
-      Genre::create([
-        'genre' => 'comedy'
-      ]);
-      Genre::create([
-        'genre' => 'aksi'
-      ]);
-      Genre::create([
-        'genre' => 'drama'
-      ]);
-      Genre::create([
-        'genre' => 'romantis'
-      ]);
-      Genre::create([
-        'genre' => 'comedy'
-      ]);
-      Genre::create([
-        'genre' => 'aksi'
-      ]);
-      Genre::create([
-        'genre' => 'drama'
-      ]);
-      Genre::create([
-        'genre' => 'romantis'
-      ]);
-      Genre::create([
-        'genre' => 'comedy'
       ]);
 
     }
