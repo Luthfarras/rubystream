@@ -5,12 +5,22 @@
     <div class="row">
         <div class="col">
             <table class="table">
-                <th scope="col" class="text-white">No</th>
-                <th scope="col" class="text-white">Judul Film</th>
-                <th scope="col" class="text-white">Genre</th>
-                <th scope="col" class="text-white">Harga</th>
-                <th scope="col" class="text-white">Tahun Rilis</th>
-                <th scope="col" class="text-white">Aksi</th>
+                <tr class="text-white">
+                    <th scope="col">No</th>
+                    <th scope="col">Judul Film</th>
+                    <th scope="col">Genre</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Tahun Rilis</th>
+                    <th scope="col">Aksi</th>
+                </tr>
+                <tr class="text-white">
+                    <td scope="col">No</td>
+                    <td scope="col">Judul Film</td>
+                    <td scope="col">Genre</td>
+                    <td scope="col">Harga</td>
+                    <td scope="col">Tahun Rilis</td>
+                    <td scope="col">Aksi</td>
+                </tr>
             </table>
         </div>
     </div>
