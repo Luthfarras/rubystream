@@ -164,21 +164,21 @@
 
     var table = $ ('#datatable').DataTable();
     
-    table.on('click', '.edit', function(){
+    // table.on('click', '.edit', function(){
 
-      $tr = $(this).closest('tr');
-      if ($($tr).hasClass('child')) {
-        $tr = $tr.prev('.parent');
-      }
+    //   $tr = $(this).closest('tr');
+    //   if ($($tr).hasClass('child')) {
+    //     $tr = $tr.prev('.parent');
+    //   }
   
-    var data = table.row($tr).data();
-    console.log(data);
+    // var data = table.row($tr).data();
+    // console.log(data);
 
-    $('#genre').val(data[1]);
+    // $('#genre').val(data[1]);
   
-    $('editForm').attr('action', '/genre/'+data[0]);
-    $('editModal').modal('show');
-    });
+    // $('editForm').attr('action', '/genre/'+data[0]);
+    // $('editModal').modal('show');
+    // });
     
     // table.on('click', '.delete', function(){
     //   $tr = $(this).closest('tr');
