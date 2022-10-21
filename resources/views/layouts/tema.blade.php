@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html">
+                        <a href="">
                             <img src="{{ asset('anime-main/img/logo.png') }}" alt="">
                         </a>
                     </div>
@@ -60,7 +60,7 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="@if(Request::is('dashboard')) active @endif"><a href="/dashboard">Homepage</a></li>
+                                <li class="@if(Request::is('dashboard')) active @endif"><a href="">Homepage</a></li>
                                 <li><a href="">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="">Categories</a></li>
@@ -71,8 +71,8 @@
                                         <li><a href="">Login</a></li> -->
                                     </ul>
                                 </li>
-                                <li class="@if(Request::is('film')) active @endif"><a href="/film">List Film</a></li>
-                                <li class="@if(Request::is('genre')) active @endif"><a href="/genre">Genre</a></li>
+                                <li class="@if(Request::is('film')) active @endif"><a href="">List Film</a></li>
+                                <li class="@if(Request::is('genre')) active @endif"><a href="">Genre</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -120,22 +120,22 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="footer__logo">
-                    <a href="./index.html"><img src="{{ asset('anime-main/img/logo.png') }}" alt=""></a>
+                    <a href=""><img src="{{ asset('anime-main/img/logo.png') }}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="footer__nav">
                     <ul>
-                        <li><a href="/dashboard">Homepage</a></li>
-                        <li><a href="/profile">Profile</a></li>
-                        <li><a href="/film">List Film</a></li>
-                        <li><a href="/genre">Genre</a></li>
+                        <li><a href="">Homepage</a></li>
+                        <li><a href="">Profile</a></li>
+                        <li><a href="">List Film</a></li>
+                        <li><a href="">Genre</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-3">
                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="x" target="_blank">Colorlib</a>
                   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 
               </div>
