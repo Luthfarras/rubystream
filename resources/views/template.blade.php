@@ -76,7 +76,7 @@
                         <a class="" href="{{ route('login') }}"><span class="icon_profile"></span></a>
                         @endif
                         @else
-                        <a class="" href="/profile"><span class="icon_profile"></span></a>
+                        <a class="" href="home">{{ Auth::user()->name }} <span class="icon_profile"></span></a>
 
                       @endguest
 
