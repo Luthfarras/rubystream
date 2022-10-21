@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Genre;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class GenreController extends Controller
 {
@@ -43,7 +44,8 @@ class GenreController extends Controller
         ]);
 
         Genre::create($validator);
-        
+
+        Alert::success('Success Create', 'Success Add Genre');
         return redirect('genre');
     }
 
@@ -84,6 +86,8 @@ class GenreController extends Controller
         // dd($request);
         $data = Genre::findOrFail($id);
         $data->update($request->all());
+
+        Alert::success('Success Edit', 'Success Update Genre');
         return redirect('genre');
     }
 
@@ -97,6 +101,8 @@ class GenreController extends Controller
     {
         $data = Genre::findOrFail($id);
         $data->delete();
+
+        Alert::success('Success Delete Genre');
         return redirect('genre');
         // dd($id);
     }

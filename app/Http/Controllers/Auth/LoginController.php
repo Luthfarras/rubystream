@@ -47,7 +47,7 @@ class LoginController extends Controller
 
     public function sendLoginResponse()
     {
-        Alert::success('Success Title', 'Success Message');
+        Alert::success('Success Login', 'Success Message');
         return redirect(RouteServiceProvider::HOME);
     }
 
