@@ -84,21 +84,12 @@
                             <ul>
                                 <a href="#" class="search-switch text-light"><span class="icon_search"></span></a>
                                 <li>
-                                    <a class="text-black">{{ Auth::user()->name }} <span class="icon_profile"></span></a>
+                                    <a class="text-black"><span class="icon_profile"></span></a>
                                     <ul class="dropdown">
 
                                         <li>
-                                            <!-- <a class="dropdown-item text-dark" href="{{ route('home') }}">Home</a> -->
-                                            <a class="dropdown-item text-dark" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                        {{ __('Logout') }}
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-
+                                            <a class="dropdown-item text-dark" href="{{ route('login') }}">Login</a>
+                                            <a class="dropdown-item text-dark" href="{{ route('register') }}">Register</a>
                                         </li>
                                     </ul>
                                 </li>

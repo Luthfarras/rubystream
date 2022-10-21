@@ -55,11 +55,11 @@
                                 <li><a href="">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="">Categories</a></li>
-                                        <li><a href="">Anime Details</a></li>
-                                        <li><a href="">Anime Watching</a></li>
+                                        <li><a href="">Film Details</a></li>
+                                        <li><a href="">Film Watching</a></li>
                                         <li><a href="">Blog Details</a></li>
-                                        <li><a href="">Sign Up</a></li>
-                                        <li><a href="">Login</a></li>
+                                        <!-- <li><a href="">Sign Up</a></li>
+                                        <li><a href="">Login</a></li> -->
                                     </ul>
                                 </li>
                                 <li class="@if(Request::is('film')) active @endif"><a href="/film">List Film</a></li>
@@ -69,16 +69,33 @@
                     </div>
                 </div>
                 <div class="col-lg-2">
-                    <div class="header__right">
-                        <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                        @guest
-                        @if (Route::has('login'))
-                        <a class="" href="{{ route('login') }}"><span class="icon_profile"></span></a>
-                        @endif
-                        @else
-                        <a class="" href="home">{{ Auth::user()->name }} <span class="icon_profile"></span></a>
 
-                      @endguest
+                    <div class="header__nav">
+                        <nav class="header__menu mobile-menu">
+                            <ul>
+                                <a href="#" class="search-switch text-light"><span class="icon_search"></span></a>
+                                <li>
+                                    <a>{{ Auth::user()->name }} <span class="icon_profile"></span></a>
+                                    <ul class="dropdown">
+
+                                        <li>
+                                            <a class="dropdown-item text-dark" href="{{ route('home') }}">Profil</a>
+                                            <a class="dropdown-item text-dark" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                        {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
 
                         <!-- <a href="./login.html"><span class="icon_profile"></span></a> -->
                     </div>

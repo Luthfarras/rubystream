@@ -47,13 +47,13 @@ class LoginController extends Controller
 
     public function sendLoginResponse()
     {
-        Alert::success('Success Login', 'Success Message');
+        Alert::success('Success Login', 'Welcome in Homepage');
         return redirect(RouteServiceProvider::HOME);
     }
 
     public function sendFailedLoginResponse()
     {
-        Alert::error('Gagal Masuk', 'Password atau Username salah!');
-       return redirect('login');
+        Alert::error('Login failed', 'Wrong Password or Username!');
+        return redirect('login');
     }
 }

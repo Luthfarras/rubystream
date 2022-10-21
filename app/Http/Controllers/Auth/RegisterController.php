@@ -74,7 +74,9 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        Alert::success('Success Title', 'Success Message');
+        
+        Alert::success('Success Register', 'Welcome to Homepage');
         return $user;
     }
+
 }
