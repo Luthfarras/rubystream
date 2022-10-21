@@ -32,7 +32,7 @@
         k = (e) => (C(e) ? e.toPromise() : Promise.resolve(e)),
         A = (e) => e && Promise.resolve(e) === e,
         i = {
-            title: "Apa ya",
+            title: "",
             titleText: "",
             text: "",
             html: "",

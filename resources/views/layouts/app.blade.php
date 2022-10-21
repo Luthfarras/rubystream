@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html">
+                        <a href="">
                             <img src="{{ asset('anime-main/img/logo.png') }}" alt="">
                         </a>
                     </div>
@@ -64,11 +64,11 @@
                                 <li><a href="">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="">Categories</a></li>
-                                        <li><a href="">Film Details</a></li>
-                                        <li><a href="">Film Watching</a></li>
+                                        <li><a href="">Anime Details</a></li>
+                                        <li><a href="">Anime Watching</a></li>
                                         <li><a href="">Blog Details</a></li>
-                                        <!-- <li><a href="">Sign Up</a></li>
-                                        <li><a href="">Login</a></li> -->
+                                        <li><a href="">Sign Up</a></li>
+                                        <li><a href="">Login</a></li>
                                     </ul>
                                 </li>
                                 <li class="@if(Request::is('film')) active @endif"><a href="/film">List Film</a></li>
@@ -83,30 +83,27 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <a href="#" class="search-switch text-light"><span class="icon_search"></span></a>
-                                <li>
-                                    <a class="text-black">{{ Auth::user()->name }} <span class="icon_profile"></span></a>
+                                <li><a href="">{{ Auth::user()->name }} <span class="icon_profile"></span><span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
-
-                                        <li>
-                                            <!-- <a class="dropdown-item text-dark" href="{{ route('home') }}">Home</a> -->
-                                            <a class="dropdown-item text-dark" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
+                                        <li><a href="">
+                                        <a class="dropdown-item text-dark" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                                        {{ __('Logout') }}
-                                            </a>
+                                        {{ __('Logout') }}
+                                    </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-
-                                        </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                        </a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </nav>
-                    </div>
+                    </div>                    
+
                         <!-- <a href="./login.html"><span class="icon_profile"></span></a> -->
-                    
+                    </div>
                 </div>
             </div>
             <div id="mobile-menu-wrap"></div>
@@ -117,7 +114,7 @@
         <main class="py-4">
             @yield('content')
         </main>
-
+    </div>
     @include('sweetalert::alert')
 
 <!-- Footer Section Begin -->
@@ -179,5 +176,4 @@
 <script src="{{ asset('https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js') }}"></script>
 
 </body>
-@include('sweetalert::alert')
 </html>
