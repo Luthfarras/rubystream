@@ -45,7 +45,7 @@ class GenreController extends Controller
 
         Genre::create($validator);
 
-        Alert::success('Success Create', 'Success Add Genre');
+        Alert::success('Congratulations', 'Success Creates Genre');
         return redirect('genre');
     }
 
@@ -87,7 +87,7 @@ class GenreController extends Controller
         $data = Genre::findOrFail($id);
         $data->update($request->all());
 
-        Alert::success('Success Edit', 'Success Update Genre');
+        Alert::success('Congratulations', 'Update Genre Success');
         return redirect('genre');
     }
 
@@ -102,7 +102,7 @@ class GenreController extends Controller
         $data = Genre::findOrFail($id);
         $data->delete();
 
-        Alert::success('Success Delete Genre');
+        Alert::success('Congratulations','Success Delete Genre');
         return redirect('genre');
         // dd($id);
     }
