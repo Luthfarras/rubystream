@@ -63,7 +63,7 @@
                                 @enderror
                             </div>
                             <div class="input__item">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirmation Password">
                                 <span class="icon_lock"></span>
                             </div>
                             <button type="submit" class="site-btn">Update Now</button>
