@@ -1,5 +1,16 @@
 @extends('template')
+<style media="screen">
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+}
 
+#myImg:hover {
+  opacity: 0.5;
+}
+
+</style>
 @section('hero')
 
 <div class="container">
@@ -69,11 +80,15 @@
                   @foreach($data as $d)
                   <div class="col-lg-4 col-md-6 col-sm-6">
                       <div class="product__item">
-                          <div class="product__item__pic set-bg" data-setbg="{{ asset('img/'.$d->cover) }}">
+                        <div class="">
+                          <img id="myImg" src="{{ asset('img/'.$d->cover) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal">
+
+                        </div>
+                          <!-- <div class="product__item__pic set-bg" data-setbg="{{ asset('img/'.$d->cover) }}"> -->
                               <!-- <div class="ep">18 / 18</div> -->
                               <!-- <div class="comment"><i class="fa fa-comments"></i> 11</div> -->
                               <!-- <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
-                          </div>
+                          <!-- </div> -->
                           <div class="product__item__text">
                               <!-- <ul>
                                   <li>Active</li>
@@ -87,6 +102,17 @@
                   @else
                   <p>Data Kosong</p>
                   @endif
+                  <!-- <a class="btn btn-dark " href="" data-toggle="modal" data-target="#inputModal">Input Genre</a> -->
+
+                  <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                          <div class="modal-content text-white footer">
+                            <video src="{{ asset('vid/'.$d->trailer) }}" autoplay controls>
+
+                            </video>
+                          </div>
+                      </div>
+                  </div>
 
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
