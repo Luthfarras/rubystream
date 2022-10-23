@@ -26,19 +26,19 @@
                         <h3>You Profil</h3>
                         <form action="" method="">
                             <div class="input__item">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Auth::user()->name }}" required autocomplete="name" autofocus placeholder="Your Name" disabled>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ Auth::user()->name }}" required autocomplete="name" autofocus placeholder="Your Name" disabled>
                                 <span class="icon_profile"></span>
                             </div>
                             <div class="input__item">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ Auth::user()->username }}" required autocomplete="username" autofocus placeholder="Username" disabled>
+                                <input id="username" type="text" class="form-control" name="username" value="{{ Auth::user()->username }}" required autocomplete="username" autofocus placeholder="Username" disabled>
                                 <span class="icon_id"></span>
                             </div>
                             <div class="input__item">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->email }}" required autocomplete="email" placeholder="Email address" disabled>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" required autocomplete="email" placeholder="Email address" disabled>
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" value="{{ Auth::user()->password }}" name="password" required autocomplete="new-password" placeholder="Password" disabled>
+                                <input id="password" type="password" class="form-control" value="{{ Auth::user()->password }}" name="password" required autocomplete="new-password" placeholder="Password" disabled>
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">
