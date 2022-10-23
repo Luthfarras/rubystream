@@ -56,6 +56,9 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+
+        Alert::error('Apa Register', 'Welcome to Homepage');
+        return redirect('register');
         
 
     }

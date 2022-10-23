@@ -45,7 +45,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ Auth::user()->password }}" required autocomplete="new-password" placeholder="Confirmation Password" disabled>
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">Update Now</button>
+                            <button type="submit" class="site-btn"><a class="text-white" href="{{route('password.update',Auth::user()->id)}}">Update Now</a></button>
                         </form>
                     </div>
                 </div>

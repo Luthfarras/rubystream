@@ -30,10 +30,6 @@ Route::get('film', function () {
 Route::resource('genre', GenreController::class);
 Route::get('deletegenre/{id}',[GenreController::class,'destroy'])->name('deletegenre');
 
-Route::get('profile', function () {
-    return view('profile');
-});
-
 Route::get('dashboard', [FilmController::class, 'dashboard']);
 
 
