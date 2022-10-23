@@ -67,8 +67,8 @@
                                         <li><a href="">Anime Details</a></li>
                                         <li><a href="">Anime Watching</a></li>
                                         <li><a href="">Blog Details</a></li>
-                                        <li><a href="">Sign Up</a></li>
-                                        <li><a href="">Login</a></li>
+                                        <!-- <li><a href="">Sign Up</a></li>
+                                        <li><a href="">Login</a></li> -->
                                     </ul>
                                 </li>
                                 <li class="@if(Request::is('film')) active @endif"><a href="/film">List Film</a></li>
