@@ -1,6 +1,7 @@
 @extends('template')
 
 @section('content')
+{{ dd($data )}}
 <div class="container">
     <div class="row">
         <div class="col">
@@ -14,12 +15,14 @@
                     <th scope="col">Aksi</th>
                 </tr>
                 <tr class="text-white">
-                    <td scope="col">No</td>
-                    <td scope="col">Judul Film</td>
-                    <td scope="col">Genre</td>
-                    <td scope="col">Harga</td>
-                    <td scope="col">Tahun Rilis</td>
-                    <td scope="col">Aksi</td>
+                    @foreach ($data as $dt)
+                        <td scope="col">No</td>
+                        <td scope="col">Judul Film</td>
+                        <td scope="col">Genre</td>
+                        <td scope="col">Harga</td>
+                        <td scope="col">Tahun Rilis</td>
+                        <td scope="col">Aksi</td>
+                    @endforeach
                 </tr>
             </table>
         </div>

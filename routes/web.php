@@ -6,6 +6,8 @@ use App\Http\Controllers\FilmController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
 
+use App\Http\Controllers\ApiFilmController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,5 +43,8 @@ Route::get('dashboard', [FilmController::class, 'dashboard']);
 
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/film',[ApiFilmController::class,'getdata']);
+
+Route::get('/aa',[ApiFilmController::class,'aaa']);
