@@ -26,14 +26,7 @@ class ApiFilmController extends Controller
         $dutu = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_ozkz53hd?release_date=1900-01-01,2022-01-01&genres=horror&companies=warner');
         $dete = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_ozkz53hd?release_date=1900-01-01,2022-01-01&genres=comedy&companies=warner');
         $doto = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_ozkz53hd?release_date=1900-01-01,2022-01-01&genres=fantasy&companies=warner');
-        // dd($data->JSON());
-        // $th = (int)$data['description'];
 
-        // dd($th->json());
-        // return view('film.film',compact('data'));
-        // Film::create([
-        //     'nama_film' => $data->title,
-        // ])
         foreach ($data['results'] as $item) {
             Film::create([
              'nama_film' => $item['title'],
