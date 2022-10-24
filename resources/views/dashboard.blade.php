@@ -95,6 +95,9 @@
                                   <li>Movie</li>
                               </ul> -->
                               <h5><a href="#">{{ $d['nama_film'] }}</a></h5>
+                              @if(Auth::user()->role == 'user')
+                              <button class="btn btn-sm btn-primary mt-2">Add to Cart</button>
+                              @endif
                           </div>
                       </div>
                   </div>
@@ -107,7 +110,7 @@
                   <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                           <div class="modal-content text-white footer">
-                            <video src="{{ asset('vid/'.$d->trailer) }}" autoplay controls>
+                            <video src="{{ asset('vid/'.$d->trailer) }}" controls>
 
                             </video>
                           </div>

@@ -23,14 +23,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('dashboard', function () {
-    return view('dashboard');
-});
+// Route::get('dashboard', function () {
+//     return view('dashboard');
+// });
 
 Route::get('template', function () {
     return view('template');
 });
 
+Route::get('dashboard', [FilmController::class, 'dashboard']);
 Route::resource('film', FilmController::class);
 
 Route::resource('genre', GenreController::class);
