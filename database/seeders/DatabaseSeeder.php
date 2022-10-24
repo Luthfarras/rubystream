@@ -43,6 +43,18 @@ class DatabaseSeeder extends Seeder
       Genre::create([
         'genre' => 'action'
       ]);
+      Genre::create([
+        'genre' => 'ramance'
+      ]);
+      Genre::create([
+        'genre' => 'horror'
+      ]);
+      Genre::create([
+        'genre' => 'comedy'
+      ]);
+      Genre::create([
+        'genre' => 'fantasi'
+      ]);
 
     }
 }
