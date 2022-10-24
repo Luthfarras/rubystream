@@ -27,18 +27,14 @@ Route::get('dashboard', function () {
     return view('dashboard');
 });
 
-// Route::resource('film', FilmController::class);
 Route::get('template', function () {
     return view('template');
 });
-Route::get('film', function () {
-    return view('film/film');
-});
+
+Route::resource('film', FilmController::class);
+
 Route::resource('genre', GenreController::class);
 Route::get('deletegenre/{id}',[GenreController::class,'destroy'])->name('deletegenre');
-
-Route::get('film', [FilmController::class, 'index']);
-
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
