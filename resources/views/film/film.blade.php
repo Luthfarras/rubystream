@@ -11,23 +11,23 @@
         <table class="table" id="datatable">
             <thead>
                 <tr class="text-white">
-                    <th scope="col">No</th>
-                    <th scope="col">Judul Film</th>
-                    <th scope="col">Genre</th>
-                    <th scope="col">Harga</th>
-                    <th scope="col">Tahun Rilis</th>
-                    <th scope="col">Aksi</th>
+                    <th scope="col" class="border border-0 text-center">No</th>
+                    <th scope="col" class="border border-0 text-center">Judul Film</th>
+                    <th scope="col" class="border border-0 text-center">Genre</th>
+                    <th scope="col" class="border border-0 text-center">Harga</th>
+                    <th scope="col" class="border border-0 text-center">Tahun Rilis</th>
+                    <th scope="col" class="border border-0 text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($data as $dt)
                 <tr class="text-white">
-                        <td scope="col">{{ $dt->id }}</td>
-                        <td scope="col">{{ $dt->nama_film }}</td>
-                        <td scope="col">{{ $dt->genre }}</td>
-                        <td scope="col">{{ $dt->harga }}</td>
-                        <td scope="col">{{ $dt->tahun_rilis }}</td>
-                        <td scope="col">
+                        <td scope="col" class="border border-0 align-middle text-center">{{ $dt->id }}</td>
+                        <td scope="col" class="border border-0 align-middle">{{ $dt->nama_film }}</td>
+                        <td scope="col" class="border border-0 align-middle text-center">{{ $dt->genre->genre }}</td>
+                        <td scope="col" class="border border-0 align-middle text-center">{{ $dt->harga }}</td>
+                        <td scope="col" class="border border-0 align-middle text-center">{{ $dt->tahun_rilis }}</td>
+                        <td scope="col" class="border border-0 align-middle text-center">
                             <a href="" class="btn btn-success">Edit</a>
                             <a href="" class="btn btn-danger">Delete</a>
                         </td>

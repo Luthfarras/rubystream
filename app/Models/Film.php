@@ -10,4 +10,8 @@ class Film extends Model
     use HasFactory;
     protected $table = 'films';
     protected $guarded = ['id'];
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
+    }
 }
