@@ -22,6 +22,11 @@ use App\Http\Controllers\ApiFilmController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('dashboard', function () {
+    return view('dashboard');
+});
+
 // Route::resource('film', FilmController::class);
 Route::get('template', function () {
     return view('template');
