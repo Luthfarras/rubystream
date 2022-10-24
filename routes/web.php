@@ -38,6 +38,8 @@ Route::get('dashboard', [FilmController::class, 'dashboard']);
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::put('update', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
+
 Route::get('/film',[ApiFilmController::class,'getdata']);
 
 Route::get('/aa',[ApiFilmController::class,'aaa']);
