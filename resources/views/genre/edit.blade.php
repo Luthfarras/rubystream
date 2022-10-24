@@ -23,6 +23,19 @@
 
                     </div>
                 </div>
+
+                <div class="col-lg-6">
+                    <div class="login__social__links">
+                        <h3>php artisan inspire</h3>
+                        <ul class="text-white">
+                        “ Happiness is not something readymade. It comes from your own actions. ”
+                        </ul>
+                        <ul class="text-secondary">
+                        — Dalai Lama
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

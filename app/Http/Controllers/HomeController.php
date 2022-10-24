@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Hash;
 
 
 class HomeController extends Controller
@@ -25,5 +28,32 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function edit($id)
+    {
+        // $data = User::findOrFail($id);
+
+        // return view('profile.edit', compact('data'));
+    }
+    
+    public function update(Request $profil)
+    {
+        $profil->validate([
+            'name'=>['string'],
+            'username'=>['alpha_num'],
+            'email'=>['email'],
+            'password' => ['string', 'confirmed'],
+        ]);
+
+        auth()->user()->update([
+            'name'=>$profil->name,
+            'username'=>$profil->username,
+            'email'=>$profil->email,
+            'password'=>Hash::make($profil['password']),
+        ]);
+
+        Alert::success('Congratulations', 'Update Profil Success');
+        return redirect('home');
     }
 }
