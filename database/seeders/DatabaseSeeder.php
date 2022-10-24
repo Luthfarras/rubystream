@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
       ]);
 
       Genre::create([
-        'genre' => 'comedy'
+        'genre' => 'action'
       ]);
 
     }

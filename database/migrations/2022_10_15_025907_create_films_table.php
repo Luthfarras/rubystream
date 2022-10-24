@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('studio');
             $table->string('cover');
             $table->integer('harga');
-            $table->year('tahun_rilis');
+            $table->string('tahun_rilis');
             $table->text('aktor');
             $table->text('sinopsis');
             $table->string('trailer');

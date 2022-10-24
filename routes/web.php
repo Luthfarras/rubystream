@@ -41,3 +41,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/film',[ApiFilmController::class,'getdata']);
 
 Route::get('/aa',[ApiFilmController::class,'aaa']);
+
