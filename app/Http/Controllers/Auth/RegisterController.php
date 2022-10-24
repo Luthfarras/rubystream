@@ -56,6 +56,9 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+
+        Alert::error('Apa Register', 'Welcome to Homepage');
+        return redirect('register');
         
 
     }
@@ -74,7 +77,9 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        Alert::success('Success Title', 'Success Message');
+        
+        Alert::success('Success Register', 'Welcome to Homepage');
         return $user;
     }
+
 }

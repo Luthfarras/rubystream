@@ -1,7 +1,7 @@
 @extends('template')
-
 @section('content')
 {{ dd($data )}}
+@section('hero')
 <div class="container">
     <div class="row">
         <div class="col">

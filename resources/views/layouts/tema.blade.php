@@ -1,18 +1,26 @@
-<!DOCTYPE html>
-<html lang="zxx">
-
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Anime Template">
-    <meta name="keywords" content="Anime, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Anime | Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <!-- Scripts -->
+    <!-- {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}} -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('anime-main/css/bootstrap.min.css') }}" type="text/css">
@@ -28,11 +36,12 @@
 <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css') }}">
 <!-- end pagination stylesheet -->
 
-</head>
 
+</head>
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
+
+<!-- Page Preloder -->
+<div id="preloder">
         <div class="loader"></div>
     </div>
 
@@ -51,7 +60,7 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="@if(Request::is('dashboard*')) active @endif"><a href="/dashboard">Homepage</a></li>
+                                <li class="@if(Request::is('dashboard')) active @endif"><a href="">Homepage</a></li>
                                 <li><a href="">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="">Categories</a></li>
@@ -62,8 +71,8 @@
                                         <li><a href="">Login</a></li> -->
                                     </ul>
                                 </li>
-                                <li class="@if(Request::is('film*')) active @endif"><a href="/film">List Film</a></li>
-                                <li class="@if(Request::is('genre*')) active @endif"><a href="/genre">Genre</a></li>
+                                <li class="@if(Request::is('film')) active @endif"><a href="">List Film</a></li>
+                                <li class="@if(Request::is('genre')) active @endif"><a href="">Genre</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -75,30 +84,20 @@
                             <ul>
                                 <a href="#" class="search-switch text-light"><span class="icon_search"></span></a>
                                 <li>
-                                    <a><span class="icon_profile"></span></a>
+                                    <a class="text-black"><span class="icon_profile"></span></a>
                                     <ul class="dropdown">
 
                                         <li>
-                                            <a class="dropdown-item text-dark" href="{{ route('home') }}">Profil</a>
-                                            <a class="dropdown-item text-dark" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                        {{ __('Logout') }}
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-
+                                            <a class="dropdown-item text-dark" href="{{ route('login') }}">Login</a>
+                                            <a class="dropdown-item text-dark" href="{{ route('register') }}">Register</a>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                         </nav>
                     </div>
-
                         <!-- <a href="./login.html"><span class="icon_profile"></span></a> -->
-                    </div>
+                    
                 </div>
             </div>
             <div id="mobile-menu-wrap"></div>
@@ -106,17 +105,11 @@
     </header>
     <!-- Header End -->
 
-    <!-- Hero Section Begin -->
-    <section class="hero">
-      @yield('hero')
-    </section>
-    <!-- Hero Section End -->
+        <main class="py-4">
+            @yield('content')
+        </main>
 
-    <!-- Product Section Begin -->
-    <section class="product spad">
-      @yield('content')
-</section>
-<!-- Product Section End -->
+    @include('sweetalert::alert')
 
 <!-- Footer Section Begin -->
 <footer class="footer">
@@ -127,22 +120,22 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="footer__logo">
-                    <a href="./index.html"><img src="{{ asset('anime-main/img/logo.png') }}" alt=""></a>
+                    <a href=""><img src="{{ asset('anime-main/img/logo.png') }}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="footer__nav">
                     <ul>
-                        <li><a href="/dashboard">Homepage</a></li>
-                        <li><a href="/profile">Profile</a></li>
-                        <li><a href="/film">List Film</a></li>
-                        <li><a href="/genre">Genre</a></li>
+                        <li><a href="">Homepage</a></li>
+                        <li><a href="">Profile</a></li>
+                        <li><a href="">List Film</a></li>
+                        <li><a href="">Genre</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-3">
                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="x" target="_blank">Colorlib</a>
                   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 
               </div>
@@ -162,7 +155,7 @@
 </div>
 <!-- Search model end -->
 
-<!-- Js Plugins -->
+    <!-- Js Plugins -->
 <script src="{{ asset('anime-main/js/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('anime-main/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('anime-main/js/player.js') }}"></script>
@@ -175,44 +168,6 @@
 <!-- start pagination script -->
 <script src="{{ asset('https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js') }}"></script>
-
-<script type="text/javascript" >
-  $(document).ready(function() {
-
-    var table = $ ('#datatable').DataTable();
-    
-    // table.on('click', '.edit', function(){
-
-    //   $tr = $(this).closest('tr');
-    //   if ($($tr).hasClass('child')) {
-    //     $tr = $tr.prev('.parent');
-    //   }
-  
-    // var data = table.row($tr).data();
-    // console.log(data);
-
-    // $('#genre').val(data[1]);
-  
-    // $('editForm').attr('action', '/genre/'+data[0]);
-    // $('editModal').modal('show');
-    // });
-    
-    // table.on('click', '.delete', function(){
-    //   $tr = $(this).closest('tr');
-    //   if ($($tr).hasClass('child')) {
-    //     $tr = $tr.prev('.parent');
-    //   }
-    // });
-  
-    // var data = table.row($tr).data();
-    // console.log(data);
-  
-    // $('deleteForm').attr('action', '/genre/'+data[0]);
-    // $('deleteModal').modal('show');
-
-  });
-</script>
-<!-- end pagination script -->
 
 </body>
 @include('sweetalert::alert')
