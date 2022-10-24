@@ -56,5 +56,7 @@ class DatabaseSeeder extends Seeder
         'genre' => 'fantasi'
       ]);
 
+      $this->call(FilmSeeder::class);
+
     }
 }

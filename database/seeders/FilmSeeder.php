@@ -17,15 +17,26 @@ class FilmSeeder extends Seeder
      */
     public function run()
     {
-        $data = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_ozkz53hd?release_date=1900-01-01,2022-01-01&genres=action&companies=warner');
+        // \App\Models\User::factory(10)->create();
 
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+        
+        $data = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=action&companies=warner');
+        $diti = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=romance&companies=warner');
+        $dutu = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=horror&companies=warner');
+        $dete = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=comedy&companies=warner');
+        $doto = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=fantasy&companies=warner');
+        
         foreach ($data['results'] as $item) {
             Film::create([
              'nama_film' => $item['title'],
              'studio' => 'Warner Bros',
              'cover' => $item['image'],
              'harga' => 70000,
-             'tahun_rilis' => (int)$item['description'],
+             'tahun_rilis' => $item['description'],
              'aktor' => $item['stars'],
              'sinopsis' => $item['plot'],
              'trailer' => 'haha.mp4',
@@ -33,6 +44,63 @@ class FilmSeeder extends Seeder
              'genre_id' => 1
             ]);
         }
-    
+
+        foreach ($diti['results'] as $item) {
+            Film::create([
+             'nama_film' => $item['title'],
+             'studio' => 'Warner Bros',
+             'cover' => $item['image'],
+             'harga' => 70000,
+             'tahun_rilis' => $item['description'],
+             'aktor' => $item['stars'],
+             'sinopsis' => $item['plot'],
+             'trailer' => 'haha.mp4',
+             'full_movie' => 'hihi.mp4',
+             'genre_id' => 2
+            ]);
+        }
+        foreach ($dutu['results'] as $item) {
+            Film::create([
+             'nama_film' => $item['title'],
+             'studio' => 'Warner Bros',
+             'cover' => $item['image'],
+             'harga' => 70000,
+             'tahun_rilis' => $item['description'],
+             'aktor' => $item['stars'],
+             'sinopsis' => $item['plot'],
+             'trailer' => 'haha.mp4',
+             'full_movie' => 'hihi.mp4',
+             'genre_id' => 3
+            ]);
+        }
+        foreach ($dete['results'] as $item) {
+            Film::create([
+             'nama_film' => $item['title'],
+             'studio' => 'Warner Bros',
+             'cover' => $item['image'],
+             'harga' => 70000,
+             'tahun_rilis' => $item['description'],
+             'aktor' => $item['stars'],
+             'sinopsis' => $item['plot'],
+             'trailer' => 'haha.mp4',
+             'full_movie' => 'hihi.mp4',
+             'genre_id' => 4
+            ]);
+        }
+        foreach ($doto['results'] as $item) {
+            Film::create([
+             'nama_film' => $item['title'],
+             'studio' => 'Warner Bros',
+             'cover' => $item['image'],
+             'harga' => 70000,
+             'tahun_rilis' => $item['description'],
+             'aktor' => $item['stars'],
+             'sinopsis' => $item['plot'],
+             'trailer' => 'haha.mp4',
+             'full_movie' => 'hihi.mp4',
+             'genre_id' => 5
+            ]);
+        }
+
     }
 }
