@@ -13,14 +13,14 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function dashboard(){
-      $data = Film::all();
-      return view('dashboard', compact('data'));
+     
     }
 
 
     public function index()
     {
-      //
+        $data = Film::all();
+        return view('film/film', compact('data'));
     }
 
     /**

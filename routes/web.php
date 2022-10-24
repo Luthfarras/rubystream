@@ -32,7 +32,7 @@ Route::get('film', function () {
 Route::resource('genre', GenreController::class);
 Route::get('deletegenre/{id}',[GenreController::class,'destroy'])->name('deletegenre');
 
-Route::get('dashboard', [FilmController::class, 'dashboard']);
+Route::get('film', [FilmController::class, 'index']);
 
 
 Auth::routes();
@@ -40,7 +40,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::put('update', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 
-Route::get('/film',[ApiFilmController::class,'getdata']);
+// Route::get('/film',[ApiFilmController::class,'getdata']);
 
 Route::get('/aa',[ApiFilmController::class,'aaa']);
 
