@@ -32,6 +32,8 @@ Route::get('template', function () {
 });
 
 Route::get('/', [FilmController::class, 'dashboard']);
+Route::get('detail/{id}', [FilmController::class, 'detail'])->name('detail');
+
 Route::resource('film', FilmController::class);
 
 Route::resource('genre', GenreController::class);
@@ -46,4 +48,3 @@ Route::get('/search', [FilmController::class, 'search'])->name('search');
 // Route::get('/film',[ApiFilmController::class,'getdata']);
 
 Route::get('/aa',[ApiFilmController::class,'aaa']);
-

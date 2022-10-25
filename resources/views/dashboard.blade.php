@@ -11,8 +11,9 @@
 }
 
 </style>
-@section('hero')
+@section('content')
 
+<section class="hero">
 <div class="container">
     <div class="hero__slider owl-carousel">
         <div class="hero__items set-bg" data-setbg="{{ asset('anime-main/img/hero/hero-1.jpg') }}">
@@ -53,12 +54,9 @@
         </div>
     </div>
 </div>
+</section>
 
-@endsection
-
-
-@section('content')
-
+<section class="product spad">
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
@@ -94,7 +92,7 @@
                                   <li>Active</li>
                                   <li>Movie</li>
                               </ul> -->
-                              <h5><a href="#">{{ $d['nama_film'] }}</a></h5>
+                              <h5><a href="{{route('detail',$d->id)}}">{{ $d['nama_film'] }}</a></h5>
                               @guest
                               @if (Route::has('login'))
                               <button>haloo</button>
@@ -275,6 +273,7 @@
 </div>
 </div>
 </div>
+</section>
 
 
 @endsection

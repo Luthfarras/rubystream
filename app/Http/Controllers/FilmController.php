@@ -20,13 +20,21 @@ class FilmController extends Controller
         return view('dashboard', compact('data'));
     }
 
+    public function detail($id)
+    {
+        $data = Film::findOrFail($id);
+
+        return view('detail', compact('data'));
+        // dd($data);
+    }
+
     public function search(Request $request)
 	{
 		$cari = $request->search;
         $data = Film::where('nama_film', 'like', "%" . $cari . "%")->paginate();
- 
+
 		return view('dashboard', compact('data'));
- 
+
 	}
 
 

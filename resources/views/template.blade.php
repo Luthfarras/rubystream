@@ -128,17 +128,20 @@
         </div>
     </header>
     <!-- Header End -->
+    <section class="all">
+      @yield('content')
+    </section>
 
     <!-- Hero Section Begin -->
-    <section class="hero">
+    <!-- <section class="hero">
       @yield('hero')
-    </section>
+    </section> -->
     <!-- Hero Section End -->
 
     <!-- Product Section Begin -->
-    <section class="product spad">
+    <!-- <section class="product spad">
       @yield('content')
-</section>
+</section> -->
 <!-- Product Section End -->
 
 <!-- Footer Section Begin -->
@@ -204,33 +207,33 @@
   $(document).ready(function() {
 
     var table = $ ('#datatable').DataTable();
-    
+
     // table.on('click', '.edit', function(){
 
     //   $tr = $(this).closest('tr');
     //   if ($($tr).hasClass('child')) {
     //     $tr = $tr.prev('.parent');
     //   }
-  
+
     // var data = table.row($tr).data();
     // console.log(data);
 
     // $('#genre').val(data[1]);
-  
+
     // $('editForm').attr('action', '/genre/'+data[0]);
     // $('editModal').modal('show');
     // });
-    
+
     // table.on('click', '.delete', function(){
     //   $tr = $(this).closest('tr');
     //   if ($($tr).hasClass('child')) {
     //     $tr = $tr.prev('.parent');
     //   }
     // });
-  
+
     // var data = table.row($tr).data();
     // console.log(data);
-  
+
     // $('deleteForm').attr('action', '/genre/'+data[0]);
     // $('deleteModal').modal('show');
 
