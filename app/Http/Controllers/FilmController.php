@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Film;
+// use Illuminate\Support\Facades\Paginate\Paginator;
 use DB;
 
 class FilmController extends Controller
@@ -15,7 +16,7 @@ class FilmController extends Controller
      */
     public function dashboard()
     {
-        $data = Film::all();
+        $data = Film::paginate(20);
         return view('dashboard', compact('data'));
     }
 

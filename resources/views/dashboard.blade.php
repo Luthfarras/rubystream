@@ -97,6 +97,7 @@
                               <h5><a href="#">{{ $d['nama_film'] }}</a></h5>
                               @guest
                               @if (Route::has('login'))
+                              <button>haloo</button>
                               @elseif(Auth::user()->role == 'user')
                               <button class="btn btn-sm btn-primary mt-2">Add to Cart</button>
                               @endif
