@@ -54,7 +54,7 @@
                                 @guest
                                 @if(Route::has('login'))
                                 <li class="@if(Request::is('/*')) active @endif"><a href="/">Homepage</a></li>
-                                <li><a href="">Categories <span class="arrow_carrot-down"></span></a>
+                                <li>Categories <span class="arrow_carrot-down"></span>
                                     <ul class="dropdown">
                                         <li><a href="">Categories</a></li>
                                         <li><a href="">Film Details</a></li>
@@ -67,7 +67,7 @@
                                 @endif
                                 @else
                                 <li class="@if(Request::is('/*')) active @endif"><a href="/">Homepage</a></li>
-                                <li><a href="">Categories <span class="arrow_carrot-down"></span></a>
+                                <li><a>Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="">Categories</a></li>
                                         <li><a href="">Film Details</a></li>
