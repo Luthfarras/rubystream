@@ -54,14 +54,16 @@
                                 <span class="icon_book"></span>
                             </div>
 
-<div class="form-group">
+                            <div class="form-group">
 
-    <label>Genre</label>
-    <select class="form-control @error('genre_id') is-invalid @enderror" name="genre_id">
-    <option value="">Pilih genre</option>
-    
-    </select>
-  </div>
+                                <label>Genre</label>
+                                <select class="form-control @error('genre_id') is-invalid @enderror" name="genre_id">
+                                <option value="">Pilih genre</option>
+                                @foreach ($genre as $item)
+                                <option value="{{$item->id}}" @selected ( $data->genre_id==$item->id ) >{{$item->genre}}</option>
+                                @endforeach
+                                </select>
+                            </div>
 
                             <button type="submit" class="btn btn-success text-white">Update</button>
                             <button class="btn btn-secondary"><a href="/genre" class="text-white">Cancel</a></button>
