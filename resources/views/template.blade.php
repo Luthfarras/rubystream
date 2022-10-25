@@ -42,9 +42,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
-                    <div class="header__logo">
-                        <a href="">
-                            <img src="{{ asset('anime-main/img/logo.png') }}" alt="">
+                    <div class="header__logo p-0">
+                        <a href="" >
+                            <img src="{{ asset('anime-main/img/logo.png') }}" alt="" class="align-middle">
                         </a>
                     </div>
                 </div>

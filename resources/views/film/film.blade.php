@@ -1,13 +1,10 @@
 @extends('template')
-<div class="form-group container">
-    <a class="btn btn-dark" href="" data-toggle="modal" data-target="#createfilm">Add</a>
 @section('content')
 
 <div class="form-group container mt-3">
-    <a class="btn btn-dark" href="">Input Film</a>
->>>>>>> 5a2133ad86dc2949886bd0051d975a6c3ed2d89e
+    <a class="btn btn-dark" href="" data-toggle="modal" data-target="#createfilm">Add</a>
 </div>
-@include('film.filmcreate')
+@include('film.create')
 
 <div class="container text-light" id="body">
     <div class="ms-auto me-auto">
