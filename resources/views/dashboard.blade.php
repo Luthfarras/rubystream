@@ -93,11 +93,13 @@
                               </ul> -->
                               <h5><a href="{{route('detail',$d->id)}}">{{ $d['nama_film'] }}</a></h5>
                               @guest
-                              @if (Route::has('login'))
-                              <button>haloo</button>
-                              @elseif(Auth::user()->role == 'user')
-                              <button class="btn btn-sm btn-primary mt-2">Add to Cart</button>
+                              @if(Route::has('login'))
+                              <p>p</p>
                               @endif
+                              @else
+                                @if(Auth::user()->role == 'user')
+                                  <button class="btn btn-sm btn-primary mt-2">Add to Cart</button>
+                                @endif
                               @endguest
                           </div>
                       </div>
