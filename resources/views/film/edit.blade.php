@@ -15,7 +15,7 @@
                             @method('PUT')
                             <div class="input__item">
                                 <input id="nama_film" type="text" class="form-control" name="nama_film" value="{{ $data->nama_film }}" placeholder="Edit Film Name" required>
-                                <span class="icon_book"></span>
+                                <span class="icon_"></span>
                             </div>
                             <div class="input__item">
                                 <input id="studio" type="text" class="form-control" name="studio" value="{{ $data->studio }}" placeholder="Edit Studio Name" required>
@@ -53,6 +53,16 @@
                                 <input id="genre_id" type="text" class="form-control" name="genre_id" value="{{ $data->genre_id }}" placeholder="Edit Actor" required>
                                 <span class="icon_book"></span>
                             </div>
+
+<div class="form-group">
+
+    <label>Genre</label>
+    <select class="form-control @error('genre_id') is-invalid @enderror" name="genre_id">
+    <option value="">Pilih genre</option>
+    
+    </select>
+  </div>
+
                             <button type="submit" class="btn btn-success text-white">Update</button>
                             <button class="btn btn-secondary"><a href="/genre" class="text-white">Cancel</a></button>
                         </form>
