@@ -31,7 +31,7 @@
                         <td scope="col" class="border border-0 align-middle text-center">{{ $dt->tahun_rilis }}</td>
                         @if(Auth::user()->role == 'admin')
                         <td scope="col" class="border border-0 align-middle text-center">
-                            <a href="" class="btn btn-success">Edit</a>
+                            <a class="btn btn-success" href="{{route('film.edit',$dt->id)}}">Edit</a>
                             <a href="" class="btn btn-danger">Delete</a>
                         </td>
                         @endif

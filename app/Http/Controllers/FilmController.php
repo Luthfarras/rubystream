@@ -76,7 +76,9 @@ class FilmController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Film::findOrFail($id);
+
+        return view('film.edit', compact('data'));
     }
 
     /**
