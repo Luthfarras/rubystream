@@ -10,7 +10,9 @@
                     <div class="login__form">
                         <h3>Ready to edit</h3>
 
-                        <form action="" method="">
+                        <form action="{{ route('film.update', $data->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
                             <div class="input__item">
                                 <input id="nama_film" type="text" class="form-control" name="nama_film" value="{{ $data->nama_film }}" placeholder="Edit Film Name" required>
                                 <span class="icon_book"></span>
