@@ -59,8 +59,8 @@
                                 <label>Genre</label>
                                 <select class="form-control @error('genre_id') is-invalid @enderror" name="genre_id">
                                 <option value="">Pilih genre</option>
-                                @foreach ($genre as $item)
-                                <option value="{{$item->id}}" @selected ( $data->genre_id==$item->id ) >{{$item->genre}}</option>
+                                @foreach ($film as $item)
+                                <option value="{{$item->id}}" @selected ( $film->genre_id==$item->id ) >{{$item->genre}}</option>
                                 @endforeach
                                 </select>
                             </div>
