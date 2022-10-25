@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="form-group container">
-    <a class="btn btn-dark" href="">Add</a>
+<div class="form-group container mt-3">
+    <a class="btn btn-dark" href="">Input Film</a>
 </div>
 
 <div class="container text-light" id="body">

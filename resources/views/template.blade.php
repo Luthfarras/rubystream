@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('anime-main/css/style.css') }}" type="text/css">
 
 <!-- start pagination stylesheet -->
-<link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css') }}">
+<link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css') }}">
 <!-- end pagination stylesheet -->
 
 </head>
@@ -54,7 +54,7 @@
                                 @guest
                                 @if(Route::has('login'))
                                 <li class="@if(Request::is('/*')) active @endif"><a href="/">Homepage</a></li>
-                                <li><a href="">Categories <span class="arrow_carrot-down"></span></a>
+                                <li>Categories <span class="arrow_carrot-down"></span>
                                     <ul class="dropdown">
                                         <li><a href="">Categories</a></li>
                                         <li><a href="">Film Details</a></li>
@@ -67,7 +67,7 @@
                                 @endif
                                 @else
                                 <li class="@if(Request::is('/*')) active @endif"><a href="/">Homepage</a></li>
-                                <li><a href="">Categories <span class="arrow_carrot-down"></span></a>
+                                <li><a>Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="">Categories</a></li>
                                         <li><a href="">Film Details</a></li>
@@ -198,40 +198,9 @@
 <script src="{{ asset('https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js') }}"></script>
 
 <script type="text/javascript" >
-  $(document).ready(function() {
-
-    var table = $ ('#datatable').DataTable();
-
-    // table.on('click', '.edit', function(){
-
-    //   $tr = $(this).closest('tr');
-    //   if ($($tr).hasClass('child')) {
-    //     $tr = $tr.prev('.parent');
-    //   }
-
-    // var data = table.row($tr).data();
-    // console.log(data);
-
-    // $('#genre').val(data[1]);
-
-    // $('editForm').attr('action', '/genre/'+data[0]);
-    // $('editModal').modal('show');
-    // });
-
-    // table.on('click', '.delete', function(){
-    //   $tr = $(this).closest('tr');
-    //   if ($($tr).hasClass('child')) {
-    //     $tr = $tr.prev('.parent');
-    //   }
-    // });
-
-    // var data = table.row($tr).data();
-    // console.log(data);
-
-    // $('deleteForm').attr('action', '/genre/'+data[0]);
-    // $('deleteModal').modal('show');
-
-  });
+$(document).ready(function() {
+    $('#datatable').DataTable();
+    });
 </script>
 <!-- end pagination script -->
 
