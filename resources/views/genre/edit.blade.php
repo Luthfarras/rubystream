@@ -1,10 +1,10 @@
 @extends('template')
 
-@section('hero')
+@section('content')
 
 <!-- Signup Section Begin -->
 <section class="signup spad">
-        <div class="container" style="height:35vh">
+        <div class="container" style="height:43vh">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="login__form">

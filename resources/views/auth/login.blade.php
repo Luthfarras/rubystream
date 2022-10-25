@@ -1,4 +1,4 @@
-@extends('layouts.tema')
+@extends('template')
 
 @section('content')
 

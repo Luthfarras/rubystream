@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('ulasan');
             $table->integer('rating');
             $table->foreignId('film_id');
+            $table->foreignId('users_id')->constrained();
             $table->foreign('film_id')->references('id')->on('films');
             $table->timestamps();
         });

@@ -1,9 +1,9 @@
 @extends('template')
 
-@section('hero')
+@section('content')
 
 <!-- start modal add -->
-<div class="form-group container">
+<div class="form-group container mt-3">
     <a class="btn btn-dark " href="" data-toggle="modal" data-target="#inputModal">Input Genre</a>
 </div>
 

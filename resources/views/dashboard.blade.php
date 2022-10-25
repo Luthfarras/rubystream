@@ -11,8 +11,9 @@
 }
 
 </style>
-@section('hero')
+@section('content')
 
+<section class="hero">
 <div class="container">
     <div class="hero__slider owl-carousel">
         <div class="hero__items set-bg" data-setbg="{{ asset('anime-main/img/hero/hero-1.jpg') }}">
@@ -53,12 +54,9 @@
         </div>
     </div>
 </div>
+</section>
 
-@endsection
-
-
-@section('content')
-
+<section class="product spad">
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
@@ -80,11 +78,10 @@
                   @foreach($data as $d)
                   <div class="col-lg-4 col-md-6 col-sm-6">
                       <div class="product__item">
-                        <div class="">
-                          <img id="myImg" src="{{ ($d['cover']) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal">
+                        <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal"></div>
+                        <!-- <img id="myImg" src="{{ ($d['cover']) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal"> -->
 
-                        </div>
-                          <!-- <div class="product__item__pic set-bg" data-setbg="{{ asset('img/'.$d->cover) }}"> -->
+                          <!-- <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal"> -->
                               <!-- <div class="ep">18 / 18</div> -->
                               <!-- <div class="comment"><i class="fa fa-comments"></i> 11</div> -->
                               <!-- <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
@@ -94,13 +91,15 @@
                                   <li>Active</li>
                                   <li>Movie</li>
                               </ul> -->
-                              <h5><a href="#">{{ $d['nama_film'] }}</a></h5>
+                              <h5><a href="{{route('detail',$d->id)}}">{{ $d['nama_film'] }}</a></h5>
                               @guest
-                              @if (Route::has('login'))
-                              <button>haloo</button>
-                              @elseif(Auth::user()->role == 'user')
-                              <button class="btn btn-sm btn-primary mt-2">Add to Cart</button>
+                              @if(Route::has('login'))
+                              <p>p</p>
                               @endif
+                              @else
+                                @if(Auth::user()->role == 'user')
+                                  <button class="btn btn-sm btn-primary mt-2">Add to Cart</button>
+                                @endif
                               @endguest
                           </div>
                       </div>
@@ -275,6 +274,7 @@
 </div>
 </div>
 </div>
+</section>
 
 
 @endsection

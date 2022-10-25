@@ -41,19 +41,19 @@ class DatabaseSeeder extends Seeder
       ]);
 
       Genre::create([
-        'genre' => 'action'
+        'genre' => 'Action'
       ]);
       Genre::create([
-        'genre' => 'ramance'
+        'genre' => 'Romance'
       ]);
       Genre::create([
-        'genre' => 'horror'
+        'genre' => 'Horror'
       ]);
       Genre::create([
-        'genre' => 'comedy'
+        'genre' => 'Comedy'
       ]);
       Genre::create([
-        'genre' => 'fantasi'
+        'genre' => 'Fantasy'
       ]);
 
       $this->call(FilmSeeder::class);
