@@ -132,17 +132,6 @@
       @yield('content')
     </section>
 
-    <!-- Hero Section Begin -->
-    <!-- <section class="hero">
-      @yield('hero')
-    </section> -->
-    <!-- Hero Section End -->
-
-    <!-- Product Section Begin -->
-    <!-- <section class="product spad">
-      @yield('content')
-</section> -->
-<!-- Product Section End -->
 
 <!-- Footer Section Begin -->
 <footer class="footer">

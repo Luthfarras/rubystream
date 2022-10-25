@@ -145,7 +145,7 @@
                         </div>
                         <form action="#">
                             <textarea placeholder="Your Comment"></textarea>
-                            <button type="submit"><i class="fa fa-location-arrow"></i> Reviewsehfyhshfcgdufytyicykd</button>
+                            <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
                         </form>
                     </div>
                 </div>
@@ -182,4 +182,4 @@
     <!-- Anime Section End -->
 
 
-@endsection
+@stop
