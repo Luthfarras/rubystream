@@ -42,6 +42,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::put('update', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 
+Route::get('/search', [FilmController::class, 'search'])->name('search');
 // Route::get('/film',[ApiFilmController::class,'getdata']);
 
 Route::get('/aa',[ApiFilmController::class,'aaa']);

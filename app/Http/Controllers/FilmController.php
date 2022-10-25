@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Film;
+use DB;
 
 class FilmController extends Controller
 {
@@ -12,10 +13,23 @@ class FilmController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function dashboard(){
+    public function dashboard()
+    {
         $data = Film::all();
         return view('dashboard', compact('data'));
     }
+
+    public function search(Request $request)
+	{
+		$cari = $request->search;
+        $data = Film::where('nama_film', 'like', "%" . $cari . "%")->paginate();
+ 		// $film = DB::table('films')
+		// ->where('nama_film','like',"%".$cari."%")
+		// ->paginate();
+ 
+		return view('dashboard', compact('data'));
+ 
+	}
 
 
     public function index()
