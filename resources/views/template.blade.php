@@ -53,7 +53,7 @@
                             <ul>
                                 @guest
                                 @if(Route::has('login'))
-                                <li class="@if(Request::is('dashboard*')) active @endif"><a href="/dashboard">Homepage</a></li>
+                                <li class="@if(Request::is('/*')) active @endif"><a href="/">Homepage</a></li>
                                 <li><a href="">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="">Categories</a></li>
@@ -66,7 +66,7 @@
                                 </li>
                                 @endif
                                 @else
-                                <li class="@if(Request::is('dashboard*')) active @endif"><a href="/dashboard">Homepage</a></li>
+                                <li class="@if(Request::is('/*')) active @endif"><a href="/">Homepage</a></li>
                                 <li><a href="">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="">Categories</a></li>
@@ -156,7 +156,7 @@
             <div class="col-lg-6">
                 <div class="footer__nav">
                     <ul>
-                        <li><a href="/dashboard">Homepage</a></li>
+                        <li><a href="/">Homepage</a></li>
                         <li><a href="/profile">Profile</a></li>
                         <li><a href="/film">List Film</a></li>
                         <li><a href="/genre">Genre</a></li>
