@@ -43,7 +43,7 @@ class FilmController extends Controller
      */
     public function create()
     {
-        //
+        // $data
     }
 
     /**

@@ -81,7 +81,7 @@
                   <div class="col-lg-4 col-md-6 col-sm-6">
                       <div class="product__item">
                         <div class="">
-                          <img id="myImg" src="{{ asset('img/'.$d->cover) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal">
+                          <img id="myImg" src="{{ ($d['cover']) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal">
 
                         </div>
                           <!-- <div class="product__item__pic set-bg" data-setbg="{{ asset('img/'.$d->cover) }}"> -->
