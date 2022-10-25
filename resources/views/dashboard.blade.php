@@ -95,9 +95,12 @@
                                   <li>Movie</li>
                               </ul> -->
                               <h5><a href="#">{{ $d['nama_film'] }}</a></h5>
-                              <!-- @if(Auth::user()->role == 'user') -->
+                              @guest
+                              @if (Route::has('login'))
+                              @elseif(Auth::user()->role == 'user')
                               <button class="btn btn-sm btn-primary mt-2">Add to Cart</button>
-                              <!-- @endif -->
+                              @endif
+                              @endguest
                           </div>
                       </div>
                   </div>

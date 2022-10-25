@@ -51,6 +51,21 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
+                                @guest
+                                @if(Route::has('login'))
+                                <li class="@if(Request::is('dashboard*')) active @endif"><a href="/dashboard">Homepage</a></li>
+                                <li><a href="">Categories <span class="arrow_carrot-down"></span></a>
+                                    <ul class="dropdown">
+                                        <li><a href="">Categories</a></li>
+                                        <li><a href="">Film Details</a></li>
+                                        <li><a href="">Film Watching</a></li>
+                                        <li><a href="">Blog Details</a></li>
+                                        <!-- <li><a href="">Sign Up</a></li>
+                                        <li><a href="">Login</a></li> -->
+                                    </ul>
+                                </li>
+                                @endif
+                                @else
                                 <li class="@if(Request::is('dashboard*')) active @endif"><a href="/dashboard">Homepage</a></li>
                                 <li><a href="">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
@@ -64,6 +79,7 @@
                                 </li>
                                 <li class="@if(Request::is('film*')) active @endif"><a href="/film">List Film</a></li>
                                 <li class="@if(Request::is('genre*')) active @endif"><a href="/genre">Genre</a></li>
+                                @endguest
                             </ul>
                         </nav>
                     </div>
@@ -79,12 +95,19 @@
                                     <ul class="dropdown">
 
                                         <li>
-                                            <a class="dropdown-item text-dark" href="{{ route('home') }}">Profil</a>
+                                            @guest
+                                            @if (Route::has('login'))
+                                            <a class="dropdown-item text-dark" href="{{ route('login') }}">Login</a>
+                                            <a class="dropdown-item text-dark" href="{{ route('register') }}">Register</a>
+                                            @endif
+                                            @else
+                                            <a class="dropdown-item text-dark" href="{{ route('home') }}">Profile</a>
                                             <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                                         {{ __('Logout') }}
                                             </a>
+                                            @endguest
 
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                 @csrf

@@ -16,7 +16,9 @@
                     <th scope="col" class="border border-0 text-center">Genre</th>
                     <th scope="col" class="border border-0 text-center">Harga</th>
                     <th scope="col" class="border border-0 text-center">Tahun Rilis</th>
+                    @if(Auth::user()->role == 'admin')
                     <th scope="col" class="border border-0 text-center">Aksi</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -27,10 +29,12 @@
                         <td scope="col" class="border border-0 align-middle text-center">{{ $dt->genre->genre }}</td>
                         <td scope="col" class="border border-0 align-middle text-center">{{ $dt->harga }}</td>
                         <td scope="col" class="border border-0 align-middle text-center">{{ $dt->tahun_rilis }}</td>
+                        @if(Auth::user()->role == 'admin')
                         <td scope="col" class="border border-0 align-middle text-center">
                             <a href="" class="btn btn-success">Edit</a>
                             <a href="" class="btn btn-danger">Delete</a>
                         </td>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>

@@ -18,7 +18,9 @@
     <tr>
       <th style="border: 0; width:20%;" scope="col">#</th>
       <th style="border: 0; width:20%;" scope="col">Movie Genre</th>
+      @if(Auth::user()->role == 'admin')
       <th style="border: 0; width:20%;" scope="col">Update</th>
+      @endif
     </tr>
   </thead>
   <tbody>
@@ -28,6 +30,7 @@
       <td style="border: 0;" >
         <a href="dashboard">{{ $genre['genre']}}</a>
     </td>
+    @if(Auth::user()->role == 'admin')
       <td style="border: 0;" >
     <a class="btn btn-success" href="{{route('genre.edit',$genre->id)}}">Edit</a>
     <!-- start delete -->
@@ -35,8 +38,9 @@
     <!-- end delete -->
 
     </td>
-    @endforeach
+    @endif
     </tr>
+    @endforeach
   </tbody>
 </table>
 </div>
