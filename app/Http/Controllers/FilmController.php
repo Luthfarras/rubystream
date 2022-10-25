@@ -23,9 +23,6 @@ class FilmController extends Controller
 	{
 		$cari = $request->search;
         $data = Film::where('nama_film', 'like', "%" . $cari . "%")->paginate();
- 		// $film = DB::table('films')
-		// ->where('nama_film','like',"%".$cari."%")
-		// ->paginate();
  
 		return view('dashboard', compact('data'));
  
