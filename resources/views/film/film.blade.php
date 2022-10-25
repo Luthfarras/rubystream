@@ -1,6 +1,6 @@
 @extends('template')
+
 @section('content')
-@section('hero')
 
 <div class="form-group container">
     <a class="btn btn-dark" href="">Add</a>

@@ -42,7 +42,7 @@ class FilmController extends Controller
     public function index()
     {
         $data = Film::all();
-        return view('film/film', compact('data'));
+        return view('film.film', compact('data'));
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('hero')
+@section('content')
 
 <!-- start modal add -->
 <div class="form-group container">
