@@ -3,8 +3,9 @@
 @section('hero')
 
 <div class="form-group container">
-    <a class="btn btn-dark" href="">Add</a>
+    <a class="btn btn-dark" href="" data-toggle="modal" data-target="#createfilm">Add</a>
 </div>
+@include('film.filmcreate')
 
 <div class="container text-light" id="body">
     <div class="ms-auto me-auto">

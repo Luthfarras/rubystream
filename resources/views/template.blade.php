@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('anime-main/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('anime-main/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('anime-main/css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('anime-main/css/style.css') }}" type="text/css">
 
 <!-- start pagination stylesheet -->
 <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css') }}">

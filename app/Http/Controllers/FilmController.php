@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Film;
+use App\Models\Genre;
 // use Illuminate\Support\Facades\Paginate\Paginator;
 use DB;
 
@@ -43,7 +44,7 @@ class FilmController extends Controller
      */
     public function create()
     {
-        // $data
+        
     }
 
     /**
