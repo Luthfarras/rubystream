@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Film;
 use App\Models\Genre;
+use RealRashid\SweetAlert\Facades\Alert;
 // use Illuminate\Support\Facades\Paginate\Paginator;
 use DB;
 
@@ -77,7 +78,9 @@ class FilmController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Film::findOrFail($id);
+
+        return view('film.edit', compact('data'));
     }
 
     /**
@@ -89,7 +92,11 @@ class FilmController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Film::findOrFail($id);
+        $data->update($request->all());
+
+        Alert::success('Congratulations', 'Update Film Success');
+        return redirect('film');
     }
 
     /**
