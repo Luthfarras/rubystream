@@ -78,11 +78,10 @@
                   @foreach($data as $d)
                   <div class="col-lg-4 col-md-6 col-sm-6">
                       <div class="product__item">
-                        <div class="">
-                          <img id="myImg" src="{{ ($d['cover']) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal">
+                        <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal"></div>
+                        <!-- <img id="myImg" src="{{ ($d['cover']) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal"> -->
 
-                        </div>
-                          <!-- <div class="product__item__pic set-bg" data-setbg="{{ asset('img/'.$d->cover) }}"> -->
+                          <!-- <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal"> -->
                               <!-- <div class="ep">18 / 18</div> -->
                               <!-- <div class="comment"><i class="fa fa-comments"></i> 11</div> -->
                               <!-- <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
