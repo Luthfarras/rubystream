@@ -91,7 +91,12 @@
                             <ul>
                                 <a href="#" class="search-switch text-light"><span class="icon_search"></span></a>
                                 <li>
-                                    <a>{{ Auth::user()->name }} <span class="icon_profile"></span></a>
+                                    <a>
+                                        @if(Auth::user())
+                                        {{ Auth::user()->name }}
+                                        @endif
+                                        <span class="icon_profile"></span>
+                                    </a>
                                     <ul class="dropdown">
 
                                         <li>
