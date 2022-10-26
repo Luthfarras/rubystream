@@ -78,7 +78,7 @@
                   @foreach($data as $d)
                   <div class="col-lg-4 col-md-6 col-sm-6">
                       <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal"></div>
+                        <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal{{ $d->id }}"></div>
                         <!-- <img id="myImg" src="{{ ($d['cover']) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal"> -->
 
                           <!-- <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal"> -->
@@ -104,19 +104,19 @@
                           </div>
                       </div>
                   </div>
-                  @endforeach
-                  @else
-                  <p>Data Kosong</p>
-                  @endif
-                  <!-- <a class="btn btn-dark " href="" data-toggle="modal" data-target="#inputModal">Input Genre</a> -->
-
-                  <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="inputModal{{ $d->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                           <div class="modal-content text-white footer">
                             <video src="{{ asset('vid/'.$d->trailer) }}" controls></video>
                           </div>
                       </div>
                   </div>
+                  @endforeach
+                  @else
+                  <p>Data Kosong</p>
+                  @endif
+                  <!-- <a class="btn btn-dark " href="" data-toggle="modal" data-target="#inputModal">Input Genre</a> -->
+
                 </div>
             </div>
             <div class="popular__product">
