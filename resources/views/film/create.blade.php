@@ -27,6 +27,11 @@
                 <div class="form-group mt-2">
                     <input type="text" class="form-control form-control-sm @error('sinopsis') is-invalid @enderror" id="sinopsis" placeholder="Sinopsis" name="sinopsis">
                 </div>
+                <select name="genre_id" id="" class="form-control form-control-sm @error('tahun_rilis') is-invalid @enderror">
+                    {{-- @foreach ($data as $item) --}}
+                    <option value="">isadnoifhda</option>
+                    {{-- @endforeach --}}
+                </select>
                 <div class="form-group mt-2">
                     <input type="text" class="form-control form-control-sm @error('tahun_rilis') is-invalid @enderror" id="tahun_rilis" placeholder="Release Year" name="tahun_rilis">
                 </div>
@@ -34,11 +39,6 @@
                     <input type="text" class="form-control form-control-sm @error('tahun_rilis') is-invalid @enderror" id="tahun_rilis" placeholder="Release Year" name="tahun_rilis">
                 </div>
                 <div class="form-group mt-2">
-                    <select name="genre_id" id="" class="custom-select custom-select-sm @error('tahun_rilis') is-invalid @enderror">
-                        {{-- @foreach ($data as $item) --}}
-                            <option value="">isadnoifhda</option>
-                        {{-- @endforeach --}}
-                    </select>
                 </div>
                 <div class="form-group mt-2">
                     <input type="file" class="@error('cover') is-invalid @enderror" id="cover" placeholder="Cover" name="cover" value="{{old('cover')}}">
