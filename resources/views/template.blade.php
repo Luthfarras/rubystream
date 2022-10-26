@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('anime-main/css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('anime-main/css/style.css') }}" type="text/css">
 
+
 <!-- start pagination stylesheet -->
 <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css') }}">
 <!-- end pagination stylesheet -->
@@ -42,9 +43,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
-                    <div class="header__logo p-0">
+                    <div class="header__logo">
                         <a href="" >
-                            <img src="{{ asset('anime-main/img/logo.png') }}" alt="" class="align-middle">
+                            <img src="{{ asset('anime-main/img/logo.png') }}" alt="">
                         </a>
                     </div>
                 </div>
@@ -55,7 +56,7 @@
                                 @guest
                                 @if(Route::has('login'))
                                 <li class="@if(Request::is('/*')) active @endif"><a href="/">Homepage</a></li>
-                                <li>Categories <span class="arrow_carrot-down"></span>
+                                <li><a>Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="">Categories</a></li>
                                         <li><a href="">Film Details</a></li>
@@ -90,6 +91,10 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
+                              <li>
+                                <a href="#" class="search-switch text-light"><i class="icon_cart"></i><span class="position-absolute badge rounded-pill bg-danger" style="font-size:12px;">5</span></a>
+                              </li>
+
                                 <a href="#" class="search-switch text-light"><span class="icon_search"></span></a>
                                 <li>
                                     <a>
