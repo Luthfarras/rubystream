@@ -24,11 +24,11 @@ class FilmSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $data = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_s60165z4?release_date=1900-01-01,2022-01-01&genres=action&companies=warner');
-        $diti = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_s60165z4?release_date=1900-01-01,2022-01-01&genres=romance&companies=dreamworks');
-        $dutu = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_s60165z4?release_date=1900-01-01,2022-01-01&genres=horror&companies=paramount');
-        $dete = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_s60165z4?release_date=1900-01-01,2022-01-01&genres=comedy&companies=fox');
-        $doto = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_s60165z4?release_date=1900-01-01,2022-01-01&genres=fantasy&companies=disney');
+        $data = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=action&companies=warner');
+        $diti = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=romance&companies=dreamworks');
+        $dutu = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=horror&companies=paramount');
+        $dete = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=comedy&companies=fox');
+        $doto = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=fantasy&companies=disney');
 
         foreach ($data['results'] as $item) {
             Film::create([
@@ -54,7 +54,7 @@ class FilmSeeder extends Seeder
              'tahun_rilis' => $item['description'],
              'aktor' => $item['stars'],
              'sinopsis' => $item['plot'],
-             'trailer' => 'haha.mp4',
+             'trailer' => 'hihi.mp4',
              'full_movie' => 'hihi.mp4',
              'genre_id' => 2
             ]);
