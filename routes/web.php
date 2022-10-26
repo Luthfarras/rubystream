@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
 
 use App\Http\Controllers\ApiFilmController;
 
@@ -32,6 +33,8 @@ Route::get('template', function () {
 });
 
 Route::get('/', [FilmController::class, 'dashboard']);
+Route::get('/dash', [FilmController::class, 'dashboard2']);
+
 Route::get('detail/{id}', [FilmController::class, 'detail'])->name('detail');
 
 Route::resource('film', FilmController::class);
@@ -46,5 +49,9 @@ Route::put('update', [App\Http\Controllers\HomeController::class, 'update'])->na
 
 Route::get('/search', [FilmController::class, 'search'])->name('search');
 // Route::get('/film',[ApiFilmController::class,'getdata']);
+
+Route::get('cart', [CartController::class, 'list'])->name('cart.list');
+Route::post('cart', [CartController::class, 'add_cart'])->name('cart.store');
+// Route::get('cartlist/{id}', [CartController::class, 'add_list']);
 
 Route::get('/aa',[ApiFilmController::class,'aaa']);

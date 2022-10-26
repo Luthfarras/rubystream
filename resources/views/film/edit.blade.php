@@ -4,7 +4,7 @@
 
 <!-- Signup Section Begin -->
 <section class="signup spad">
-        <div class="container" style="height:80vh">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="login__form">

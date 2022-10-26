@@ -77,7 +77,15 @@
                   @if(!empty($data))
                   @foreach($data as $d)
                   <div class="col-lg-4 col-md-6 col-sm-6">
+                    <form class="" action="{{ route('cart.store') }}" method="post" enctype="multipart/form-data">
+
+                    @csrf
                       <div class="product__item">
+                        <input type="hidden" name="id" value="{{ ($d['id']) }}">
+                        <input type="hidden" name="nama_film" value="{{ ($d['nama_film']) }}">
+                        <input type="hidden" name="cover" value="{{ ($d['cover']) }}">
+                        <input type="hidden" name="harga" value="{{ ($d['harga']) }}">
+                        <input type="hidden" name="qty" value=1>
                         <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal{{ $d->id }}"></div>
                         <!-- <img id="myImg" src="{{ ($d['cover']) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal"> -->
 
@@ -98,11 +106,12 @@
                               @endif
                               @else
                                 @if(Auth::user()->role == 'user')
-                                <a href="{{ url('cart/'.$d->id) }}" class="btn btn-sm btn-primary mt-2">Add to Cart</a>
-                                  <!-- <button class="btn btn-sm btn-primary mt-2">Add to Cart</button> -->
+                                <!-- <a href="{{ url('cart/'.$d->id) }}" class="btn btn-sm btn-primary mt-2">Add to Cart</a> -->
+                                  <button class="btn btn-sm btn-primary mt-2">Add to Cart</button>
                                 @endif
                               @endguest
                           </div>
+                        </form>
                       </div>
                   </div>
                   <div class="modal fade" id="inputModal{{ $d->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
