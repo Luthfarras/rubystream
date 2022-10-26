@@ -4,7 +4,7 @@
 
 <!-- Signup Section Begin -->
 <section class="signup spad">
-        <div class="container" style="height:80vh">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="login__form">
@@ -38,22 +38,26 @@
                                 <span class="icon_book"></span>
                             </div>
                             <div class="input__item">
-                                <input id="sinopsis" type="text" class="form-control" name="sinopsis" value="{{ $data->sinopsis }}" placeholder="Edit Actor" required>
+                                <input id="sinopsis" type="text" class="form-control" name="sinopsis" value="{{ $data->sinopsis }}" placeholder="Edit Sinopsis" required>
                                 <span class="icon_book"></span>
                             </div>
                             <div class="input__item">
-                                <input id="trailer" type="text" class="form-control" name="trailer" value="{{ $data->trailer }}" placeholder="Edit Actor" required>
+                                <input id="trailer" type="text" class="form-control" name="trailer" value="{{ $data->trailer }}" placeholder="Edit Trailer" required>
                                 <span class="icon_book"></span>
                             </div>
                             <div class="input__item">
-                                <input id="full_movie" type="text" class="form-control" name="full_movie" value="{{ $data->full_movie }}" placeholder="Edit Actor" required>
+                                <input id="full_movie" type="text" class="form-control" name="full_movie" value="{{ $data->full_movie }}" placeholder="Edit Full Movie" required>
                                 <span class="icon_book"></span>
                             </div>
                             <div class="input__item">
-                                <input id="genre_id" type="text" class="form-control" name="genre_id" value="{{ $data->genre_id }}" placeholder="Edit Actor" required>
+                                <input id="genre_id" type="text" class="form-control" name="genre_id" value="{{ $data->genre_id }}" placeholder="Edit Genre" required>
                                 <span class="icon_book"></span>
                             </div>
-
+                            <div class="form-group mt-2">
+                                <select class=" @error('sinopsis') is-invalid @enderror">
+                                <option>Genre</option>
+                                </select>
+                            </div>
                             <button type="submit" class="btn btn-success text-white">Update</button>
                             <button class="btn btn-secondary"><a href="/film" class="text-white">Cancel</a></button>
                         </form>

@@ -22,6 +22,12 @@ class FilmController extends Controller
         return view('dashboard', compact('data'));
     }
 
+    public function dashboard2()
+    {
+        $data = Film::paginate(20);
+        return view('dashboard2', compact('data'));
+    }
+
     public function detail($id)
     {
         $data = Film::findOrFail($id);
@@ -53,7 +59,7 @@ class FilmController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
