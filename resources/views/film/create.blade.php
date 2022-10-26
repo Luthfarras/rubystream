@@ -42,21 +42,21 @@
                         </select>
                     </div>
                     <div class="form-group mt-2">
-                        <label for="cover" class="form-label">Cover</label>
-                        <input type="file" class=" @error('tahun_rilis') is-invalid @enderror" id="tahun_rilis"
-                            placeholder="Release Year" name="tahun_rilis">
+                        <label for="cover" class="form-label">Cover</label><br>
+                        <input type="file" class=" @error('cover') is-invalid @enderror" id="cover"
+                            placeholder="Release Year" name="cover">
                     </div>
                     <div class="form-group mt-2">
-                        <label for="cover" class="form-label">Cover</label>
-                        <input type="file" class=" @error('tahun_rilis') is-invalid @enderror" id="tahun_rilis"
-                            placeholder="Release Year" name="tahun_rilis">
+                        <label for="trailer" class="form-label">Trailer</label><br>
+                        <input type="file" class=" @error('trailer') is-invalid @enderror" id="trailer"
+                            placeholder="Release Year" name="trailer">
                     </div>
                     {{-- <div class="form-group mt-2">
                     </div> --}}
                     <div class="form-group mt-2">
-                        <label for="cover" class="form-label">Cover</label>
-                        <input type="file" class="@error('cover') is-invalid @enderror" id="cover"
-                            placeholder="Cover" name="cover" value="{{ old('cover') }}">
+                        <label for="full_movie" class="form-label">Full Movie</label><br>
+                        <input type="file" class="@error('full_movie') is-invalid @enderror" id="full_movie"
+                            placeholder="full_movie" name="full_movie">
                     </div>
                     <div class="mt-3">
                         <button type="submit" class="btn btn-sm btn-dark text-white">Input</button>
