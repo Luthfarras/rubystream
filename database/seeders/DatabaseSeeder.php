@@ -33,11 +33,11 @@ class DatabaseSeeder extends Seeder
       ]);
 
       User::create([
-        'name' => 'admin2',
-        'username' => 'admin1234',
+        'name' => 'user',
+        'username' => 'user',
         'email' => 'admin@mail.com',
         'password' => Hash::make('admin1234'),
-        'role' => 'admin'
+        'role' => 'user'
       ]);
 
       Genre::create([
