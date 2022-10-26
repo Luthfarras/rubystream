@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -46,7 +47,7 @@ class HomeController extends Controller
             'password' => ['string', 'confirmed'],
         ]);
 
-        auth()->user()->update([
+        Auth::user()->update([
             'name'=>$profil->name,
             'username'=>$profil->username,
             'email'=>$profil->email,

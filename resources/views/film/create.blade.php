@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content text-white footer p-0">
 
-            <form action="{{ url('genre') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('film.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <label class="mb-3" style="font-size: 1.4rem;">Input Film</label>
@@ -59,7 +59,7 @@
                             placeholder="full_movie" name="full_movie">
                     </div>
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-sm btn-dark text-white">Input</button>
+                        <button type="submit" class="btn btn-sm btn-dark text-white" name="submit">Input</button>
                         <button class="btn btn-sm btn-secondary" type="button" data-dismiss="modal"
                             style="float: right;">Cancel</button>
                     </div>

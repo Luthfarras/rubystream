@@ -64,7 +64,8 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $film = Film::create($request->all());
+        return redirect('/film');
     }
 
     /**

@@ -78,7 +78,7 @@
                                                 <li><a href="">Film Watching</a></li>
                                                 <li><a href="">Blog Details</a></li>
                                                 <!-- <li><a href="">Sign Up</a></li>
-                                                                                                                        <li><a href="">Login</a></li> -->
+                                                                                                                                <li><a href="">Login</a></li> -->
                                             </ul>
                                         </li>
                                     @endif
@@ -92,7 +92,7 @@
                                             <li><a href="">Film Watching</a></li>
                                             <li><a href="">Blog Details</a></li>
                                             <!-- <li><a href="">Sign Up</a></li>
-                                                                                                                        <li><a href="">Login</a></li> -->
+                                                                                                                                <li><a href="">Login</a></li> -->
                                         </ul>
                                     </li>
                                     <li class="@if (Request::is('film*')) active @endif"><a href="/film">List
@@ -114,13 +114,6 @@
                                             class="position-absolute badge rounded-pill bg-danger"
                                             style="font-size:12px;">5</span></a>
                                 </li>
-<<<<<<< HEAD
-                                <a href="#" class="search-switch text-light"><i class="icon_cart"></i> <span
-                                        class="position-absolute badge rounded-pill bg-danger"
-                                        style="font-size:12px;">5</span></a>
-                                &ensp;
-=======
->>>>>>> 05731791857e5e91276e3f684619bd763669cb64
                                 <a href="#" class="search-switch text-light"><span class="icon_search"></span></a>
                                 <li>
                                     <a>
