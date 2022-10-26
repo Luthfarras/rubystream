@@ -91,10 +91,8 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                              <li>
-                                <a href="#" class="search-switch text-light"><i class="icon_cart"></i><span class="position-absolute badge rounded-pill bg-danger" style="font-size:12px;">5</span></a>
-                              </li>
-
+                                <a href="#" class="search-switch text-light"><i class="icon_cart"></i> <span class="position-absolute badge rounded-pill bg-danger" style="font-size:12px;">5</span></a>
+                                &ensp;
                                 <a href="#" class="search-switch text-light"><span class="icon_search"></span></a>
                                 <li>
                                     <a>
