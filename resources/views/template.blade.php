@@ -42,9 +42,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
-                    <div class="header__logo p-0">
+                    <div class="header__logo p-1">
                         <a href="" >
-                            <img src="{{ asset('anime-main/img/logo.png') }}" alt="" class="align-middle">
+                            <img src="{{ asset('anime-main/img/logo.png') }}" alt="">
                         </a>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                                 @guest
                                 @if(Route::has('login'))
                                 <li class="@if(Request::is('/*')) active @endif"><a href="/">Homepage</a></li>
-                                <li>Categories <span class="arrow_carrot-down"></span>
+                                <li><a>Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="">Categories</a></li>
                                         <li><a href="">Film Details</a></li>
