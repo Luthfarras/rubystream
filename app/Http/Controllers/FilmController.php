@@ -69,8 +69,10 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $film = Film::create($request->all());
+    {   
+        // $film = Film::create($request->all());
+        $film = $request->file('cover','trailer','full_movie')->store('upload');
+        dd($film);
         return redirect('/film');
     }
 

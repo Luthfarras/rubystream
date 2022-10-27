@@ -46,20 +46,16 @@ class HomeController extends Controller
             'email'=>['email'],
             'password' => ['string', 'confirmed'],
         ]);
-
-<<<<<<< HEAD
         Auth::user()->update([
             'name'=>$profil->name,
             'username'=>$profil->username,
             'email'=>$profil->email,
             'password'=>Hash::make($profil['password']),
-=======
         auth()->user()->update([
             'name'=>$request->name,
             'username'=>$request->username,
             'email'=>$request->email,
             'password'=>Hash::make($request['password']),
->>>>>>> 1470986b6cc04a2bcddbf6183706a0a562f3f800
         ]);
 
         Alert::success('Congratulations', 'Update Profil Success');
