@@ -11,8 +11,8 @@ class CartController extends Controller
   public function list()
   {
       $item = Cart::getContent();
-      // dd($cartItems);
-      return view('cart', compact('item'));
+      dd($item);
+      // return view('cart', compact('item'));
   }
   public function add_cart(Request $request, $id)
     {
@@ -23,6 +23,9 @@ class CartController extends Controller
         'price' => $datas->harga,
         'quantity' => 1
       );
+      // if ($items['quantity'] > 1) {
+      //   return redirect('dash')->with('error', 'quantity lebih dari 1');
+      // }
       Cart::add($items);
       return redirect('dash')->with('success', 'berhasil menambah keranjang');
 
