@@ -16,7 +16,7 @@ class CartController extends Controller
   }
   public function add_cart(Request $request)
     {
-        \Cart::add([
+        Cart::add([
             'id' => $request->id,
             'nama_film' => $request->nama_film,
             'harga' => $request->harga,
