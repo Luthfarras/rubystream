@@ -51,7 +51,7 @@ Route::get('/search', [FilmController::class, 'search'])->name('search');
 // Route::get('/film',[ApiFilmController::class,'getdata']);
 
 Route::get('cart', [CartController::class, 'list'])->name('cart.list');
-Route::post('cart', [CartController::class, 'add_cart'])->name('cart.store');
-// Route::get('cartlist/{id}', [CartController::class, 'add_list']);
+// Route::post('cart', [CartController::class, 'add_cart'])->name('cart.store');
+Route::post('cartlist/{id}', [CartController::class, 'add_cart']);
 
 Route::get('/aa',[ApiFilmController::class,'aaa']);

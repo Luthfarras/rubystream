@@ -77,8 +77,7 @@
                   @if(!empty($data))
                   @foreach($data as $d)
                   <div class="col-lg-4 col-md-6 col-sm-6">
-                    <form class="" action="{{ route('cart.store') }}" method="post" enctype="multipart/form-data">
-
+                    <form class="" action="{{ url('cartlist/'.$d->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                       <div class="product__item">
                         <input type="hidden" name="id" value="{{ ($d['id']) }}">
@@ -107,7 +106,7 @@
                               @else
                                 @if(Auth::user()->role == 'user')
                                 <!-- <a href="{{ url('cart/'.$d->id) }}" class="btn btn-sm btn-primary mt-2">Add to Cart</a> -->
-                                  <button class="btn btn-sm btn-primary mt-2">Add to Cart</button>
+                                  <button class="btn btn-sm btn-primary mt-2" type="submit">Add to Cart</button>
                                 @endif
                               @endguest
                           </div>
