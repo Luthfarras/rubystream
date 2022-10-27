@@ -14,9 +14,9 @@ class CartController extends Controller
       // dd($cartItems);
       return view('cart', compact('item'));
   }
-  public function add_cart(Request $request)
+  public function add_cart(Request $request, $id)
     {
-        Cart::add([
+        \Cart::add([
             'id' => $request->id,
             'nama_film' => $request->nama_film,
             'harga' => $request->harga,
@@ -27,6 +27,18 @@ class CartController extends Controller
         ]);
         session()->flash('success', 'Product is Added to Cart Successfully !');
 
-        return redirect()->route('cart.list');
+      // dd($request);
+        // \Cart::add([
+        //     'id' => $request->id,
+        //     'nama_film' => $request->nama_film,
+        //     'harga' => $request->harga,
+        //     'qty' => $request->qty,
+        //     'attributes' => array(
+        //         'cover' => $request->cover,
+        //     )
+        // ]);
+        // session()->flash('success', 'Product is Added to Cart Successfully !');
+        //
+        // return redirect()->route('cart.list');
     }
 }
