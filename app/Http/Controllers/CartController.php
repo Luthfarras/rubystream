@@ -16,6 +16,7 @@ class CartController extends Controller
   }
   public function add_cart(Request $request, $id)
     {
+<<<<<<< HEAD
       $datas = Film::where('id',$id)->first();
       $items=array(
         'id' => $id,
@@ -28,6 +29,18 @@ class CartController extends Controller
       // }
       Cart::add($items);
       return redirect('dash')->with('success', 'berhasil menambah keranjang');
+=======
+        \Cart::add([
+            'id' => $request->id,
+            'nama_film' => $request->nama_film,
+            'harga' => $request->harga,
+            'qty' => $request->qty,
+            'attributes' => array(
+                'cover' => $request->cover,
+            )
+        ]);
+        session()->flash('success', 'Product is Added to Cart Successfully !');
+>>>>>>> b28fe5e422becdfb5bbee0bac2e7ec5508365645
 
       // dd($request);
         // \Cart::add([
