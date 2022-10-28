@@ -44,15 +44,6 @@ class HomeController extends Controller
             'email'=>['email'],
             'password' => ['string', 'confirmed'],
         ]);
-<<<<<<< HEAD
-        Auth::user()->update([
-            'name'=>$profil->name,
-            'username'=>$profil->username,
-            'email'=>$profil->email,
-            'password'=>Hash::make($profil['password']),
-=======
-
->>>>>>> dc44c61db95a98df8bd3efea3fb57f431532bd41
         auth()->user()->update([
             'name'=>$request->name,
             'username'=>$request->username,

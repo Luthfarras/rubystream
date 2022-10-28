@@ -49,7 +49,8 @@ class FilmController extends Controller
     public function index()
     {
         $data = Film::all();
-        return view('film.film', compact('data'));
+        $genre = Genre::all();
+        return view('film.film', compact('data', 'genre'));
     }
 
     /**
@@ -70,9 +71,9 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {   
-        // $film = Film::create($request->all());
+        $film = Film::create($request->all());
         $film = $request->file('cover','trailer','full_movie')->store('upload');
-        dd($film);
+        Alert::success('Congratulations', 'Create Film Success');
         return redirect('/film');
     }
 
@@ -125,6 +126,10 @@ class FilmController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $film = Film::find($id);
+        $film->delete();
+
+        Alert::success('Deleted', 'Film has succesful deleted');
+        return redirect('/film');
     }
 }
