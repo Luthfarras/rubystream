@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Support\Facades\Auth;
-// use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -32,11 +30,17 @@ class HomeController extends Controller
         return view('home');
     }
 
+    // public function template()
+    // {
+    //     $userid = Auth::user()->id;
+    //     return view('template', compact('userid'));
+    // }
+
     public function edit($id)
     {
         //
     }
-    
+
     public function update(Request $request)
     {
         $request->validate([

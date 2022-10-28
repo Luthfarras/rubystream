@@ -82,9 +82,9 @@
                       <div class="product__item">
                         <input type="hidden" name="id" value="{{ ($d['id']) }}">
                         <input type="hidden" name="nama_film" value="{{ ($d['nama_film']) }}">
-                        <input type="hidden" name="cover" value="{{ ($d['cover']) }}">
+                        <input type="file" name="cover" value="{{ ($d['cover']) }}" hidden>
                         <input type="hidden" name="harga" value="{{ ($d['harga']) }}">
-                        <input type="hidden" name="qty" value=1>
+                        <!-- <input type="hidden" name="qty" value=1> -->
                         <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal{{ $d->id }}"></div>
                         <!-- <img id="myImg" src="{{ ($d['cover']) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal"> -->
 
@@ -106,7 +106,11 @@
                               @else
                                 @if(Auth::user()->role == 'user')
                                 <!-- <a href="{{ url('cart/'.$d->id) }}" class="btn btn-sm btn-primary mt-2">Add to Cart</a> -->
-                                  <button class="btn btn-sm btn-primary mt-2" type="submit">Add to Cart</button>
+                                      @if($cart->where('id', $d->id)->count())
+                                      <button type="button" class="btn btn-success" name="button">In cart</button>
+                                      @else
+                                      <button class="btn btn-sm btn-primary mt-2" type="submit">Add to Cart</button>
+                                      @endif
                                 @endif
                               @endguest
                           </div>

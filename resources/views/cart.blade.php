@@ -14,9 +14,9 @@
   @foreach($item as $cart)
   <tr>
     <td>{{$loop->iteration}}</td>
-    <td>{{$cart->nama_film}}</td>
-    <td> <img src="{{$cart->cover}}" alt=""> </td>
-    <td>{{$cart->Harga}}</td>
+    <td>{{$cart->name}}</td>
+    <td> <img src="{{$cart->attributes->image}}" alt="" width="100px"> </td>
+    <td>{{$cart->price}}</td>
     <td><a href="" class="btn btn-danger">X</a></td>
   </tr>
   @endforeach
