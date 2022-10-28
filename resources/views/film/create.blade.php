@@ -37,8 +37,11 @@
                             placeholder="Sinopsis" name="sinopsis">
                     </div>
                     <div class="form-group mt-2">
-                        <select class=" @error('sinopsis') is-invalid @enderror">
-                            <option>1</option>
+                        <select class=" @error('genre') is-invalid @enderror" name="genre_id">
+                            @foreach ($genre as $dt)
+                                <option selected value="{{ $dt->id }}">{{ $dt->genre }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group mt-2">
@@ -59,7 +62,7 @@
                             placeholder="full_movie" name="full_movie">
                     </div>
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-sm btn-dark text-white" name="submit">Input</button>
+                        <button type="submit" class="btn btn-sm btn-dark text-white">Input</button>
                         <button class="btn btn-sm btn-secondary" type="button" data-dismiss="modal"
                             style="float: right;">Cancel</button>
                     </div>
