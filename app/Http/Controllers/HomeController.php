@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // use Illuminate\Support\Facades\Auth;
 // use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Hash;
 
@@ -44,7 +45,8 @@ class HomeController extends Controller
             'email'=>['email'],
             'password' => ['string', 'confirmed'],
         ]);
-        auth()->user()->update([
+        $user = Auth::user();
+        $user->update([
             'name'=>$request->name,
             'username'=>$request->username,
             'email'=>$request->email,
