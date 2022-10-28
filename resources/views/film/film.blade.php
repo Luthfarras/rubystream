@@ -30,7 +30,9 @@
                             <td scope="col" class="border border-0 align-middle text-center">{{ $dt->tahun_rilis }}</td>
                             @if (Auth::user()->role == 'admin')
                                 <td scope="col" class="border border-0 align-middle text-center">
-                                    <a class="btn btn-success" href="{{ route('film.edit', $dt->id) }}">Edit</a>
+                                    <a class="btn btn-success" href="" data-toggle="modal"
+                                        data-target="#editfilm{{ $dt->id }}">Edit</a>
+                                    @include('film.edit')
                                     <a class="btn btn-danger" href="" data-toggle="modal"
                                         data-target="#deletefilm{{ $dt->id }}">Delete</a>
                                     @include('film.delete')

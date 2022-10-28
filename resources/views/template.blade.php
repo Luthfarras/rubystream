@@ -36,7 +36,8 @@
 
         .nice-select ul li {
             color: black;
-            width: 29.2rem;
+            width: 100%;
+            /* width: 29.2rem; */
             padding: none;
         }
 
@@ -78,7 +79,7 @@
                                                 <li><a href="">Film Watching</a></li>
                                                 <li><a href="">Blog Details</a></li>
                                                 <!-- <li><a href="">Sign Up</a></li>
-                                                                                                                                <li><a href="">Login</a></li> -->
+                                                                                                                                    <li><a href="">Login</a></li> -->
                                             </ul>
                                         </li>
                                     @endif
@@ -92,7 +93,7 @@
                                             <li><a href="">Film Watching</a></li>
                                             <li><a href="">Blog Details</a></li>
                                             <!-- <li><a href="">Sign Up</a></li>
-                                                                                                                                <li><a href="">Login</a></li> -->
+                                                                                                                                    <li><a href="">Login</a></li> -->
                                         </ul>
                                     </li>
                                     <li class="@if (Request::is('film*')) active @endif"><a href="/film">List
@@ -112,7 +113,7 @@
                                 <li>
                                     <a href="/cart" class="search-switch text-light"><i class="icon_cart"></i><span
                                             class="position-absolute badge rounded-pill bg-danger"
-                                            style="font-size:12px;">{{Cart::getTotalQuantity()}}</span></a>
+                                            style="font-size:12px;">{{ Cart::getTotalQuantity() }}</span></a>
                                 </li>
                                 <a href="#" class="search-switch text-light"><span class="icon_search"></span></a>
                                 <li>

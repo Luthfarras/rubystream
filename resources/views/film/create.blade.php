@@ -62,9 +62,8 @@
                             placeholder="full_movie" name="full_movie">
                     </div>
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-sm btn-dark text-white">Input</button>
-                        <button class="btn btn-sm btn-secondary" type="button" data-dismiss="modal"
-                            style="float: right;">Cancel</button>
+                        <button type="submit" class="btn btn-md btn-primary text-white mb-2"
+                            style="float: right;">Input</button>
                     </div>
                 </div>
             </form>
