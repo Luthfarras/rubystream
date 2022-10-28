@@ -32,6 +32,7 @@ Route::get('template', function () {
     return view('template');
 });
 
+// Route::get('template', [HomeController::class, 'template']);
 Route::get('/', [FilmController::class, 'dashboard']);
 Route::get('/dash', [FilmController::class, 'dashboard2']);
 

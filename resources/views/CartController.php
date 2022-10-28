@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Film;
 use Cart;
 
@@ -11,41 +10,23 @@ class CartController extends Controller
 {
   public function list()
   {
-      $userid = Auth::user()->id;
-      $item = Cart::session($userid)->getContent();
-      $aa = Cart::session($userid);
-      // dd($crt);
+      $item = Cart::getContent();
+      // dd($item);
       return view('cart', compact('item'));
   }
   public function add_cart(Request $request, $id)
     {
-      $userid = Auth::user()->id;
-      $datas = Film::findOrFail($id);
+      $datas = Film::where('id',$id)->first();
       $items=array(
         'id' => $id,
         'name' => $datas->nama_film,
         'price' => $datas->harga,
-        'quantity' => 1,
-        'attributes' => array(
-          'image' => $datas->cover
-        )
+        'quantity' => 1
       );
-      $item = $items['id']->count();
-      dd($item);
       // if ($items['quantity'] > 1) {
       //   return redirect('dash')->with('error', 'quantity lebih dari 1');
       // }
-
-      // Cart::session($userid)->add(array(
-      //   'id' => $id,
-      //   'name' => $datas->nama_film,
-      //   'price' => $datas->harga,
-      //   'quantity' => 1,
-      //   'attributes' => array(
-      //     'image' => $datas->cover
-      //   )
-      // ));
-
+      Cart::add($items);
       return redirect('dash')->with('success', 'berhasil menambah keranjang');
         // \Cart::add([
         //     'id' => $request->id,
