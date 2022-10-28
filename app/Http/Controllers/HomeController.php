@@ -46,7 +46,7 @@ class HomeController extends Controller
             'password' => ['string', 'confirmed'],
         ]);
         $user = Auth::user();
-        $user->update([
+        $user->DB::update([
             'name'=>$request->name,
             'username'=>$request->username,
             'email'=>$request->email,
