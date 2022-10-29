@@ -106,11 +106,7 @@
                               @else
                                 @if(Auth::user()->role == 'user')
                                 <!-- <a href="{{ url('cart/'.$d->id) }}" class="btn btn-sm btn-primary mt-2">Add to Cart</a> -->
-                                      @if($cart->where('id', $d->id)->count())
-                                      <button type="button" class="btn btn-success" name="button">In cart</button>
-                                      @else
                                       <button class="btn btn-sm btn-primary mt-2" type="submit">Add to Cart</button>
-                                      @endif
                                 @endif
                               @endguest
                           </div>

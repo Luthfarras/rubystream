@@ -20,30 +20,46 @@ class FilmController extends Controller
     public function dashboard()
     {
         $data = Film::paginate(20);
-        return view('dashboard', compact('data'));
+        $genre = Genre::all();
+        return view('dashboard', compact('data', 'genre'));
     }
 
     public function dashboard2()
     {
         $cart = Cart::getContent();
+        $genre = Genre::all();
         $data = Film::paginate(20);
-        return view('dashboard2', compact('data', 'cart'));
+        return view('dashboard2', compact('data', 'cart', 'genre'));
     }
 
     public function detail($id)
     {
         $data = Film::findOrFail($id);
-
-        return view('detail', compact('data'));
-        // dd($data);
+        $genre = Genre::all();
+        return view('detail', compact('data', 'genre'));
     }
+
+    public function watch($id)
+    {
+        $data = Film::findOrFail($id);
+        $genre = Genre::all();
+        return view('watch', compact('data', 'genre'));
+    }
+
+    // public function category(Request $request)
+    // {
+    //   $data = Film::all();
+    //     return view('watch', compact('data'));
+    // }
+    //
 
     public function search(Request $request)
 	{
+    $genre = Genre::all();
 		$cari = $request->search;
         $data = Film::where('nama_film', 'like', "%" . $cari . "%")->paginate();
 
-		return view('dashboard', compact('data'));
+		return view('dashboard', compact('data', 'genre'));
 
 	}
 
@@ -72,7 +88,7 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $film = Film::create($request->all());
         $film = $request->file('cover','trailer','full_movie')->store('upload');
         Alert::success('Congratulations', 'Create Film Success');
@@ -100,8 +116,9 @@ class FilmController extends Controller
     {
         $film = Film::all();
         $data = Film::findOrFail($id);
+        $genre = Genre::all();
 
-        return view('film.edit', compact('data'));
+        return view('film.edit', compact('data', 'genre'));
     }
 
     /**

@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\Genre;
+use App\Models\Film;
 
 class HomeController extends Controller
 {
@@ -30,11 +31,11 @@ class HomeController extends Controller
         return view('home');
     }
 
-    // public function template()
-    // {
-    //     $userid = Auth::user()->id;
-    //     return view('template', compact('userid'));
-    // }
+    public function template()
+    {
+      $genre = Genre::all();
+        return view('template', compact('genre'));
+    }
 
     public function edit($id)
     {
@@ -50,7 +51,7 @@ class HomeController extends Controller
             'password' => ['string', 'confirmed'],
         ]);
         $user = Auth::user();
-        $user->DB::update([
+        $user->update([
             'name'=>$request->name,
             'username'=>$request->username,
             'email'=>$request->email,
