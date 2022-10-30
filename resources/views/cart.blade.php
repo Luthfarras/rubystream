@@ -17,10 +17,11 @@
     <td>{{$cart->name}}</td>
     <td> <img src="{{$cart->attributes->image}}" alt="" width="100px"> </td>
     <td>{{$cart->price}}</td>
-    <td><a href="" class="btn btn-danger">X</a></td>
+    <td><a href="{{ url('delcart/'.$cart->id) }}" class="btn btn-danger">X</a></td>
   </tr>
   @endforeach
   </table>
+  <a href="{{url('checkout')}}" class="btn btn-primary mb-5">Checkout</a>
 
 </div>
 

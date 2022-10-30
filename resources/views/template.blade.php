@@ -73,14 +73,14 @@
                                         <li class="@if (Request::is('/*')) active @endif"><a
                                                 href="/">Homepage</a></li>
                                         <li><a>Categories <span class="arrow_carrot-down"></span></a>
+                                          @foreach($genre as $g)
                                             <ul class="dropdown">
-                                                <li><a href="">Categories</a></li>
-                                                <li><a href="">Film Details</a></li>
+                                                <li><a href="">{{$g['genre']}}</a></li>
+                                                <!-- <li><a href="">Film Details</a></li>
                                                 <li><a href="">Film Watching</a></li>
-                                                <li><a href="">Blog Details</a></li>
-                                                <!-- <li><a href="">Sign Up</a></li>
-                                                                                                                                    <li><a href="">Login</a></li> -->
+                                                <li><a href="">Blog Details</a></li> -->
                                             </ul>
+                                          @endforeach
                                         </li>
                                     @endif
                                 @else
@@ -88,12 +88,12 @@
                                             href="/">Homepage</a></li>
                                     <li><a>Categories <span class="arrow_carrot-down"></span></a>
                                         <ul class="dropdown">
-                                            <li><a href="">Categories</a></li>
-                                            <li><a href="">Film Details</a></li>
+                                          @foreach($genre as $g)
+                                            <li><a href="">{{$g['genre']}}</a></li>
+                                            <!-- <li><a href="">Film Details</a></li>
                                             <li><a href="">Film Watching</a></li>
-                                            <li><a href="">Blog Details</a></li>
-                                            <!-- <li><a href="">Sign Up</a></li>
-                                                                                                                                    <li><a href="">Login</a></li> -->
+                                            <li><a href="">Blog Details</a></li> -->
+                                          @endforeach
                                         </ul>
                                     </li>
                                     <li class="@if (Request::is('film*')) active @endif"><a href="/film">List

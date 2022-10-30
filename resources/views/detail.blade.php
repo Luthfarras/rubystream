@@ -70,7 +70,7 @@
                         </div>
                         <div class="anime__details__btn">
                             <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
-                            <a href="#" class="watch-btn"> <span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                            <a href="{{route('watch',$data->id)}}" class="watch-btn"> <span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>

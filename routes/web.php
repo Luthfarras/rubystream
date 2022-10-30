@@ -28,15 +28,17 @@ use App\Http\Controllers\ApiFilmController;
 //     return view('dashboard');
 // });
 
-Route::get('template', function () {
-    return view('template');
-});
+// Route::get('template', function () {
+//     return view('template');
+// });
 
-// Route::get('template', [HomeController::class, 'template']);
+Route::get('template', [HomeController::class, 'template']);
 Route::get('/', [FilmController::class, 'dashboard']);
 Route::get('/dash', [FilmController::class, 'dashboard2']);
 
 Route::get('detail/{id}', [FilmController::class, 'detail'])->name('detail');
+Route::get('watch/{id}', [FilmController::class, 'watch'])->name('watch');
+
 
 Route::resource('film', FilmController::class);
 
@@ -49,10 +51,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::put('update', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 
 Route::get('/search', [FilmController::class, 'search'])->name('search');
+Route::get('/category', [FilmController::class, 'category'])->name('category');
 // Route::get('/film',[ApiFilmController::class,'getdata']);
 
 Route::get('cart', [CartController::class, 'list'])->name('cart.list');
 // Route::post('cart', [CartController::class, 'add_cart'])->name('cart.store');
 Route::post('cartlist/{id}', [CartController::class, 'add_cart']);
+Route::get('delcart/{id}', [CartController::class, 'del_cart']);
+Route::get('checkout', [CartController::class, 'checkout']);
 
 Route::get('/aa',[ApiFilmController::class,'aaa']);
