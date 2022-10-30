@@ -4,21 +4,78 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Film;
+use App\Models\Pay;
 use App\Models\Pembayaran;
 use App\Models\Token;
 use Cart;
 
 class CartController extends Controller
 {
-  public function list()
+  public function list( Request $request )
   {
-      $userid = Auth::user()->id;
-      $item = Cart::session($userid)->getContent();
-      $aa = Cart::session($userid);
-      // dd($crt);
-      return view('cart', compact('item'));
+    // Set your Merchant Server Key
+    \Midtrans\Config::$serverKey = 'SB-Mid-server-FgSMRXe6gp7YP34lYPxa3knw';
+    // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+    \Midtrans\Config::$isProduction = false;
+    // Set sanitization on (default)
+    \Midtrans\Config::$isSanitized = true;
+    // Set 3DS transaction for credit card to true
+    \Midtrans\Config::$is3ds = true;
+
+    $params = array(
+        'transaction_details' => array(
+            'order_id' => rand(),
+            'gross_amount' => '',
+        ),
+
+        'item_details' => array(
+          [
+              'id' => '1',
+              'price' => '70000',
+              'quantity' => 1,
+              'name' => 'Avengers: Endgame',
+          ]
+      ),
+        
+        'customer_details' => array(
+            'first_name' => Auth::user()->name,
+            'last_name' => '',
+            'email' => Auth::user()->email,
+            'phone' => '',
+        ),
+    );
+
+    $snapToken = \Midtrans\Snap::getSnapToken($params);
+    $userid = Auth::user()->id;
+    $item = Cart::session($userid)->getContent();
+    $aa = Cart::session($userid);
+    // dd($crt);
+    return view('cart', ['snap_token'=>$snapToken], compact('item'));
   }
+
+  public function list_post(Request $request)
+    {
+      // return $request;
+      $json = json_decode($request->get('json'));
+      $pay = new Pay();
+      $pay -> _token = $request->get('_token');
+      $pay -> status = $json->status_message;
+      $pay -> name = Auth::user()->name;
+      $pay -> email = Auth::user()->email;
+      $pay -> transaktion_id = $json->transaction_id;
+      $pay -> order_id = $json->order_id;
+      $pay -> gross_amount = $json->gross_amount;
+      $pay -> payment_type = $json->payment_type;
+      $pay -> payment_code = isset($json->payment_code) ? $json->payment_code : null;
+      $pay -> pdf_url = isset($json->pdf_url) ? $json->pdf_url : null;
+
+      $pay -> save();
+      // return redirect('cart')->with('success', 'Success buy the movie');
+      Alert::success('Congratulations', 'Success, buy the movie');
+      return redirect('cart');
+    }
 
   public function add_cart(Request $request, $id)
     {
@@ -109,5 +166,6 @@ class CartController extends Controller
         Cart::session($userid)->clear();
       }
       return redirect('cart');
-    }
+    
+  }
 }
