@@ -55,6 +55,7 @@ Route::get('/category', [FilmController::class, 'category'])->name('category');
 // Route::get('/film',[ApiFilmController::class,'getdata']);
 
 Route::get('cart', [CartController::class, 'list'])->name('cart.list');
+Route::post('cart', [CartController::class, 'list_post']);
 // Route::post('cart', [CartController::class, 'add_cart'])->name('cart.store');
 Route::post('cartlist/{id}', [CartController::class, 'add_cart']);
 Route::get('delcart/{id}', [CartController::class, 'del_cart']);
