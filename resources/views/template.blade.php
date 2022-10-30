@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="{{ asset('anime-main/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('anime-main/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('anime-main/css/style.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('anime-main/css/style.css') }}" type="text/css">
 
 
     <!-- start pagination stylesheet -->
@@ -43,6 +42,10 @@
 
         .nice-select span {
             color: black;
+        }
+
+        .product__item__pic{
+            height: 250px;
         }
     </style>
 </head>
@@ -73,14 +76,14 @@
                                         <li class="@if (Request::is('/*')) active @endif"><a
                                                 href="/">Homepage</a></li>
                                         <li><a>Categories <span class="arrow_carrot-down"></span></a>
-                                          @foreach($genre as $g)
+                                          {{-- @foreach($genre as $g)
                                             <ul class="dropdown">
                                                 <li><a href="">{{$g['genre']}}</a></li>
                                                 <!-- <li><a href="">Film Details</a></li>
                                                 <li><a href="">Film Watching</a></li>
                                                 <li><a href="">Blog Details</a></li> -->
                                             </ul>
-                                          @endforeach
+                                          @endforeach --}}
                                         </li>
                                     @endif
                                 @else
@@ -88,12 +91,12 @@
                                             href="/">Homepage</a></li>
                                     <li><a>Categories <span class="arrow_carrot-down"></span></a>
                                         <ul class="dropdown">
-                                          @foreach($genre as $g)
-                                            <li><a href="">{{$g['genre']}}</a></li>
+                                          {{-- @foreach($genre as $g) --}}
+                                            {{-- <li><a href="">{{$g['genre']}}</a></li> --}}
                                             <!-- <li><a href="">Film Details</a></li>
                                             <li><a href="">Film Watching</a></li>
                                             <li><a href="">Blog Details</a></li> -->
-                                          @endforeach
+                                          {{-- @endforeach --}}
                                         </ul>
                                     </li>
                                     <li class="@if (Request::is('film*')) active @endif"><a href="/film">List
@@ -135,6 +138,7 @@
                                                 @endif
                                             @else
                                                 <a class="dropdown-item text-dark" href="{{ route('home') }}">Profile</a>
+                                                <a class="dropdown-item text-dark" href="{{ route('history') }}">History</a>
                                                 <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -229,7 +233,7 @@
     <script src="{{ asset('anime-main/js/jquery.slicknav.js') }}"></script>
     <script src="{{ asset('anime-main/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('anime-main/js/main.js') }}"></script>
-
+    <script src="{{ asset('anime-main/js/ajax.js') }}"></script>
     <!-- start pagination script -->
     <script src="{{ asset('https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js') }}"></script>

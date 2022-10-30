@@ -49,11 +49,13 @@ class LoginController extends Controller
     {
         Alert::success('Success Login', 'Welcome in Homepage');
         return redirect(RouteServiceProvider::HOME);
+        // return response()->json([1]);
     }
 
     public function sendFailedLoginResponse()
     {
         Alert::error('Login failed', 'Wrong Password or Username!');
         return redirect('login');
+        // return response()->json([1]);
     }
 }

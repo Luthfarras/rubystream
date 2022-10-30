@@ -8,6 +8,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 
 use App\Http\Controllers\ApiFilmController;
+use App\Http\Controllers\HistoryController;
+
+// use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +35,8 @@ use App\Http\Controllers\ApiFilmController;
 //     return view('template');
 // });
 
+// Route::get('/login', [LoginController::class, 'sendLoginResponse']);
+// Route::get('/login', [LoginController::class, 'sendFailedLoginResponse']);
 Route::get('template', [HomeController::class, 'template']);
 Route::get('/', [FilmController::class, 'dashboard']);
 Route::get('/dash', [FilmController::class, 'dashboard2']);
@@ -61,3 +66,5 @@ Route::get('delcart/{id}', [CartController::class, 'del_cart']);
 Route::get('checkout', [CartController::class, 'checkout']);
 
 Route::get('/aa',[ApiFilmController::class,'aaa']);
+
+Route::get('history', [HistoryController::class,'index'])->name('history');

@@ -59,29 +59,29 @@
 <section class="product spad">
 <div class="container">
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="trending__product">
                 <div class="row">
                     <div class="col-lg-8 col-md-8 col-sm-8">
                         <div class="section-title">
                             <h4>Trending Now</h4>
                         </div>
-                    </div>
+                    {{-- </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="btn__all">
                             <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="row">
                   @if(!empty($data))
                   @foreach($data as $d)
-                  <div class="col-lg-4 col-md-6 col-sm-6">
+                  <div class="col-lg-2">
                       <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal{{ $d->id }}"></div>
-                        <!-- <img id="myImg" src="{{ ($d['cover']) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal"> -->
+                         {{-- <!-- <img id="myImg" src="{{ ($d['cover']) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal"> --> 
 
-                          <!-- <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal"> -->
+                          {{-- <!-- <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal"> --> --}}
                               <!-- <div class="ep">18 / 18</div> -->
                               <!-- <div class="comment"><i class="fa fa-comments"></i> 11</div> -->
                               <!-- <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
@@ -91,7 +91,7 @@
                                   <li>Active</li>
                                   <li>Movie</li>
                               </ul> -->
-                              <h5><a href="{{route('detail',$d->id)}}">{{ $d['nama_film'] }}</a></h5>
+                              <h5><a href="{{route('detail',$d->id)}}" style="font-size: 0.8rem;">{{ $d['nama_film'] }}</a></h5>
                               @guest
                               @if(Route::has('login'))
                               <!-- <p>p</p> -->
@@ -120,7 +120,7 @@
 
                 </div>
             </div>
-            <div class="popular__product">
+            {{-- <div class="popular__product">
                 <div class="row">
                     <div class="col-lg-8 col-md-8 col-sm-8">
                         <div class="section-title">
@@ -169,7 +169,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-8">
+        {{-- <div class="col-lg-4 col-md-6 col-sm-8">
             <div class="product__sidebar">
                 <div class="product__sidebar__view">
                     <div class="section-title">
@@ -205,13 +205,13 @@
             <div class="ep">18 / ?</div>
             <div class="view"><i class="fa fa-eye"></i> 9141</div>
             <h5><a href="#">Fate/stay night: Heaven's Feel I. presage flower</a></h5>
-        </div>
-        <div class="product__sidebar__view__item set-bg mix day"
+        </div> --}}
+        {{-- <div class="product__sidebar__view__item set-bg mix day"
         data-setbg="{{ asset('anime-main/img/sidebar/tv-5.jpg') }}">
         <div class="ep">18 / ?</div>
         <div class="view"><i class="fa fa-eye"></i> 9141</div>
-        <h5><a href="#">Fate stay night unlimited blade works</a></h5>
-    </div>
+        <h5><a href="#">Fate stay night unlimited blade works</a></h5> --}}
+    {{-- </div> --}}
 </div>
 </div>
 <div class="product__sidebar__comment">
