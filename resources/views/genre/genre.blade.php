@@ -13,25 +13,25 @@
 <!-- start table -->
 <div class="container text-light" id="body">
 <div class="ms-auto me-auto">
-<table id="datatable" class="table text-white" style="width: 1500px;" >
+<table id="datatable" class="table text-white" style="width: 87rem;">
   <thead>
     <tr>
-      <th style="border: 0; width:20%;" scope="col">#</th>
-      <th style="border: 0; width:20%;" scope="col">Movie Genre</th>
+      <th scope="col" class="border border-0">#</th>
+      <th scope="col" class="border border-0 text-center">Movie Genre</th>
       @if(Auth::user()->role == 'admin')
-      <th style="border: 0; width:20%;" scope="col">Update</th>
+      <th scope="col" class="border border-0 text-center">Update</th>
       @endif
     </tr>
   </thead>
   <tbody>
     @foreach ($data as $genre)
     <tr>
-      <th style="border: 0;" scope="row">{{ $loop->iteration }}</th>
-      <td style="border: 0;" >
+      <th scope="row" class="border border-0">{{ $loop->iteration }}</th>
+      <td scope="row" class="border border-0 text-center">
         <a href="dashboard">{{ $genre['genre']}}</a>
     </td>
     @if(Auth::user()->role == 'admin')
-      <td style="border: 0;" >
+      <td scope="row" class="border border-0 text-center">
     <a class="btn btn-success" href="{{route('genre.edit',$genre->id)}}">Edit</a>
     <!-- start delete -->
     <a class="btn btn-danger" href="{{ route ('deletegenre',$genre->id)}}">Delete</a>
@@ -46,8 +46,6 @@
 </div>
 </div>
 <!-- end table -->
-
-<!-- modal-dialog-centered -->
 
 <!-- https://cdn.datatables.net/ -->
 
