@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="container">
-        <h2 class="text-center text-white">
+        <h2 class="text-center text-white mt-5">
             History Purchase
         </h2>
-        <table id="datatable" class="table text-white">
+        <table class="table text-white mt-5">
             <thead>
                 <tr>
                     <th style="border: 0; width:20%;" scope="col">Film</th>

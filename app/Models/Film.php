@@ -14,4 +14,9 @@ class Film extends Model
     {
         return $this->belongsTo(Genre::class);
     }
+
+    public function token()
+    {
+        return $this->hasOne(Token::class);
+    }
 }

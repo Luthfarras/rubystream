@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('anime-main/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('anime-main/css/style.css') }}" type="text/css">
 
-        
+
     <!-- start pagination stylesheet -->
     <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css') }}">
     <!-- end pagination stylesheet -->
@@ -44,9 +44,10 @@
             color: black;
         }
 
-        .product__item__pic{
+        .product__item__pic {
             height: 250px;
         }
+
     </style>
 </head>
 
@@ -77,7 +78,7 @@
                                                 href="/">Homepage</a></li>
                                         <li><a>Categories <span class="arrow_carrot-down"></span></a>
                                             <ul class="dropdown">
-                                                {{-- @foreach($genre as $g)
+                                                {{-- @foreach ($genre as $g)
                                                 <li><a href="">{{$g['genre']}}</a></li>
                                                 @endforeach --}}
                                                 <li><a href="">Film Details</a></li>
@@ -91,7 +92,7 @@
                                             href="/">Homepage</a></li>
                                     <li><a>Categories <span class="arrow_carrot-down"></span></a>
                                         <ul class="dropdown">
-                                            {{-- @foreach($genre as $g)
+                                            {{-- @foreach ($genre as $g)
                                             <li><a href="">{{$g['genre']}}</a></li>
                                             @endforeach --}}
                                             <li><a href="">Film Details</a></li>
@@ -138,7 +139,8 @@
                                                 @endif
                                             @else
                                                 <a class="dropdown-item text-dark" href="{{ route('home') }}">Profile</a>
-                                                <a class="dropdown-item text-dark" href="{{ route('history') }}">History</a>
+                                                <a class="dropdown-item text-dark"
+                                                    href="{{ route('history') }}">History</a>
                                                 <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -173,38 +175,42 @@
 
     <!-- Footer Section Begin -->
     <footer class="footer">
-        <div class="page-up">
-            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="footer__logo">
-                        <a href="./index.html"><img src="{{ asset('anime-main/img/logo.png') }}" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="footer__nav">
-                        <ul>
-                            <li><a href="/">Homepage</a></li>
-                            <li><a href="/profile">Profile</a></li>
-                            <li><a href="/film">List Film</a></li>
-                            <li><a href="/genre">Genre</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script> All rights reserved | This template is made with <i
-                            class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                            target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
+        <div class="container-fluid">
 
+            <div class="page-up">
+                <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="footer__logo">
+                            <a href="./index.html"><img src="{{ asset('anime-main/img/logo.png') }}"
+                                    alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="footer__nav">
+                            <ul>
+                                <li><a href="/">Homepage</a></li>
+                                <li><a href="/profile">Profile</a></li>
+                                <li><a href="/film">List Film</a></li>
+                                <li><a href="/genre">Genre</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script> All rights reserved | This template is made with <i
+                                class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                                target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+
+                    </div>
                 </div>
             </div>
         </div>

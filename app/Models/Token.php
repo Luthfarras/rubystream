@@ -13,11 +13,11 @@ class Token extends Model
 
     public function film()
     {
-        return $this->hasMany(Film::class);
+        return $this->belongsTo(Film::class);
     }
 
     public function pembayaran()
     {
-        return $this->hasOne(Pembayaran::class);
+        return $this->belongsTo(Pembayaran::class);
     }
 }
