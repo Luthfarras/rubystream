@@ -118,6 +118,7 @@ class FilmController extends Controller
         $data = Film::findOrFail($id);
         $genre = Genre::all();
 
+        return view('film.edit', compact('data','genre'));
         return view('film.edit', compact('data', 'genre'));
     }
 

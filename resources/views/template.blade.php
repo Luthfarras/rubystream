@@ -23,9 +23,8 @@
     <link rel="stylesheet" href="{{ asset('anime-main/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('anime-main/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('anime-main/css/style.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('anime-main/css/style.css') }}" type="text/css">
 
-
+        
     <!-- start pagination stylesheet -->
     <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css') }}">
     <!-- end pagination stylesheet -->
@@ -43,6 +42,10 @@
 
         .nice-select span {
             color: black;
+        }
+
+        .product__item__pic{
+            height: 250px;
         }
     </style>
 </head>
@@ -73,14 +76,14 @@
                                         <li class="@if (Request::is('/*')) active @endif"><a
                                                 href="/">Homepage</a></li>
                                         <li><a>Categories <span class="arrow_carrot-down"></span></a>
-                                          @foreach($genre as $g)
                                             <ul class="dropdown">
+                                                {{-- @foreach($genre as $g)
                                                 <li><a href="">{{$g['genre']}}</a></li>
-                                                <!-- <li><a href="">Film Details</a></li>
+                                                @endforeach --}}
+                                                <li><a href="">Film Details</a></li>
                                                 <li><a href="">Film Watching</a></li>
-                                                <li><a href="">Blog Details</a></li> -->
+                                                <li><a href="">Blog Details</a></li>
                                             </ul>
-                                          @endforeach
                                         </li>
                                     @endif
                                 @else
@@ -88,12 +91,12 @@
                                             href="/">Homepage</a></li>
                                     <li><a>Categories <span class="arrow_carrot-down"></span></a>
                                         <ul class="dropdown">
-                                          @foreach($genre as $g)
+                                            {{-- @foreach($genre as $g)
                                             <li><a href="">{{$g['genre']}}</a></li>
-                                            <!-- <li><a href="">Film Details</a></li>
+                                            @endforeach --}}
+                                            <li><a href="">Film Details</a></li>
                                             <li><a href="">Film Watching</a></li>
-                                            <li><a href="">Blog Details</a></li> -->
-                                          @endforeach
+                                            <li><a href="">Blog Details</a></li>
                                         </ul>
                                     </li>
                                     <li class="@if (Request::is('film*')) active @endif"><a href="/film">List
@@ -109,7 +112,7 @@
 
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
-                            <ul>
+                            <ul class="position-absolute">
                                 <li>
                                     <a href="/cart" class="search-switch text-light"><i class="icon_cart"></i><span
                                             class="position-absolute badge rounded-pill bg-danger"
@@ -119,7 +122,7 @@
                                 <li>
                                     <a>
                                         @if (Auth::user())
-                                            {{ Auth::user()->name }}
+                                            {{ Str::limit(Auth::user()->name, 10) }}
                                         @endif
                                         <span class="icon_profile"></span>
                                     </a>
@@ -135,6 +138,7 @@
                                                 @endif
                                             @else
                                                 <a class="dropdown-item text-dark" href="{{ route('home') }}">Profile</a>
+                                                <a class="dropdown-item text-dark" href="{{ route('history') }}">History</a>
                                                 <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -229,7 +233,7 @@
     <script src="{{ asset('anime-main/js/jquery.slicknav.js') }}"></script>
     <script src="{{ asset('anime-main/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('anime-main/js/main.js') }}"></script>
-
+    <script src="{{ asset('anime-main/js/ajax.js') }}"></script>
     <!-- start pagination script -->
     <script src="{{ asset('https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js') }}"></script>

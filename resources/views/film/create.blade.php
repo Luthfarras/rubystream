@@ -39,7 +39,7 @@
                     <div class="form-group mt-2">
                         <select class=" @error('genre') is-invalid @enderror" name="genre_id">
                             @foreach ($genre as $dt)
-                                <option selected value="{{ $dt->id }}">{{ $dt->genre }}
+                                <option value="{{ $dt->id }}">{{ $dt->genre }}
                                 </option>
                             @endforeach
                         </select>
