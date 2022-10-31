@@ -74,38 +74,25 @@
                     </div> --}}
                 </div>
                 <div class="row">
-                  @if(!empty($data))
+                  {{-- @if(!empty($data)) --}}
                   @foreach($data as $d)
                   <div class="col-lg-2">
                       <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal{{ $d->id }}"></div>
-                         {{-- <!-- <img id="myImg" src="{{ ($d['cover']) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal"> --> 
-
-                          {{-- <!-- <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal"> --> --}}
-                              <!-- <div class="ep">18 / 18</div> -->
-                              <!-- <div class="comment"><i class="fa fa-comments"></i> 11</div> -->
-                              <!-- <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
-                          <!-- </div> -->
+                        <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal"></div>
                           <div class="product__item__text">
-                              <!-- <ul>
-                                  <li>Active</li>
-                                  <li>Movie</li>
-                              </ul> -->
                               <h5><a href="{{route('detail',$d->id)}}" style="font-size: 0.8rem;">{{ $d['nama_film'] }}</a></h5>
                               @guest
                               @if(Route::has('login'))
-                              <!-- <p>p</p> -->
                               @endif
                               @else
                                 @if(Auth::user()->role == 'user')
                                 <a href="{{ url('cart/'.$d->id) }}" class="btn btn-sm btn-primary mt-2">Add to Cart</a>
-                                  <!-- <button class="btn btn-sm btn-primary mt-2">Add to Cart</button> -->
                                 @endif
                               @endguest
                           </div>
                       </div>
                   </div>
-                  <div class="modal fade" id="inputModal{{ $d->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                           <div class="modal-content text-white footer">
                             <video src="{{ asset('vid/'.$d->trailer) }}" controls></video>
@@ -113,9 +100,9 @@
                       </div>
                   </div>
                   @endforeach
-                  @else
-                  <p>Data Kosong</p>
-                  @endif
+                  {{-- @else --}}
+                  {{-- <p>Data Kosong</p> --}}
+                  {{-- @endif --}}
                   <!-- <a class="btn btn-dark " href="" data-toggle="modal" data-target="#inputModal">Input Genre</a> -->
 
                 </div>

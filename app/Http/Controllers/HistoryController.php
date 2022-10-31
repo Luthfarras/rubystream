@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 
 class HistoryController extends Controller
@@ -45,7 +46,8 @@ class HistoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $history = Pembayaran::findorFail($id);
+        $token = Pembayaran::findorFail($id);
     }
 
     /**
