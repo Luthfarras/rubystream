@@ -144,6 +144,7 @@ class CartController extends Controller
       $userid = Auth::user()->id;
       $dtrans = array(
         'user_id' => $userid,
+        'tgl_order'=>date('Y-m-d'),
         'total_pembayaran' => 0
       );
       $pembayaran = Pembayaran::create($dtrans);
