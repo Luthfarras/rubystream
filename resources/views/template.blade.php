@@ -76,14 +76,14 @@
                                         <li class="@if (Request::is('/*')) active @endif"><a
                                                 href="/">Homepage</a></li>
                                         <li><a>Categories <span class="arrow_carrot-down"></span></a>
-                                          {{-- @foreach($genre as $g)
                                             <ul class="dropdown">
+                                                {{-- @foreach($genre as $g)
                                                 <li><a href="">{{$g['genre']}}</a></li>
-                                                <!-- <li><a href="">Film Details</a></li>
+                                                @endforeach --}}
+                                                <li><a href="">Film Details</a></li>
                                                 <li><a href="">Film Watching</a></li>
-                                                <li><a href="">Blog Details</a></li> -->
+                                                <li><a href="">Blog Details</a></li>
                                             </ul>
-                                          @endforeach --}}
                                         </li>
                                     @endif
                                 @else
@@ -91,12 +91,12 @@
                                             href="/">Homepage</a></li>
                                     <li><a>Categories <span class="arrow_carrot-down"></span></a>
                                         <ul class="dropdown">
-                                          {{-- @foreach($genre as $g) --}}
-                                            {{-- <li><a href="">{{$g['genre']}}</a></li> --}}
-                                            <!-- <li><a href="">Film Details</a></li>
+                                            {{-- @foreach($genre as $g)
+                                            <li><a href="">{{$g['genre']}}</a></li>
+                                            @endforeach --}}
+                                            <li><a href="">Film Details</a></li>
                                             <li><a href="">Film Watching</a></li>
-                                            <li><a href="">Blog Details</a></li> -->
-                                          {{-- @endforeach --}}
+                                            <li><a href="">Blog Details</a></li>
                                         </ul>
                                     </li>
                                     <li class="@if (Request::is('film*')) active @endif"><a href="/film">List
@@ -112,7 +112,7 @@
 
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
-                            <ul>
+                            <ul class="position-absolute">
                                 <li>
                                     <a href="/cart" class="search-switch text-light"><i class="icon_cart"></i><span
                                             class="position-absolute badge rounded-pill bg-danger"
@@ -122,7 +122,7 @@
                                 <li>
                                     <a>
                                         @if (Auth::user())
-                                            {{ Auth::user()->name }}
+                                            {{ Str::limit(Auth::user()->name, 10) }}
                                         @endif
                                         <span class="icon_profile"></span>
                                     </a>
