@@ -9,7 +9,6 @@ use App\Models\Film;
 use App\Models\Pay;
 use App\Models\Pembayaran;
 use App\Models\Token;
-use Darryldecode\Cart\Cart;
 use Midtrans\Config;
 use Midtrans\Snap;
 use Cart;
@@ -54,7 +53,7 @@ class CartController extends Controller
     $snapToken = Snap::getSnapToken($params);
 
     $userid = Auth::user()->id;
-    $item = Cart::getContent();
+    $item = Cart::session($userid)->getContent();
     $aa = Cart::session($userid);
     // dd($crt);
     return view('cart', ['snap_token'=>$snapToken], compact('item'));

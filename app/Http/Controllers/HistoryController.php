@@ -17,8 +17,7 @@ class HistoryController extends Controller
     public function index()
     {
         $user = Auth::user()->id;
-        $data = DB::table('tokens')->select('*')->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')->get();
-        dd($data);
+        $data = DB::table('tokens')->select('*')->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')->join('films', 'films.id', '=', 'tokens.film_id')->where('pembayarans.user_id','=',$user)->get();
         return view('history',compact('data'));
     }
 
