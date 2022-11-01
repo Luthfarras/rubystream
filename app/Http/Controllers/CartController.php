@@ -27,7 +27,7 @@ class CartController extends Controller
     $params = array(
         'transaction_details' => array(
             'order_id' => rand(),
-            'gross_amount' => '',
+            'gross_amount' => '70000',
         ),
 
         'item_details' => array(
