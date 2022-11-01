@@ -9,7 +9,7 @@ use App\Models\Film;
 use App\Models\Pay;
 use App\Models\Pembayaran;
 use App\Models\Token;
-use Cart;
+use Darryldecode\Cart\Cart;
 
 class CartController extends Controller
 {

@@ -17,7 +17,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td style="border: 0;" scope="row">{{ $data->token_id }}</td>
+                    <td style="border: 0;" scope="row">{{ $data->pembayaran_id }}</td>
                     <td style="border: 0;" scope="row"></td>
                     <td style="border: 0;" scope="row"></td>
                     <td style="border: 0;" scope="row"></td>
