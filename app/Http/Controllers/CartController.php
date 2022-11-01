@@ -60,12 +60,11 @@ class CartController extends Controller
       // return $request;
       $json = json_decode($request->get('json'));
       $pay = new Pay();
-      $pay -> _token = $request->get('_token');
       $pay -> status = $json->status_message;
-      $pay -> name = Auth::user()->name;
-      $pay -> email = Auth::user()->email;
+      $pay -> name = Auth::user()->id;
       $pay -> transaktion_id = $json->transaction_id;
       $pay -> order_id = $json->order_id;
+      $pay -> transaction_time = $json->transaction_time;
       $pay -> gross_amount = $json->gross_amount;
       $pay -> payment_type = $json->payment_type;
       $pay -> payment_code = isset($json->payment_code) ? $json->payment_code : null;

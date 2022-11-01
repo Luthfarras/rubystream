@@ -15,12 +15,11 @@ return new class extends Migration
     {
         Schema::create('pays', function (Blueprint $table) {
             $table->id();
-            $table->string('_token');
             $table->string('status');
             $table->string('name');
-            $table->string('email');
             $table->string('transaktion_id');
             $table->string('order_id');
+            $table->string('transaction_time');
             $table->string('gross_amount');
             $table->string('payment_type');
             $table->string('payment_code')->nullable();
