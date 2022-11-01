@@ -22,7 +22,7 @@
   @endforeach
   </table>
   <a href="{{url('checkout')}}" class="btn btn-primary mb-5">Checkout</a>
-  <a href="#" id="pay-button" class="btn btn-primary mb-5">Midrans Checkout</a>
+  <a href="#" id="bayar" class="btn btn-primary mb-5">Midrans Checkout</a>
 
 </div>
 
@@ -37,7 +37,7 @@
     
     <script type="text/javascript">
       // For example trigger on button clicked, or any time you need
-      var payButton = document.getElementById('pay-button');
+      let payButton = document.getElementById('bayar');
       payButton.addEventListener('click', function () {
         // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
         window.snap.pay('{{$snap_token}}', {
