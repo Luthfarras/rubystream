@@ -11,4 +11,8 @@ class Pembayaran extends Model
     protected $table = 'pembayarans';
     protected $guarded = ['id'];
 
+    public function token()
+    {
+        return $this->hasMany(Token::class);
+    }
 }

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HistoryController extends Controller
 {
@@ -13,7 +16,9 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        return view('history');
+        $user = Auth::user()->id;
+        $data = DB::table('pembayarans')->join('token', 'token.id', '=', 'pembayarans.token_id');
+        return view('/history');
     }
 
     /**
@@ -45,7 +50,7 @@ class HistoryController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
