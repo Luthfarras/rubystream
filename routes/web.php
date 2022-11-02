@@ -43,6 +43,7 @@ Route::get('/dash', [FilmController::class, 'dashboard2']);
 
 Route::get('detail/{id}', [FilmController::class, 'detail'])->name('detail');
 Route::get('watch/{id}', [FilmController::class, 'watch'])->name('watch');
+Route::get('category', [FilmController::class, 'category'])->name('category');
 
 
 Route::resource('film', FilmController::class);
@@ -64,6 +65,8 @@ Route::get('midt', [CartController::class, 'midt']);
 Route::post('cart', [CartController::class, 'list_post']);
 // Route::post('cart', [CartController::class, 'add_cart'])->name('cart.store');
 Route::post('cartlist/{id}', [CartController::class, 'add_cart']);
+Route::post('cartlist2/{id}', [CartController::class, 'add_cart2']);
+
 Route::get('delcart/{id}', [CartController::class, 'del_cart']);
 Route::get('checkout', [CartController::class, 'checkout']);
 
