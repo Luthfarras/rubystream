@@ -12,28 +12,18 @@ use App\Models\Token;
 use Midtrans\Config;
 use Midtrans\Snap;
 use Cart;
-// use Darryldecode\Cart;
+// use Darryldecode\Cart\Cart;
 
 class CartController extends Controller
 {
-  public function list()
+  public function list( Request $request )
   {
+
     $userid = Auth::user()->id;
     $item = Cart::session($userid)->getContent();
     $total = Cart::session($userid)->getTotal();
     $aa = Cart::session($userid);
-    // dd($crt);
 
-    return view('cart', compact('item'));
-  }
-
-  public function midt(Request $request)
-    {
-      $harga = $request->harga;
-      // dd ($harga);
-      // $orderid = $request->id;
-      // $metode = $request->metode;
-      // dd ($request);
     Config::$serverKey = 'SB-Mid-server-FgSMRXe6gp7YP34lYPxa3knw';
     Config::$isProduction = false;
     Config::$isSanitized = true;
@@ -42,30 +32,55 @@ class CartController extends Controller
     $params = array(
         'transaction_details' => array(
             'order_id' => rand(),
-            'gross_amount' => $harga,
+            'gross_amount' => $total,
         ),
+        
+        "enabled_payments" => [
+          // "bank_transfer",
+          "credit_card",
+          // "gopay",
+          "shopeepay",
+          // "permata_va",
+          // "bca_va",
+          // "bni_va",
+          // "bri_va",
+          // "echannel",
+          // "other_va",
+          // "danamon_online",
+          // "mandiri_clickpay",
+          // "cimb_clicks",
+          // "bca_klikbca",
+          // "bca_klikpay",
+          // "bri_epay",
+          // "xl_tunai",
+          // "indosat_dompetku",
+          // "kioson",
+          // "Indomaret",
+          // "alfamart",
+          // "akulaku"
+        ],
 
       //   'item_details' => array(
       //     [
-      //         'id' => '1',
-      //         'price' => '70000',
+      //         'id' => rand(),
+      //         'price' => $total,
       //         'quantity' => 1,
-      //         'name' => 'Avengers: infinity war',
+      //         'name' => $item,
       //     ]
       // ),
         
         'customer_details' => array(
-          'first_name' => Auth::user()->name,
-          'last_name' => '',
-          'email' => Auth::user()->email,
-          'phone' => '',
-      ),
-
+            'first_name' => Auth::user()->name,
+            'last_name' => '',
+            'email' => Auth::user()->email,
+            'phone' => rand(),
+        ),
     );
 
     $snapToken = Snap::getSnapToken($params);
 
-    return json_encode($snapToken);
+    // dd($crt);
+    return view('cart', ['snap_token'=>$snapToken], compact('item'));
   }
 
   public function list_post(Request $request)
@@ -93,6 +108,19 @@ class CartController extends Controller
     {
       $userid = Auth::user()->id;
       $datas = Film::findOrFail($id);
+      // $items=array(
+      //   'id' => $id,
+      //   'name' => $datas->nama_film,
+      //   'price' => $datas->harga,
+      //   'quantity' => 1,
+      //   'attributes' => array(
+      //     'image' => $datas->cover
+      //   )
+      // );
+      // dd($item);
+      // if ($items['quantity'] > 1) {
+      //   return redirect('dash')->with('error', 'quantity lebih dari 1');
+      // }
 
       Cart::session($userid)->add(array(
         'id' => $id,
@@ -105,26 +133,31 @@ class CartController extends Controller
       ));
 
       return redirect('dash')->with('success', 'berhasil menambah keranjang');
+        // \Cart::add([
+        //     'id' => $request->id,
+        //     'nama_film' => $request->nama_film,
+        //     'harga' => $request->harga,
+        //     'qty' => $request->qty,
+        //     'attributes' => array(
+        //         'cover' => $request->cover,
+        //     )
+        // ]);
+        // session()->flash('success', 'Product is Added to Cart Successfully !');
+
+      // dd($request);
+        // \Cart::add([
+        //     'id' => $request->id,
+        //     'nama_film' => $request->nama_film,
+        //     'harga' => $request->harga,
+        //     'qty' => $request->qty,
+        //     'attributes' => array(
+        //         'cover' => $request->cover,
+        //     )
+        // ]);
+        // session()->flash('success', 'Product is Added to Cart Successfully !');
+        //
+        // return redirect()->route('cart.list');
     }
-
-    public function add_cart2(Request $request, $id)
-      {
-        $userid = Auth::user()->id;
-        $datas = Film::findOrFail($id);
-
-        Cart::session($userid)->add(array(
-          'id' => $id,
-          'name' => $datas->nama_film,
-          'price' => $datas->harga,
-          'quantity' => 1,
-          'attributes' => array(
-            'image' => $datas->cover
-          )
-        ));
-
-        return redirect('detail/' .$id)->with('success', 'berhasil menambah keranjang');
-      }
-
 
     public function del_cart($id)
     {
@@ -161,6 +194,6 @@ class CartController extends Controller
         Cart::session($userid)->clear();
       }
       return redirect('cart');
-
+    
   }
 }
