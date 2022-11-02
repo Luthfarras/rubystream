@@ -20,6 +20,7 @@ class CartController extends Controller
   {
     $userid = Auth::user()->id;
     $item = Cart::session($userid)->getContent();
+    $total = Cart::session($userid)->getTotal();
     $aa = Cart::session($userid);
     // dd($crt);
 
@@ -44,14 +45,14 @@ class CartController extends Controller
             'gross_amount' => $harga,
         ),
 
-        'item_details' => array(
-          [
-              'id' => '1',
-              'price' => '70000',
-              'quantity' => 1,
-              'name' => 'Avengers: Endgame',
-          ]
-      ),
+      //   'item_details' => array(
+      //     [
+      //         'id' => '1',
+      //         'price' => '70000',
+      //         'quantity' => 1,
+      //         'name' => 'Avengers: infinity war',
+      //     ]
+      // ),
         
         'customer_details' => array(
           'first_name' => Auth::user()->name,

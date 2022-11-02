@@ -18,14 +18,10 @@ class CartController extends Controller
 {
   public function list( Request $request )
   {
-    // Set your Merchant Server Key
-    \Midtrans\Config::$serverKey = 'SB-Mid-server-FgSMRXe6gp7YP34lYPxa3knw';
-    // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-    \Midtrans\Config::$isProduction = false;
-    // Set sanitization on (default)
-    \Midtrans\Config::$isSanitized = true;
-    // Set 3DS transaction for credit card to true
-    \Midtrans\Config::$is3ds = true;
+    Config::$serverKey = 'SB-Mid-server-FgSMRXe6gp7YP34lYPxa3knw';
+    Config::$isProduction = false;
+    Config::$isSanitized = true;
+    Config::$is3ds = true;
 
     $params = array(
         'transaction_details' => array(
