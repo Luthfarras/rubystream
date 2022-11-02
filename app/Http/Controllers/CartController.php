@@ -28,11 +28,11 @@ class CartController extends Controller
 
   public function midt(Request $request)
     {
-    // dd ($request);
-    // dd ($harga);
-    $harga = $request->harga;
-    // $orderid = $request->id;
-    // $metode = $request->metode;
+      $harga = $request->harga;
+      // dd ($harga);
+      // $orderid = $request->id;
+      // $metode = $request->metode;
+      // dd ($request);
     Config::$serverKey = 'SB-Mid-server-FgSMRXe6gp7YP34lYPxa3knw';
     Config::$isProduction = false;
     Config::$isSanitized = true;
@@ -64,11 +64,7 @@ class CartController extends Controller
 
     $snapToken = Snap::getSnapToken($params);
 
-    $userid = Auth::user()->id;
-    $item = Cart::getContent();
-    $aa = Cart::session($userid);
-    // dd($crt);
-    return view('cart', ['snap_token'=>$snapToken], compact('item'));
+    return json_encode($snapToken);
   }
 
   public function list_post(Request $request)
