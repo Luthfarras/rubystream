@@ -12,25 +12,36 @@ use App\Models\Token;
 use Midtrans\Config;
 use Midtrans\Snap;
 use Cart;
-// use Darryldecode\Cart\Cart;
+// use Darryldecode\Cart;
 
 class CartController extends Controller
 {
-  public function list( Request $request )
+  public function list()
   {
-    // Set your Merchant Server Key
-    \Midtrans\Config::$serverKey = 'SB-Mid-server-FgSMRXe6gp7YP34lYPxa3knw';
-    // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-    \Midtrans\Config::$isProduction = false;
-    // Set sanitization on (default)
-    \Midtrans\Config::$isSanitized = true;
-    // Set 3DS transaction for credit card to true
-    \Midtrans\Config::$is3ds = true;
+    $userid = Auth::user()->id;
+    $item = Cart::session($userid)->getContent();
+    $aa = Cart::session($userid);
+    // dd($crt);
+
+    return view('cart', compact('item'));
+  }
+
+  public function midt(Request $request)
+    {
+    // dd ($request);
+    // dd ($harga);
+    $harga = $request->harga;
+    // $orderid = $request->id;
+    // $metode = $request->metode;
+    Config::$serverKey = 'SB-Mid-server-FgSMRXe6gp7YP34lYPxa3knw';
+    Config::$isProduction = false;
+    Config::$isSanitized = true;
+    Config::$is3ds = true;
 
     $params = array(
         'transaction_details' => array(
             'order_id' => rand(),
-            'gross_amount' => '70000',
+            'gross_amount' => $harga,
         ),
 
         'item_details' => array(
@@ -41,23 +52,26 @@ class CartController extends Controller
               'name' => 'Avengers: Endgame',
           ]
       ),
-        
+
+        "enabled_payments" => [
+          // $metode,
+          "bank_transfer",
+          "shopeepay",
+        ],
+
         'customer_details' => array(
-            'first_name' => Auth::user()->name,
-            'last_name' => '',
-            'email' => Auth::user()->email,
-            'phone' => '',
-        ),
+          'first_name' => Auth::user()->name,
+          'last_name' => '',
+          'email' => Auth::user()->email,
+          'phone' => '',
+      ),
+
     );
 
     $snapToken = Snap::getSnapToken($params);
 
-    $userid = Auth::user()->id;
-    $item = Cart::getContent();
-    $aa = Cart::session($userid);
-    // dd($crt);
-    return view('cart', ['snap_token'=>$snapToken], compact('item'));
-  }
+    return json_encode($snapToken);
+    }
 
   public function list_post(Request $request)
     {

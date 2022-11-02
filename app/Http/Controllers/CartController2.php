@@ -12,30 +12,42 @@ use App\Models\Token;
 use Midtrans\Config;
 use Midtrans\Snap;
 use Cart;
-// use Darryldecode\Cart;
+// use Darryldecode\Cart\Cart;
 
 class CartController extends Controller
 {
   public function list( Request $request )
   {
-    // dd ($request);
-    $harga = $request->harga;
-    // dd ($harga);
-    $orderid = $request->id;
-    $metode = $request->methode;
-    Config::$serverKey = 'SB-Mid-server-FgSMRXe6gp7YP34lYPxa3knw';
-    Config::$isProduction = false;
-    Config::$isSanitized = true;
-    Config::$is3ds = true;
+    // Set your Merchant Server Key
+    \Midtrans\Config::$serverKey = 'SB-Mid-server-FgSMRXe6gp7YP34lYPxa3knw';
+    // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+    \Midtrans\Config::$isProduction = false;
+    // Set sanitization on (default)
+    \Midtrans\Config::$isSanitized = true;
+    // Set 3DS transaction for credit card to true
+    \Midtrans\Config::$is3ds = true;
 
     $params = array(
         'transaction_details' => array(
-            'order_id' => $orderid,
-            'gross_amount' => $harga,
+            'order_id' => rand(),
+            'gross_amount' => '70000',
         ),
-        "enabled_payments" => [
-          "bank_tranfer"
-        ],
+
+        'item_details' => array(
+          [
+              'id' => '1',
+              'price' => '70000',
+              'quantity' => 1,
+              'name' => 'Avengers: Endgame',
+          ]
+      ),
+        
+        'customer_details' => array(
+            'first_name' => Auth::user()->name,
+            'last_name' => '',
+            'email' => Auth::user()->email,
+            'phone' => '',
+        ),
     );
 
     $snapToken = Snap::getSnapToken($params);
@@ -44,9 +56,7 @@ class CartController extends Controller
     $item = Cart::session($userid)->getContent();
     $aa = Cart::session($userid);
     // dd($crt);
-    
-    return json_decode($snapToken);
-    // return view('cart', compact('item'));
+    return view('cart', ['snap_token'=>$snapToken], compact('item'));
   }
 
   public function list_post(Request $request)
