@@ -107,7 +107,7 @@ class CartController extends Controller
         )
       ));
 
-      return redirect('dash')->with('success', 'berhasil menambah keranjang');
+      return redirect('dash')->with('success', 'Successfully added to cart');
     }
 
     public function add_cart2(Request $request, $id)
@@ -125,7 +125,7 @@ class CartController extends Controller
           )
         ));
 
-        return redirect('detail/' .$id)->with('success', 'berhasil menambah keranjang');
+        return redirect('detail/' .$id)->with('success', 'Successfully added to cart');
       }
 
 

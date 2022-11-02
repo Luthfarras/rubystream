@@ -123,14 +123,8 @@
                                 </li>
                                 <a href="#" class="search-switch text-light"><span class="icon_search"></span></a>
                                 <li>
-                                    <a>
-                                        @if (Auth::user())
-                                            {{ Str::limit(Auth::user()->name, 10) }}
-                                        @endif
-                                        <span class="icon_profile"></span>
-                                    </a>
+                                    <a> <span class="icon_profile"></span> </a>
                                     <ul class="dropdown">
-
                                         <li>
                                             @guest
                                                 @if (Route::has('login'))
@@ -140,6 +134,7 @@
                                                         href="{{ route('register') }}">Register</a>
                                                 @endif
                                             @else
+                                                <a class="dropdown-item text-dark font-italic">{{ Str::limit(Auth::user()->name, 10) }}</a>
                                                 <a class="dropdown-item text-dark" href="{{ route('home') }}">Profile</a>
                                                 <a class="dropdown-item text-dark"
                                                     href="{{ route('history') }}">History</a>

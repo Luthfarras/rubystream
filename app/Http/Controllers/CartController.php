@@ -36,8 +36,8 @@ class CartController extends Controller
         ),
         
         "enabled_payments" => [
-          // "bank_transfer",
-          "credit_card",
+          "bank_transfer",
+          // "credit_card",
           // "gopay",
           "shopeepay",
           // "permata_va",
@@ -132,7 +132,7 @@ class CartController extends Controller
         )
       ));
 
-      return redirect('dash')->with('success', 'berhasil menambah keranjang');
+      return redirect('dash')->with('success', 'Successfully added to cart');
         // \Cart::add([
         //     'id' => $request->id,
         //     'nama_film' => $request->nama_film,
