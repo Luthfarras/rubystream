@@ -69,8 +69,25 @@
                             </div>
                         </div>
                         <div class="anime__details__btn">
-                            <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
-                            <a href="{{route('watch',$data->id)}}" class="watch-btn"> <span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                          <form class="" action="{{ url('cartlist2/'.$data->id) }}" method="post" enctype="multipart/form-data">
+                          @csrf
+                          <input type="hidden" name="id" value="{{ ($data['id']) }}">
+                          <input type="hidden" name="nama_film" value="{{ ($data['nama_film']) }}">
+                          <input type="file" name="cover" value="{{ ($data['cover']) }}" hidden>
+                          <input type="hidden" name="harga" value="{{ ($data['harga']) }}">
+                          @guest
+                          @if(Route::has('login'))
+                          <!-- <p>p</p> -->
+                          @endif
+                          @else
+                            @if(Auth::user()->role == 'user')
+                                  <button class="follow-btn" type="submit">Add to Cart</button>
+                                  <a href="{{route('watch',$data->id)}}" class="watch-btn"> <span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+
+                            @endif
+                          @endguest
+                          </form>
+
                             </div>
                         </div>
                     </div>
@@ -144,7 +161,7 @@
                             <h5>Your Comment</h5>
                         </div>
                         <form action="#">
-                            <textarea placeholder="Your Comment"></textarea>
+                            <textarea placeholder="Your Comment" class="text-dark"></textarea>
                             <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
                         </form>
                     </div>

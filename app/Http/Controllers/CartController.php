@@ -41,7 +41,7 @@ class CartController extends Controller
               'name' => 'Avengers: Endgame',
           ]
       ),
-        
+
         'customer_details' => array(
             'first_name' => Auth::user()->name,
             'last_name' => '',
@@ -84,19 +84,6 @@ class CartController extends Controller
     {
       $userid = Auth::user()->id;
       $datas = Film::findOrFail($id);
-      // $items=array(
-      //   'id' => $id,
-      //   'name' => $datas->nama_film,
-      //   'price' => $datas->harga,
-      //   'quantity' => 1,
-      //   'attributes' => array(
-      //     'image' => $datas->cover
-      //   )
-      // );
-      // dd($item);
-      // if ($items['quantity'] > 1) {
-      //   return redirect('dash')->with('error', 'quantity lebih dari 1');
-      // }
 
       Cart::session($userid)->add(array(
         'id' => $id,
@@ -109,31 +96,26 @@ class CartController extends Controller
       ));
 
       return redirect('dash')->with('success', 'berhasil menambah keranjang');
-        // \Cart::add([
-        //     'id' => $request->id,
-        //     'nama_film' => $request->nama_film,
-        //     'harga' => $request->harga,
-        //     'qty' => $request->qty,
-        //     'attributes' => array(
-        //         'cover' => $request->cover,
-        //     )
-        // ]);
-        // session()->flash('success', 'Product is Added to Cart Successfully !');
-
-      // dd($request);
-        // \Cart::add([
-        //     'id' => $request->id,
-        //     'nama_film' => $request->nama_film,
-        //     'harga' => $request->harga,
-        //     'qty' => $request->qty,
-        //     'attributes' => array(
-        //         'cover' => $request->cover,
-        //     )
-        // ]);
-        // session()->flash('success', 'Product is Added to Cart Successfully !');
-        //
-        // return redirect()->route('cart.list');
     }
+
+    public function add_cart2(Request $request, $id)
+      {
+        $userid = Auth::user()->id;
+        $datas = Film::findOrFail($id);
+
+        Cart::session($userid)->add(array(
+          'id' => $id,
+          'name' => $datas->nama_film,
+          'price' => $datas->harga,
+          'quantity' => 1,
+          'attributes' => array(
+            'image' => $datas->cover
+          )
+        ));
+
+        return redirect('detail/' .$id)->with('success', 'berhasil menambah keranjang');
+      }
+
 
     public function del_cart($id)
     {
@@ -170,6 +152,6 @@ class CartController extends Controller
         Cart::session($userid)->clear();
       }
       return redirect('cart');
-    
+
   }
 }

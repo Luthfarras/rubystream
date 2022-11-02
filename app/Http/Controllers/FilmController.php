@@ -46,6 +46,13 @@ class FilmController extends Controller
         return view('watch', compact('data', 'genre'));
     }
 
+    public function category()
+    {
+        $data = Film::paginate(20);
+        $genre = Genre::all();
+        return view('category', compact('data', 'genre'));
+    }
+
     // public function category(Request $request)
     // {
     //   $data = Film::all();
