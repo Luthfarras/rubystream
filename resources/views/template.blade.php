@@ -134,8 +134,8 @@
                                                         href="{{ route('register') }}">Register</a>
                                                 @endif
                                             @else
-                                                <a class="dropdown-item text-dark font-italic">{{ Str::limit(Auth::user()->name, 10) }}</a>
-                                                <a class="dropdown-item text-dark" href="{{ route('home') }}">Profile</a>
+                                                <a class="dropdown-item text-dark"><span class="fa fa-circle text-success"></span> <b>{{ Str::limit(Auth::user()->name, 10) }}</b></a>
+                                                <a class="dropdown-item text-dark" href="{{ route('home') }}"><span class="fa fa-user-circle-o text-success"></span> Profile</a>
                                                 <a class="dropdown-item text-dark"
                                                     href="{{ route('history') }}">History</a>
                                                 <a class="dropdown-item text-dark" href="{{ route('logout') }}"

@@ -9,6 +9,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 // use Illuminate\Support\Facades\Paginate\Paginator;
 use DB;
 use Cart;
+use Illuminate\Support\Facades\Auth;
 
 class FilmController extends Controller
 {
@@ -26,7 +27,12 @@ class FilmController extends Controller
 
     public function dashboard2()
     {
-        $cart = Cart::getContent();
+        $userid = Auth::user();
+        if ($userid) {
+            $cart = Cart::session($userid->id)->getContent();
+        }else{
+            $cart = Cart::getContent();
+        }
         $genre = Genre::all();
         $data = Film::paginate(20);
         return view('dashboard2', compact('data', 'cart', 'genre'));

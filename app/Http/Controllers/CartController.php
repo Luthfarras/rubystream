@@ -37,9 +37,9 @@ class CartController extends Controller
         
         "enabled_payments" => [
           "bank_transfer",
+          "shopeepay",
           // "credit_card",
           // "gopay",
-          "shopeepay",
           // "permata_va",
           // "bca_va",
           // "bni_va",
@@ -62,10 +62,10 @@ class CartController extends Controller
 
       //   'item_details' => array(
       //     [
-      //         'id' => rand(),
+      //         'id' => $idbar,
       //         'price' => $total,
-      //         'quantity' => 1,
-      //         'name' => $item,
+      //         'quantity' => $qty,
+      //         'name' => $nama,
       //     ]
       // ),
         
@@ -86,6 +86,7 @@ class CartController extends Controller
   public function list_post(Request $request)
     {
       // return $request;
+      $userid = Auth::user()->id;
       $json = json_decode($request->get('json'));
       $pay = new Pay();
       $pay -> status = $json->status_message;
@@ -99,9 +100,23 @@ class CartController extends Controller
       $pay -> pdf_url = isset($json->pdf_url) ? $json->pdf_url : null;
 
       $pay -> save();
+      if ($pay) {      
+      $payid = $pay->id;
+        $faker = fake('id');
+        foreach (Cart::session($userid)->getContent() as $cart) {
+          $token = array(
+            'film_id' => $cart->id,
+            'pembayaran_id' => $payid,
+            'token' => $faker->md5()
+          );
+          Token::create($token);
+        }
+        Cart::session($userid)->clear();
+      }
+      
       // return redirect('cart')->with('success', 'Success buy the movie');
       // Alert::success('Congratulations', 'Success, buy the movie');
-      return redirect('checkout');
+      return redirect('dash');
     }
 
   public function add_cart(Request $request, $id)
@@ -166,35 +181,35 @@ class CartController extends Controller
       return redirect('cart');
     }
 
-    public function checkout()
-    {
-      $userid = Auth::user()->id;
-      $dtrans = array(
-        'user_id' => $userid,
-        'tgl_order'=>date('Y-m-d'),
-        'total_pembayaran' => 0
-      );
-      $pembayaran = Pembayaran::create($dtrans);
-      // dd($pembayaranid);
-      if ($pembayaran) {
-        $pembayaranid = $pembayaran->id;
-        $faker = fake('id');
-        foreach (Cart::session($userid)->getContent() as $cart) {
-          $token = array(
-            'film_id' => $cart->id,
-            'pembayaran_id' => $pembayaranid,
-            'token' => $faker->md5()
-          );
-          Token::create($token);
-        }
-        $dtrans = array(
-          'total_pembayaran' => Cart::session($userid)->getTotal()
-        );
-        Pembayaran::where('id', $pembayaranid)->update($dtrans);
-        Cart::session($userid)->clear();
-      }
-      Alert::success('Congratulations', 'Success, buy the movie');
-      return redirect('dash');
+  //   public function checkout()
+  //   {
+  //     $userid = Auth::user()->id;
+  //     $dtrans = array(
+  //       'user_id' => $userid,
+  //       'tgl_order'=>date('Y-m-d'),
+  //       'total_pembayaran' => 0
+  //     );
+  //     $pembayaran = Pembayaran::create($dtrans);
+  //     // dd($pembayaranid);
+  //     if ($pembayaran) {
+  //       $pembayaranid = $pembayaran->id;
+  //       $faker = fake('id');
+  //       foreach (Cart::session($userid)->getContent() as $cart) {
+  //         $token = array(
+  //           'film_id' => $cart->id,
+  //           'pembayaran_id' => $pembayaranid,
+  //           'token' => $faker->md5()
+  //         );
+  //         Token::create($token);
+  //       }
+  //       $dtrans = array(
+  //         'total_pembayaran' => Cart::session($userid)->getTotal()
+  //       );
+  //       Pembayaran::where('id', $pembayaranid)->update($dtrans);
+  //       Cart::session($userid)->clear();
+  //     }
+  //     Alert::success('Congratulations', 'Success, buy the movie');
+  //     return redirect('dash');
     
-  }
+  // }
 }
