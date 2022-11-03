@@ -11,7 +11,7 @@
 <!-- end modal add -->
 
 <!-- start table -->
-<div class="container text-light" id="body">
+<div class="container text-light" id="body" style="height:70vh">
 <div class="ms-auto me-auto">
 <table id="datatable" class="table text-white" style="width: 87rem;">
   <thead>
@@ -28,13 +28,16 @@
     <tr>
       <th scope="row" class="border border-0">{{ $loop->iteration }}</th>
       <td scope="row" class="border border-0 text-center">
-        <a href="dashboard">{{ $genre['genre']}}</a>
+        <a href="/">{{ $genre['genre']}}</a>
     </td>
     @if(Auth::user()->role == 'admin')
       <td scope="row" class="border border-0 text-center">
-    <a class="btn btn-success" href="{{route('genre.edit',$genre->id)}}">Edit</a>
+      <a class="btn btn-success" href="" data-toggle="modal" data-target="#editgenre{{ $genre->id }}">Edit</a>
+      @include('genre.edit')
     <!-- start delete -->
-    <a class="btn btn-danger" href="{{ route ('deletegenre',$genre->id)}}">Delete</a>
+    <!-- <a class="btn btn-danger" href="{{ route ('deletegenre',$genre->id)}}">Delete</a> -->
+    <a class="btn btn-danger" href="" data-toggle="modal" data-target="#deletegenre{{ $genre->id }}">Delete</a>
+    @include('genre.delete')
     <!-- end delete -->
 
     </td>
