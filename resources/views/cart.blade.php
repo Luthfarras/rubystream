@@ -21,8 +21,8 @@
   </tr>
   @endforeach
   </table>
-  <a href="{{url('checkout')}}" class="btn btn-primary mb-5">Checkout</a>
-  <a href="#" id="bayar" class="btn btn-primary mb-5">Midrans Checkout</a>
+  <!-- <a href="{{url('checkout')}}" class="btn btn-primary mb-5">Checkout</a> -->
+  <a href="#" id="bayar" class="btn btn-primary mb-5">Checkout</a>
 
 </div>
 

@@ -100,8 +100,8 @@ class CartController extends Controller
 
       $pay -> save();
       // return redirect('cart')->with('success', 'Success buy the movie');
-      Alert::success('Congratulations', 'Success, buy the movie');
-      return redirect('cart');
+      // Alert::success('Congratulations', 'Success, buy the movie');
+      return redirect('checkout');
     }
 
   public function add_cart(Request $request, $id)
@@ -193,7 +193,8 @@ class CartController extends Controller
         Pembayaran::where('id', $pembayaranid)->update($dtrans);
         Cart::session($userid)->clear();
       }
-      return redirect('cart');
+      Alert::success('Congratulations', 'Success, buy the movie');
+      return redirect('dash');
     
   }
 }
