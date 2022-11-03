@@ -82,22 +82,22 @@ class CartController extends Controller
     // dd($crt);
     return view('cart', ['snap_token'=>$snapToken], compact('item'));
   }
-
+  
   public function list_post(Request $request)
     {
       // return $request;
       $userid = Auth::user()->id;
       $json = json_decode($request->get('json'));
-      $pay = new Pay();
+      $pay = new Pembayaran();
+      $pay -> user_id = Auth::user()->id;
+      $pay -> tgl_order = date('Y-m-d');
+      $pay -> total_pembayaran = $json->gross_amount;
+      $pay -> via_pembayaran = $json->payment_type;
       $pay -> status = $json->status_message;
-      $pay -> name = Auth::user()->id;
-      $pay -> transaktion_id = $json->transaction_id;
-      $pay -> order_id = $json->order_id;
-      $pay -> transaction_time = $json->transaction_time;
-      $pay -> gross_amount = $json->gross_amount;
-      $pay -> payment_type = $json->payment_type;
-      $pay -> payment_code = isset($json->payment_code) ? $json->payment_code : null;
-      $pay -> pdf_url = isset($json->pdf_url) ? $json->pdf_url : null;
+      // $pay -> transaktion_id = $json->transaction_id;
+      // $pay -> order_id = $json->order_id;
+      // $pay -> payment_code = isset($json->payment_code) ? $json->payment_code : null;
+      // $pay -> pdf_url = isset($json->pdf_url) ? $json->pdf_url : null;
 
       $pay -> save();
       if ($pay) {      

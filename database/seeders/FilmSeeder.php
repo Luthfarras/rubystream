@@ -24,11 +24,41 @@ class FilmSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $data = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=action&companies=warner');
+        $doto = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=fantasy&companies=disney');
         $diti = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=romance&companies=dreamworks');
+        $data = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=action&companies=warner');
         $dutu = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=horror&companies=paramount');
         $dete = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=comedy&companies=fox');
-        $doto = HTTP::get('https://imdb-api.com/API/AdvancedSearch/k_3mwvlqdl?release_date=1900-01-01,2022-01-01&genres=fantasy&companies=disney');
+
+        foreach ($doto['results'] as $item) {
+            Film::create([
+             'nama_film' => $item['title'],
+             'studio' => 'Walt Disney',
+             'cover' => $item['image'],
+             'harga' => 70000,
+             'tahun_rilis' => $item['description'],
+             'aktor' => $item['stars'],
+             'sinopsis' => $item['plot'],
+             'trailer' => 'haha.mp4',
+             'full_movie' => 'hihi.mp4',
+             'genre_id' => 5
+            ]);
+        }
+        
+        foreach ($diti['results'] as $item) {
+            Film::create([
+             'nama_film' => $item['title'],
+             'studio' => 'DreamWorks',
+             'cover' => $item['image'],
+             'harga' => 70000,
+             'tahun_rilis' => $item['description'],
+             'aktor' => $item['stars'],
+             'sinopsis' => $item['plot'],
+             'trailer' => 'hihi.mp4',
+             'full_movie' => 'hihi.mp4',
+             'genre_id' => 2
+            ]);
+        }
 
         foreach ($data['results'] as $item) {
             Film::create([
@@ -45,20 +75,6 @@ class FilmSeeder extends Seeder
             ]);
         }
 
-        foreach ($diti['results'] as $item) {
-            Film::create([
-             'nama_film' => $item['title'],
-             'studio' => 'DreamWorks',
-             'cover' => $item['image'],
-             'harga' => 70000,
-             'tahun_rilis' => $item['description'],
-             'aktor' => $item['stars'],
-             'sinopsis' => $item['plot'],
-             'trailer' => 'hihi.mp4',
-             'full_movie' => 'hihi.mp4',
-             'genre_id' => 2
-            ]);
-        }
         foreach ($dutu['results'] as $item) {
             Film::create([
              'nama_film' => $item['title'],
@@ -85,20 +101,6 @@ class FilmSeeder extends Seeder
              'trailer' => 'haha.mp4',
              'full_movie' => 'hihi.mp4',
              'genre_id' => 4
-            ]);
-        }
-        foreach ($doto['results'] as $item) {
-            Film::create([
-             'nama_film' => $item['title'],
-             'studio' => 'Walt Disney',
-             'cover' => $item['image'],
-             'harga' => 70000,
-             'tahun_rilis' => $item['description'],
-             'aktor' => $item['stars'],
-             'sinopsis' => $item['plot'],
-             'trailer' => 'haha.mp4',
-             'full_movie' => 'hihi.mp4',
-             'genre_id' => 5
             ]);
         }
 
