@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Film;
-use App\Models\Pay;
 use App\Models\Pembayaran;
 use App\Models\Token;
 use Midtrans\Config;
@@ -38,26 +37,6 @@ class CartController extends Controller
         "enabled_payments" => [
           "bank_transfer",
           "shopeepay",
-          // "credit_card",
-          // "gopay",
-          // "permata_va",
-          // "bca_va",
-          // "bni_va",
-          // "bri_va",
-          // "echannel",
-          // "other_va",
-          // "danamon_online",
-          // "mandiri_clickpay",
-          // "cimb_clicks",
-          // "bca_klikbca",
-          // "bca_klikpay",
-          // "bri_epay",
-          // "xl_tunai",
-          // "indosat_dompetku",
-          // "kioson",
-          // "Indomaret",
-          // "alfamart",
-          // "akulaku"
         ],
 
       //   'item_details' => array(
@@ -114,9 +93,9 @@ class CartController extends Controller
         Cart::session($userid)->clear();
       }
       
-      // return redirect('cart')->with('success', 'Success buy the movie');
+      return redirect('dash')->with('success', 'Success buy the movie');
       // Alert::success('Congratulations', 'Success, buy the movie');
-      return redirect('dash');
+      // return redirect('dash');
     }
 
   public function add_cart(Request $request, $id)
