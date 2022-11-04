@@ -20,6 +20,11 @@ class CartController extends Controller
 
     $userid = Auth::user()->id;
     $item = Cart::session($userid)->getContent();
+    // dd($item);
+    // foreach($item as $a){
+    //   echo $a['id'];
+    // }
+    // print_r($item[1]['id']);
     $total = Cart::session($userid)->getTotal();
     $aa = Cart::session($userid);
 
@@ -102,6 +107,31 @@ class CartController extends Controller
     {
       $userid = Auth::user()->id;
       $datas = Film::findOrFail($id);
+      $item = Cart::session($userid)->getContent();
+      // foreach($item as $a){
+      //   if($a['id'] == $id){
+      //     return redirect('dash')->with('error', 'quantity lebih dari 1');
+      //   }
+      // }
+      // if ($item[1]['id'] == $id) {
+      //   return redirect('dash')->with('error', 'quantity lebih dari 1');
+      // }else{
+        Cart::session($userid)->add(array(
+          'id' => $id,
+          'name' => $datas->nama_film,
+          'price' => $datas->harga,
+          'quantity' => 1,
+          'attributes' => array(
+            'image' => $datas->cover
+          )
+        ));
+  
+        return redirect('dash')->with('success', 'Successfully added to cart');
+      // }
+      // dd($item[1]['id']);
+      // print_r($item[1]['id']);  
+      // $item = Cart::getContent
+      // $item[1]['id']
       // $items=array(
       //   'id' => $id,
       //   'name' => $datas->nama_film,
@@ -116,17 +146,7 @@ class CartController extends Controller
       //   return redirect('dash')->with('error', 'quantity lebih dari 1');
       // }
 
-      Cart::session($userid)->add(array(
-        'id' => $id,
-        'name' => $datas->nama_film,
-        'price' => $datas->harga,
-        'quantity' => 1,
-        'attributes' => array(
-          'image' => $datas->cover
-        )
-      ));
-
-      return redirect('dash')->with('success', 'Successfully added to cart');
+      
         // \Cart::add([
         //     'id' => $request->id,
         //     'nama_film' => $request->nama_film,
