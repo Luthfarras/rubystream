@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Film;
-use App\Models\Pay;
 use App\Models\Pembayaran;
 use App\Models\Token;
 use Midtrans\Config;
@@ -38,26 +37,6 @@ class CartController extends Controller
         "enabled_payments" => [
           "bank_transfer",
           "shopeepay",
-          // "credit_card",
-          // "gopay",
-          // "permata_va",
-          // "bca_va",
-          // "bni_va",
-          // "bri_va",
-          // "echannel",
-          // "other_va",
-          // "danamon_online",
-          // "mandiri_clickpay",
-          // "cimb_clicks",
-          // "bca_klikbca",
-          // "bca_klikpay",
-          // "bri_epay",
-          // "xl_tunai",
-          // "indosat_dompetku",
-          // "kioson",
-          // "Indomaret",
-          // "alfamart",
-          // "akulaku"
         ],
 
       //   'item_details' => array(
@@ -82,22 +61,22 @@ class CartController extends Controller
     // dd($crt);
     return view('cart', ['snap_token'=>$snapToken], compact('item'));
   }
-
+  
   public function list_post(Request $request)
     {
       // return $request;
       $userid = Auth::user()->id;
       $json = json_decode($request->get('json'));
-      $pay = new Pay();
+      $pay = new Pembayaran();
+      $pay -> user_id = Auth::user()->id;
+      $pay -> tgl_order = date('Y-m-d');
+      $pay -> total_pembayaran = $json->gross_amount;
+      $pay -> via_pembayaran = $json->payment_type;
       $pay -> status = $json->status_message;
-      $pay -> name = Auth::user()->id;
-      $pay -> transaktion_id = $json->transaction_id;
-      $pay -> order_id = $json->order_id;
-      $pay -> transaction_time = $json->transaction_time;
-      $pay -> gross_amount = $json->gross_amount;
-      $pay -> payment_type = $json->payment_type;
-      $pay -> payment_code = isset($json->payment_code) ? $json->payment_code : null;
-      $pay -> pdf_url = isset($json->pdf_url) ? $json->pdf_url : null;
+      // $pay -> transaktion_id = $json->transaction_id;
+      // $pay -> order_id = $json->order_id;
+      // $pay -> payment_code = isset($json->payment_code) ? $json->payment_code : null;
+      // $pay -> pdf_url = isset($json->pdf_url) ? $json->pdf_url : null;
 
       $pay -> save();
       if ($pay) {      
@@ -114,9 +93,9 @@ class CartController extends Controller
         Cart::session($userid)->clear();
       }
       
-      // return redirect('cart')->with('success', 'Success buy the movie');
+      return redirect('dash')->with('success', 'Success buy the movie');
       // Alert::success('Congratulations', 'Success, buy the movie');
-      return redirect('dash');
+      // return redirect('dash');
     }
 
   public function add_cart(Request $request, $id)

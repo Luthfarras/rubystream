@@ -15,13 +15,11 @@ return new class extends Migration
     {
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('via_pembayaran_id');
-            $table->foreignId('film_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('via_pembayaran_id')->references('id')->on('via_pembayarans');
-            $table->foreign('film_id')->references('id')->on('films');
-            $table->integer('total_pembayaran');
+            $table->foreignId('user_id')->constrained();
+            $table->string('tgl_order');
+            $table->string('total_pembayaran');
+            $table->string('via_pembayaran');
+            $table->string('status');
             $table->timestamps();
         });
     }
