@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pembayaran;
 use App\Models\Token;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,8 +18,9 @@ class HistoryController extends Controller
     public function index()
     {
         $user = Auth::user()->id;
+        $tanggal = DB::table('pembayarans')->select('tgl_order')->where('pembayarans.user_id','=',$user)->get();
         $data = DB::table('tokens')->select('*')->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')->join('films', 'films.id', '=', 'tokens.film_id')->where('pembayarans.user_id','=',$user)->get();
-        return view('history',compact('data'));
+        return view('history',compact('tanggal','data'));
     }
 
     /**
