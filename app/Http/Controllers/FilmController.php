@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Film;
 use App\Models\Genre;
+use App\Models\Rating;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Facades\Paginate\Paginator;
 use DB;
 use Cart;
@@ -60,15 +62,28 @@ class FilmController extends Controller
     // }
     //
 
+    public function rating(Request $request)
+    {
+      // dd($request);
+      $userid = Auth::user()->id;
+      Rating::create([
+        'ulasan' => $request->ulasan,
+        'rating' => $request->rating,
+        'film_id' => $request->film_id,
+        'users_id' => $userid,
+      ]);
+      return redirect('/');
+    }
+
     public function search(Request $request)
-	{
-    $genre = Genre::all();
-		$cari = $request->search;
-        $data = Film::where('nama_film', 'like', "%" . $cari . "%")->paginate();
+  	{
+      $genre = Genre::all();
+  		$cari = $request->search;
+          $data = Film::where('nama_film', 'like', "%" . $cari . "%")->paginate();
 
-		return view('dashboard', compact('data', 'genre'));
+  		return view('dashboard', compact('data', 'genre'));
 
-	}
+  	}
 
 
     public function index()

@@ -160,8 +160,24 @@
                         <div class="section-title">
                             <h5>Your Comment</h5>
                         </div>
-                        <form action="#">
-                            <textarea placeholder="Your Comment" class="text-dark"></textarea>
+                        <form action="{{url('rating')}}" method="post">
+                          @csrf
+                          <div class="rating-css">
+                              <div class="star-icon">
+                                  <input type="radio" value="1" name="rating" checked id="rating1">
+                                  <label for="rating1" class="fa fa-star"></label>
+                                  <input type="radio" value="2" name="rating" id="rating2">
+                                  <label for="rating2" class="fa fa-star"></label>
+                                  <input type="radio" value="3" name="rating" id="rating3">
+                                  <label for="rating3" class="fa fa-star"></label>
+                                  <input type="radio" value="4" name="rating" id="rating4">
+                                  <label for="rating4" class="fa fa-star"></label>
+                                  <input type="radio" value="5" name="rating" id="rating5">
+                                  <label for="rating5" class="fa fa-star"></label>
+                              </div>
+                          </div>
+                            <textarea placeholder="Your Comment" class="text-dark" name="ulasan"></textarea>
+                            <input type="hidden" name="film_id" value="{{ ($data['id']) }}">
                             <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
                         </form>
                     </div>

@@ -44,6 +44,7 @@ Route::get('/dash', [FilmController::class, 'dashboard2']);
 Route::get('detail/{id}', [FilmController::class, 'detail'])->name('detail');
 Route::get('watch/{id}', [FilmController::class, 'watch'])->name('watch');
 Route::get('category', [FilmController::class, 'category'])->name('category');
+Route::post('rating', [FilmController::class, 'rating'])->name('rating');
 
 
 Route::resource('film', FilmController::class);
