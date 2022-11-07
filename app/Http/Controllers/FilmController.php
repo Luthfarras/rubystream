@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Facades\Paginate\Paginator;
 use DB;
 use Cart;
+use Illuminate\Support\Facades\Auth;
 
 class FilmController extends Controller
 {
@@ -28,9 +29,33 @@ class FilmController extends Controller
 
     public function dashboard2()
     {
-        $cart = Cart::getContent();
+        $userid = Auth::user();
+        if ($userid) {
+            $cart = Cart::session($userid->id)->getContent();
+            
+        }else{
+            $cart = Cart::getContent();
+        }
+        // 
+        // $get = [];
+        
+        // dd($get);
         $genre = Genre::all();
         $data = Film::paginate(20);
+
+
+        // tampilan button add cart (pindah blade)
+        foreach($data as $dd){
+            // echo $dd['id'];
+            foreach($cart as $a){
+                if($dd['id'] != $a['id']){
+                    echo $dd['id'];
+
+                }
+                // $get[] = $a['id'];
+            }
+        }
+
         return view('dashboard2', compact('data', 'cart', 'genre'));
     }
 

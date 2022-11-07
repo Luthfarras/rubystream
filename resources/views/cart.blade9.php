@@ -22,7 +22,7 @@
   @endforeach
   </table>
   <a href="{{url('checkout')}}" class="btn btn-primary mb-5">Checkout</a>
-  <a href="#" id="bayar" class="btn btn-primary mb-5">Midrans</a>
+  <a id="bayar" class="btn btn-primary text-white mb-5">Pay Midrans</a>
 
 </div>
 
@@ -30,23 +30,26 @@
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-3WReVvYy5X8PmIaz"></script>
     <!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <script type="text/javascript">
     $('#bayar').click(function(e){
       e.preventDefault();
 
       $.ajax({
         type: "get",
-        url: "midtrans",
+        url: "midt",
         data: {
-          id: '1234',
-          harga: '10000',
-          metode: 'bni_va'
+          // id: '7786',
+          // harga: '100000',
+          // metode: 'bca_va',
+          // metode: 'shopeepay'
         },
         dataType: "json",
         success: function (response){
+          console.log(response);
           snap.pay(response, {
           onSuccess: function(result){
-            console.log(result);
           },
           onPending: function(result){
           },
@@ -56,5 +59,11 @@
         }
       });
     });
+
+    // function send_response_to_form(result){
+    //     document.getElementById('json_callback').value=JSON.stringify(result);
+    //     $('#submit_form').submit();
+    //   }
+      
     </script>
 @endsection

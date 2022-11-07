@@ -13,8 +13,7 @@
                         <input type="text" class="form-control @error('genre') is-invalid @enderror" id="genre" placeholder="Input Genre" name="genre" value="{{old('genre')}}">
                     </div>
                     <div class="mt-5">
-                        <button type="submit" class="btn btn-dark text-white">Input</button>
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="float-right btn btn-dark text-white">Input</button>
                     </div>
                 </div>
             </form>

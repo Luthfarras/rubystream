@@ -60,8 +60,9 @@ Route::put('update', [App\Http\Controllers\HomeController::class, 'update'])->na
 Route::get('/search', [FilmController::class, 'search'])->name('search');
 Route::get('/category', [FilmController::class, 'category'])->name('category');
 // Route::get('/film',[ApiFilmController::class,'getdata']);
-
+;
 Route::get('cart', [CartController::class, 'list'])->name('cart.list');
+Route::get('midt', [CartController::class, 'midt']);
 Route::post('cart', [CartController::class, 'list_post']);
 // Route::post('cart', [CartController::class, 'add_cart'])->name('cart.store');
 Route::post('cartlist/{id}', [CartController::class, 'add_cart']);

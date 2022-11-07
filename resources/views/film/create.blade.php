@@ -62,8 +62,7 @@
                             placeholder="full_movie" name="full_movie">
                     </div>
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-md btn-primary text-white mb-2"
-                            style="float: right;">Input</button>
+                        <button type="submit" class="float-right btn btn-dark text-white">Input</button>
                     </div>
                 </div>
             </form>

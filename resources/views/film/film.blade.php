@@ -1,7 +1,7 @@
 @extends('template')
 @section('content')
     <div class="form-group container mt-3">
-        <a class="btn btn-dark" href="" data-toggle="modal" data-target="#createfilm">Add</a>
+        <a class="btn btn-dark" href="" data-toggle="modal" data-target="#createfilm">Input Film</a>
     </div>
     @include('film.create')
 

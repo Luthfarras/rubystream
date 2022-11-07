@@ -105,8 +105,7 @@
                               @endif
                               @else
                                 @if(Auth::user()->role == 'user')
-                                <!-- <a href="{{ url('cart/'.$d->id) }}" class="btn btn-sm btn-primary mt-2">Add to Cart</a> -->
-                                      <button class="btn btn-sm btn-primary mt-2" type="submit">Add to Cart</button>
+                                <button class="btn btn-sm btn-primary mt-2" type="submit">Add to Cart</button>
                                 @endif
                               @endguest
                           </div>

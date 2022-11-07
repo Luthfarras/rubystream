@@ -35,8 +35,8 @@
 
         .nice-select ul li {
             color: black;
-            width: 100%;
-            /* width: 29.2rem; */
+            /* width: 100%; */
+            width: 29.2rem;
             padding: none;
         }
 
@@ -143,35 +143,31 @@
                         <nav class="header__menu mobile-menu">
                             <ul class="position-absolute">
                                 <li>
-                                    <a href="/cart" class="search-switch text-light"><i class="icon_cart"></i><span
-                                            class="position-absolute badge rounded-pill bg-danger"
-                                            style="font-size:12px;">{{ Cart::getTotalQuantity() }}</span></a>
+                                    <a href="/cart" class="text-light">
+                                        <i class="icon_cart"></i>
+                                        <span class="position-absolute badge rounded-pill bg-danger" style="font-size:12px;">{{ Cart::getTotalQuantity() }}</span>
+                                    </a>
                                 </li>
                                 <a href="#" class="search-switch text-light"><span class="icon_search"></span></a>
                                 <li>
-                                    <a>
-                                        @if (Auth::user())
-                                            {{ Str::limit(Auth::user()->name, 10) }}
-                                        @endif
-                                        <span class="icon_profile"></span>
-                                    </a>
+                                    <a> <span class="icon_profile"></span> </a>
                                     <ul class="dropdown">
-
                                         <li>
                                             @guest
                                                 @if (Route::has('login'))
                                                     <a class="dropdown-item text-dark"
-                                                        href="{{ route('login') }}">Login</a>
+                                                        href="{{ route('login') }}"><span class="fa fa-key"></span> Login</a>
                                                     <a class="dropdown-item text-dark"
-                                                        href="{{ route('register') }}">Register</a>
+                                                        href="{{ route('register') }}"><span class="fa fa-address-card-o"></span> Register</a>
                                                 @endif
                                             @else
-                                                <a class="dropdown-item text-dark" href="{{ route('home') }}">Profile</a>
+                                                <a class="dropdown-item text-dark"><span class="fa fa-circle text-success"></span> <b>{{ Str::limit(Auth::user()->name, 10) }}</b></a>
+                                                <a class="dropdown-item text-dark" href="{{ route('home') }}"><span class="fa fa-user-circle-o"></span> Profile</a>
                                                 <a class="dropdown-item text-dark"
-                                                    href="{{ route('history') }}">History</a>
+                                                    href="{{ route('history') }}"><span class="fa fa-history"></span> History</a>
                                                 <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span>
                                                     {{ __('Logout') }}
                                                 </a>
                                             @endguest
@@ -271,7 +267,6 @@
     <!-- start pagination script -->
     <script src="{{ asset('https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
