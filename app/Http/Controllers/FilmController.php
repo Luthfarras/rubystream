@@ -7,7 +7,6 @@ use App\Models\Film;
 use App\Models\Genre;
 use App\Models\Rating;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Facades\Paginate\Paginator;
 use DB;
 use Cart;
@@ -32,13 +31,13 @@ class FilmController extends Controller
         $userid = Auth::user();
         if ($userid) {
             $cart = Cart::session($userid->id)->getContent();
-            
+
         }else{
             $cart = Cart::getContent();
         }
-        // 
+        //
         // $get = [];
-        
+
         // dd($get);
         $genre = Genre::all();
         $data = Film::paginate(20);
@@ -63,7 +62,8 @@ class FilmController extends Controller
     {
         $data = Film::findOrFail($id);
         $genre = Genre::all();
-        return view('detail', compact('data', 'genre'));
+        $rate = Rating::all();
+        return view('detail', compact('data', 'genre', 'rate'));
     }
 
     public function watch($id)

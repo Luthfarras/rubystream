@@ -11,4 +11,9 @@ class Rating extends Model
 
     protected $table = 'ratings';
     protected $guarded = ['id'];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
