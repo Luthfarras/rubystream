@@ -24,7 +24,7 @@
                     @foreach ($data as $d)
                         @if ($d->tgl_order == $dd->tgl_order)
                             <tr class="text-center">
-                                <td style="border: 0;" class="align-middle text-left" scope="row">{{ $d->nama_film }}
+                                <td style="border: 0;" class="align-middle text-left" scope="row"><a href="{{route('detail',$d->id)}}">{{ $d->nama_film }}</a>
                                 </td>
                                 <td style="border: 0;" class="align-middle" scope="row"><img src="{{ $d->cover }}"
                                         alt="" width="50%"></td>
@@ -37,7 +37,7 @@
                                 </td>
                             </tr>
                             @php
-                                
+
                                 $total += $d->harga;
                             @endphp
                         @endif
