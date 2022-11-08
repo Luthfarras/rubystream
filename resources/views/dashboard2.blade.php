@@ -76,41 +76,32 @@
                 <div class="row">
                   @if(!empty($data))
                   @foreach($data as $d)
-                  <div class="col-lg-4 col-md-6 col-sm-6">
-                    <form class="" action="{{ url('cartlist/'.$d->id) }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                      <div class="product__item">
-                        <input type="hidden" name="id" value="{{ ($d['id']) }}">
-                        <input type="hidden" name="nama_film" value="{{ ($d['nama_film']) }}">
-                        <input type="file" name="cover" value="{{ ($d['cover']) }}" hidden>
-                        <input type="hidden" name="harga" value="{{ ($d['harga']) }}">
-                        <!-- <input type="hidden" name="qty" value=1> -->
-                        <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal{{ $d->id }}"></div>
-                        <!-- <img id="myImg" src="{{ ($d['cover']) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal"> -->
-
-                          <!-- <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal"> -->
-                              <!-- <div class="ep">18 / 18</div> -->
-                              <!-- <div class="comment"><i class="fa fa-comments"></i> 11</div> -->
-                              <!-- <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
-                          <!-- </div> -->
-                          <div class="product__item__text">
-                              <!-- <ul>
-                                  <li>Active</li>
-                                  <li>Movie</li>
-                              </ul> -->
-                              <h5><a href="{{route('detail',$d->id)}}">{{ $d['nama_film'] }}</a></h5>
-                              @guest
-                              @if(Route::has('login'))
-                              <!-- <p>p</p> -->
-                              @endif
-                              @else
-                                @if(Auth::user()->role == 'user')
-                                <button class="btn btn-sm btn-primary mt-2" type="submit">Add to Cart</button>
-                                @endif
-                              @endguest
+                          <div class="col-lg-4 col-md-6 col-sm-6">
+                            <form class="" action="{{ url('cartlist/'.$d->id) }}" method="post" enctype="multipart/form-data">
+                              @csrf
+                              <div class="product__item">
+                                <input type="hidden" name="id" value="{{ ($d['id']) }}">
+                                <input type="hidden" name="nama_film" value="{{ ($d['nama_film']) }}">
+                                <input type="file" name="cover" value="{{ ($d['cover']) }}" hidden>
+                                <input type="hidden" name="harga" value="{{ ($d['harga']) }}">
+                                <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal{{ $d->id }}"></div>
+                                <!-- <img id="myImg" src="{{ ($d['cover']) }}" style="width:100%;max-width:300px" data-toggle="modal" data-target="#inputModal"> -->
+                                <!-- <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal"> -->
+                                <!-- </div> -->
+                                <div class="product__item__text">
+                                    <h5><a href="{{route('detail',$d->id)}}">{{ $d['nama_film'] }}</a></h5>
+                                    @guest
+                                    @if(Route::has('login'))
+                                    <!-- <p>p</p> -->
+                                    @endif
+                                    @else
+                                      @if(Auth::user()->role == 'user')
+                                      <button class="btn btn-sm btn-primary mt-2" type="submit">Add to Cart</button>
+                                      @endif
+                                    @endguest
+                              </div>
+                            </form>
                           </div>
-                        </form>
-                      </div>
                   </div>
                   <div class="modal fade" id="inputModal{{ $d->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">

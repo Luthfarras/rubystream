@@ -68,22 +68,31 @@
                         </div>
                 </div>
                 <div class="row">
+                  @if(!empty($data))
                   @foreach($data as $d)
-                  <div class="col-lg-2">
-                      <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="{{ ($d['cover']) }}" id="myImg" data-toggle="modal" data-target="#inputModal{{ $d->id }}"></div>
-                          <div class="product__item__text">
-                              <h5><a href="{{route('detail',$d->id)}}" style="font-size: 0.8rem;">{{ $d['nama_film'] }}</a></h5>
-                              @guest
-                              @if(Route::has('login'))
-                              @endif
-                              @else
-                                @if(Auth::user()->role == 'user')
-                                <a href="{{ url('cart/'.$d->id) }}" class="btn btn-sm btn-primary mt-2">Add to Cart</a>
-                                @endif
-                              @endguest
+                          <div class="col-lg-2">
+                            <form class="" action="{{ url('cartlist/'.$d->id) }}" method="post" enctype="multipart/form-data">
+                              @csrf
+                              <div class="product__item">
+                                <input type="hidden" name="id" value="{{ ($d->id) }}">
+                                <input type="hidden" name="nama_film" value="{{ ($d->nama_film) }}">
+                                <input type="file" name="cover" value="{{ ($d->cover) }}" hidden>
+                                <input type="hidden" name="harga" value="{{ ($d->harga) }}">
+                                <div class="product__item__pic set-bg" data-setbg="{{ ($d->cover) }}" id="myImg" data-toggle="modal" data-target="#inputModal{{ $d->id }}"></div>
+                                <div class="product__item__text">
+                                    <h5><a href="{{route('detail',$d->id)}}">{{ $d->nama_film }}</a></h5>
+                                    @guest
+                                    @if(Route::has('login'))
+                                    <!-- <p>p</p> -->
+                                    @endif
+                                    @else
+                                      @if(Auth::user()->role == 'user')
+                                      <button class="btn btn-sm btn-primary mt-2" type="submit">Add to Cart</button>
+                                      @endif
+                                    @endguest
+                              </div>
+                            </form>
                           </div>
-                      </div>
                   </div>
                   <div class="modal fade" id="inputModal{{ $d->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
@@ -93,8 +102,12 @@
                       </div>
                   </div>
                   @endforeach
+                  @else
+                  <p>Data Kosong</p>
+                  @endif
+                  <!-- <a class="btn btn-dark " href="" data-toggle="modal" data-target="#inputModal">Input Genre</a> -->
+
                 </div>
-            </div>
 </div>
 </div>
 <div class="product__sidebar__comment">

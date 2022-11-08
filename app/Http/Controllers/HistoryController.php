@@ -19,7 +19,8 @@ class HistoryController extends Controller
     {
         $user = Auth::user()->id;
         $tanggal = DB::table('pembayarans')->select('tgl_order')->where('pembayarans.user_id','=',$user)->get();
-        $data = DB::table('tokens')->select('*')->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')->join('films', 'films.id', '=', 'tokens.film_id')->where('pembayarans.user_id','=',$user)->get();
+        $data = DB::table('tokens')->select('*')->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')
+        ->join('films', 'films.id', '=', 'tokens.film_id')->where('pembayarans.user_id','=',$user)->get();
         return view('history',compact('tanggal','data'));
     }
 

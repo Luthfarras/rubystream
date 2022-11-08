@@ -38,7 +38,7 @@ class CartController extends Controller
             'order_id' => rand(),
             'gross_amount' => $total,
         ),
-        
+
         "enabled_payments" => [
           "bank_transfer",
           "shopeepay",
@@ -52,7 +52,7 @@ class CartController extends Controller
       //         'name' => $nama,
       //     ]
       // ),
-        
+
         'customer_details' => array(
             'first_name' => Auth::user()->name,
             'last_name' => '',
@@ -66,7 +66,7 @@ class CartController extends Controller
     // dd($crt);
     return view('cart', ['snap_token'=>$snapToken], compact('item'));
   }
-  
+
   public function list_post(Request $request)
     {
       // return $request;
@@ -84,7 +84,7 @@ class CartController extends Controller
       // $pay -> pdf_url = isset($json->pdf_url) ? $json->pdf_url : null;
 
       $pay -> save();
-      if ($pay) {      
+      if ($pay) {
       $payid = $pay->id;
         $faker = fake('id');
         foreach (Cart::session($userid)->getContent() as $cart) {
@@ -97,8 +97,8 @@ class CartController extends Controller
         }
         Cart::session($userid)->clear();
       }
-      
-      return redirect('dash')->with('success', 'Success buy the movie');
+
+      return redirect('/')->with('success', 'Success buy the movie');
       // Alert::success('Congratulations', 'Success, buy the movie');
       // return redirect('dash');
     }
@@ -108,6 +108,14 @@ class CartController extends Controller
       $userid = Auth::user()->id;
       $datas = Film::findOrFail($id);
       $item = Cart::session($userid)->getContent();
+      // foreach ($item as $cart) {
+      //   if ($cart['id'] == $id) {
+      //     return redirect('/')->with('error', 'this item is already on cart');
+      //   }
+      // }
+      // if ($item['id']) {
+      //   // code...
+      // }
       // foreach($item as $a){
       //   if($a['id'] == $id){
       //     return redirect('dash')->with('error', 'quantity lebih dari 1');
@@ -125,11 +133,11 @@ class CartController extends Controller
             'image' => $datas->cover
           )
         ));
-  
-        return redirect('dash')->with('success', 'Successfully added to cart');
+
+        return redirect('/')->with('success', 'Successfully added to cart');
       // }
       // dd($item[1]['id']);
-      // print_r($item[1]['id']);  
+      // print_r($item[1]['id']);
       // $item = Cart::getContent
       // $item[1]['id']
       // $items=array(
@@ -146,7 +154,7 @@ class CartController extends Controller
       //   return redirect('dash')->with('error', 'quantity lebih dari 1');
       // }
 
-      
+
         // \Cart::add([
         //     'id' => $request->id,
         //     'nama_film' => $request->nama_film,
@@ -209,6 +217,6 @@ class CartController extends Controller
   //     }
   //     Alert::success('Congratulations', 'Success, buy the movie');
   //     return redirect('dash');
-    
+
   // }
 }

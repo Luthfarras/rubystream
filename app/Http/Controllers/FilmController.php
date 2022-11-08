@@ -8,7 +8,7 @@ use App\Models\Genre;
 use App\Models\Rating;
 use RealRashid\SweetAlert\Facades\Alert;
 // use Illuminate\Support\Facades\Paginate\Paginator;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Cart;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,9 +21,49 @@ class FilmController extends Controller
      */
     public function dashboard()
     {
-        $data = Film::paginate(20);
-        $genre = Genre::all();
-        return view('dashboard', compact('data', 'genre'));
+      $userid = Auth::user();
+      if ($userid) {
+          $cart = Cart::session($userid->id)->getContent();
+
+      }else{
+          $cart = Cart::getContent();
+      }
+
+      // foreach ($cart as $c) {
+      //   $a = $c['id'];
+      // }
+      // dd($a);
+
+      //
+      // $get = [];
+
+      // dd($get);
+      // $user_id = Auth::user()->id;
+      $genre = Genre::all();
+      $data = Film::paginate(20);
+      // $data = DB::table('films')->select('films.id')->join('tokens', 'films.id', '=', 'tokens.film_id')
+      // ->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')->where('pembayarans.user_id', '=', $user_id)->get();
+      // $data2 = DB::table('films')->select('*')->where('films.id', '<>', $data)->get();
+      // $data2 = Film::select('films.id')->get();
+      // if ($data2 != $data) {
+      //   // echo $data2;
+      //   return view('dashboard', compact('data2', 'cart', 'genre'));
+      //
+      // }
+      // dd($data2);
+      // foreach($data as $d){
+      //     // echo $dd['id'];
+      //     foreach($cart as $c){
+      //         if($d['id'] != $c['id']){
+      //             echo $c['id'];
+      //
+      //         }
+      //         // $get[] = $a['id'];
+      //     }
+      //   }
+
+
+      return view('dashboard', compact('data', 'cart', 'genre'));
     }
 
     public function dashboard2()
@@ -41,19 +81,6 @@ class FilmController extends Controller
         // dd($get);
         $genre = Genre::all();
         $data = Film::paginate(20);
-
-
-        // tampilan button add cart (pindah blade)
-        foreach($data as $dd){
-            // echo $dd['id'];
-            foreach($cart as $a){
-                if($dd['id'] != $a['id']){
-                    echo $dd['id'];
-
-                }
-                // $get[] = $a['id'];
-            }
-        }
 
         return view('dashboard2', compact('data', 'cart', 'genre'));
     }
