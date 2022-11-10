@@ -102,7 +102,8 @@
                         @foreach($rate as $r)
                         <div class="anime__review__item">
                             <div class="anime__review__item__pic">
-                                <img src="img/anime/review-2.jpg" alt="">
+                                <img src="{{ asset('anime-main/img/anime/review-3.jpg')}}" alt="">
+                                <!-- <span class="fa fa-user-circle-o text-white"></span> -->
                             </div>
                             <div class="anime__review__item__text">
                                 <h6>{{$r->users->name}}</h6>
