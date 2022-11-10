@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Film;
 use App\Models\Genre;
+use App\Models\Pembayaran;
 use App\Models\Rating;
+use App\Models\Token;
 use RealRashid\SweetAlert\Facades\Alert;
 // use Illuminate\Support\Facades\Paginate\Paginator;
 use Illuminate\Support\Facades\DB;
@@ -95,12 +97,41 @@ class FilmController extends Controller
 
     public function watch($id)
     {
-        // $data = Film::findOrFail($id);
-        $data = DB::table('tokens')->select('tokens.film_id')->join('pembayarans','tokens.pembayaran_id','=','pembayarans.id')
-        ->where('pembayarans.user_id','=',Auth::user()->id);
+        $data = Film::findOrFail($id);
+        // dd($id);
+        // $filmid = $id;
+        $user_id = Auth::user()->id;
+        // dd($user_id);
+        // $data4 = Pembayaran::where('user_id','=', 3)->exists();
+        // dd($data4);
+                // dd($data4);
+        $data2 = Pembayaran::select('user_id')->join('tokens','tokens.pembayaran_id','=','pembayarans.id')
+        ->where('pembayarans.user_id','=', 4)->where('tokens.film_id', '=', 1)->exists();
+        //  dd($data2);
+        if ($data2 === true) {
+            return view('watch', compact('data'));
+        }else{
+            Alert::error('Warning', 'This film is not purcashed yet!');
+            return redirect('detail/'.$id);
+        }
+        // foreach ($data2 as $d2) {
+        //     if ($d2->user_id == $user_id) {
+        //         $datasatu = $d2->user_id;
+        //     }
+        // }
+
+        // $data3 = Token::select('film_id')->join('pembayarans','tokens.pembayaran_id','=','pembayarans.id')
+        // ->where('tokens.film_id', '=', $id)->get();
+        // foreach ($data3 as $d3) {
+            
+        //     if ($d3->film_id == $id) {
+        //         $datatiga = $d3->film_id;
+        //     }
+        // }
+        // // dd($data3);
         // $genre = Genre::all();
-        $genre = DB::table('films')->select('genre_id')->join('genres','films.genre_id','=','genres.id');
-        return view('watch', compact('data', 'genre'));
+        // $genre = DB::table('films')->select('genre_id')->join('genres','films.genre_id','=','genres.id');
+        // return view('watch', compact('data', 'id', 'datasatu', 'datatiga', 'genre'));
     }
 
     public function category()
@@ -127,7 +158,7 @@ class FilmController extends Controller
         'film_id' => $request->film_id,
         'users_id' => $userid,
       ]);
-      return redirect('/');
+      return redirect()->back();
     }
 
     public function search(Request $request)
