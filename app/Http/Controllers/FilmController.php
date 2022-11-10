@@ -95,8 +95,11 @@ class FilmController extends Controller
 
     public function watch($id)
     {
-        $data = Film::findOrFail($id);
-        $genre = Genre::all();
+        // $data = Film::findOrFail($id);
+        $data = DB::table('tokens')->select('tokens.film_id')->join('pembayarans','tokens.pembayaran_id','=','pembayarans.id')
+        ->where('pembayarans.user_id','=',Auth::user()->id);
+        // $genre = Genre::all();
+        $genre = DB::table('films')->select('genre_id')->join('genres','films.genre_id','=','genres.id');
         return view('watch', compact('data', 'genre'));
     }
 

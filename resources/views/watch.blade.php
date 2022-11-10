@@ -10,7 +10,7 @@
                 <div class="breadcrumb__links">
                   <a href="/"><i class="fa fa-home"></i> Home</a>
                   <a href="/genre">Categories</a>
-                  <a href="#">{{$data->genre->genre}}</a>
+                  <a href="#">{{$genre->genre->genre}}</a>
                     <span>{{ ($data['nama_film']) }}</span>
                 </div>
             </div>
@@ -30,7 +30,12 @@
               @endguest
                 <div class="anime__video__player">
                     <video id="player" playsinline controls data-poster="{{ ($data['cover']) }}">
+                        @if ($id == $data)
+                            
                         <source src="{{ asset('vid/'.$data->full_movie) }}" type="video/mp4" />
+                        @else
+                            <p class="text-white">Anda belum membeli film ini</p>
+                        @endif
                         <!-- Captions are optional -->
                         <track kind="captions" label="English captions" src="#" srclang="en" default />
                     </video>
