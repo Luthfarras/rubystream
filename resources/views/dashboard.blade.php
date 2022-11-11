@@ -9,7 +9,7 @@
     #myImg:hover {
         opacity: 0.5;
     }
-    
+
     .pagination li a {
             /* border: solid 2px rgb(255, 0, 0) ; */
             background-color: rgb(0, 0, 69);
@@ -103,8 +103,10 @@
                                                             @endif
                                                         @else
                                                             @if (Auth::user()->role == 'user')
-                                                                @if(DB::table('films')->join('tokens', 'films.id', '=', 'tokens.film_id')->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')->where('pembayarans.user_id', '=', Auth::user()->id)->where('films.id', '=', $d->id)->exists())
-                                                                <a href="{{route('watch',$d->id)}}" class="btn btn-secondary">Watch this Movie</a>
+                                                                @if($cart->where('id', $d->id)->count())
+                                                                <button type="" name="button" disabled class="btn btn-sm btn-secondary mt-2">In Cart</button>
+                                                                @elseif(DB::table('films')->join('tokens', 'films.id', '=', 'tokens.film_id')->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')->where('pembayarans.user_id', '=', Auth::user()->id)->where('films.id', '=', $d->id)->exists())
+                                                                <a href="{{route('watch',$d->id)}}" class="btn btn-sm btn-danger mt-2">Watch this Movie</a>
                                                                 @else
                                                                 <button class="btn btn-sm btn-primary mt-2" type="submit">Add to Cart</button>
                                                                 @endif

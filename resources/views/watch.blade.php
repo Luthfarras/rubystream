@@ -28,14 +28,10 @@
                         @endif
                     @endguest
                     <div class="anime__video__player">
-                        @if (Auth::user()->id == $datasatu && $id == $datatiga)
                             <video id="player" playsinline controls data-poster="{{ $data['cover'] }}">
                                 <source src="{{ asset('vid/' . $data->full_movie) }}" type="video/mp4" />
                                 <track kind="captions" label="English captions" src="#" srclang="en" default />
                             </video>
-                        @else
-                            <p>anda belum membeli film ini</p>
-                        @endif
                     </div>
                     <!-- <div class="anime__details__episodes">
                                         <div class="section-title">

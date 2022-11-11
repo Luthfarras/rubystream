@@ -81,8 +81,15 @@
                           @endif
                           @else
                             @if(Auth::user()->role == 'user')
-                                  <button class="follow-btn" type="submit">Add to Cart</button>
-                                  <a href="{{route('watch',$data->id)}}" class="watch-btn"> <span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                              @if($cart->where('id', $data->id)->count())
+                              <button class="follow-btn" disabled type="submit">In Cart</button>
+                              @elseif(DB::table('films')->join('tokens', 'films.id', '=', 'tokens.film_id')->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')->where('pembayarans.user_id', '=', Auth::user()->id)->where('films.id', '=', $data->id)->exists())
+                              <a href="{{route('watch',$data->id)}}" class="watch-btn"> <span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                              @else
+                              <button class="follow-btn" type="submit">Add to Cart</button>
+                              @endif
+                                  <!-- <button class="follow-btn" type="submit">Add to Cart</button>
+                                  <a href="{{route('watch',$data->id)}}" class="watch-btn"> <span>Watch Now</span> <i class="fa fa-angle-right"></i></a> -->
 
                             @endif
                           @endguest

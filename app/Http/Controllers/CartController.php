@@ -112,9 +112,11 @@ class CartController extends Controller
 
   public function add_cart(Request $request, $id)
     {
+      // dd($request->id);
       $userid = Auth::user()->id;
       $datas = Film::findOrFail($id);
       $item = Cart::session($userid)->getContent();
+      // $aaa = Cart::session($userid)->get($request->id);
       // foreach ($item as $cart) {
       //   if ($cart['id'] == $id) {
       //     return redirect('/')->with('error', 'this item is already on cart');
@@ -187,6 +189,25 @@ class CartController extends Controller
         //
         // return redirect()->route('cart.list');
     }
+
+    public function add_cart2(Request $request, $id)
+      {
+        $userid = Auth::user()->id;
+        $datas = Film::findOrFail($id);
+
+        Cart::session($userid)->add(array(
+          'id' => $id,
+          'name' => $datas->nama_film,
+          'price' => $datas->harga,
+          'quantity' => 1,
+          'attributes' => array(
+            'image' => $datas->cover
+          )
+        ));
+
+        return redirect('detail/' .$id)->with('success', 'Successfully added to cart');
+      }
+
 
     public function del_cart($id)
     {

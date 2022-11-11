@@ -106,12 +106,14 @@ class FilmController extends Controller
         $data = Film::findOrFail($id);
         $genre = Genre::all();
         $rate = Rating::all();
-        return view('detail', compact('data', 'genre', 'rate'));
+        $cart = Cart::session(Auth::user()->id)->getContent();
+        return view('detail', compact('data', 'genre', 'rate', 'cart'));
     }
 
     public function watch($id)
     {
         $data = Film::findOrFail($id);
+        $genre = Genre::all();
         // dd($id);
         // $filmid = $id;
         $user_id = Auth::user()->id;
@@ -120,10 +122,10 @@ class FilmController extends Controller
         // dd($data4);
                 // dd($data4);
         $data2 = Pembayaran::select('user_id')->join('tokens','tokens.pembayaran_id','=','pembayarans.id')
-        ->where('pembayarans.user_id','=', 4)->where('tokens.film_id', '=', 1)->exists();
+        ->where('pembayarans.user_id','=', $user_id)->where('tokens.film_id', '=', $id)->exists();
         //  dd($data2);
         if ($data2 === true) {
-            return view('watch', compact('data'));
+            return view('watch', compact('data', 'genre'));
         }else{
             Alert::error('Warning', 'This film is not purcashed yet!');
             return redirect('detail/'.$id);
@@ -137,7 +139,7 @@ class FilmController extends Controller
         // $data3 = Token::select('film_id')->join('pembayarans','tokens.pembayaran_id','=','pembayarans.id')
         // ->where('tokens.film_id', '=', $id)->get();
         // foreach ($data3 as $d3) {
-            
+
         //     if ($d3->film_id == $id) {
         //         $datatiga = $d3->film_id;
         //     }

@@ -33,7 +33,7 @@
                                     <a href="dashboard"></a>
                                 </td>
                                 <td style="border: 0;">
-                                    <a class="btn btn-danger" href="">Delete</a>
+                                    <a class="btn btn-danger" href="{{route('watch',$d->id)}}">Watch</a>
                                 </td>
                             </tr>
                             @php
