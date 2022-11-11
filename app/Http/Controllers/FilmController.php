@@ -134,9 +134,10 @@ class FilmController extends Controller
         // return view('watch', compact('data', 'id', 'datasatu', 'datatiga', 'genre'));
     }
 
-    public function category()
+    public function category($id)
     {
-        $data = Film::paginate(20);
+        $data = Film::select('*')->join('genres', 'genres.id', '=', 'films.genre_id')->where('genres.id', '=', $id)->paginate(10);
+        // $data = Film::where('films.id','>',100)->paginate(10);
         $genre = Genre::all();
         return view('category', compact('data', 'genre'));
     }
