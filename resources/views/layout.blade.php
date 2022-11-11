@@ -105,33 +105,7 @@
                                     @if (Route::has('login'))
                                         <li class="@if (Request::is('/*')) active @endif"><a
                                                 href="/">Homepage</a></li>
-                                        <li><a>Categories <span class="arrow_carrot-down"></span></a>
-                                            <ul class="dropdown">
-                                                @foreach ($genre as $g)
-                                                    <li><a href="{{ url('category/' . $g->id) }}">{{ $g['genre'] }}</a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        </li>
                                     @endif
-                                @else
-                                    <li class="@if (Request::is('/*')) active @endif"><a
-                                            href="/">Homepage</a></li>
-                                    <li><a>Categories <span class="arrow_carrot-down"></span></a>
-                                        <ul class="dropdown">
-                                            @foreach ($genre as $g)
-                                                <li><a href="{{ url('category/' . $g->id) }}">{{ $g['genre'] }}</a></li>
-                                            @endforeach
-                                            <li><a href="/category">Category</a></li>
-                                            <li><a href="">Film Details</a></li>
-                                            <li><a href="">Film Watching</a></li>
-                                            <li><a href="">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="@if (Request::is('film*')) active @endif"><a href="/film">List
-                                            Film</a></li>
-                                    <li class="@if (Request::is('genre*')) active @endif"><a href="/genre">Genre</a>
-                                    </li>
                                 @endguest
                             </ul>
                         </nav>

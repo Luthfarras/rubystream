@@ -24,7 +24,6 @@ class FilmController extends Controller
     public function dashboard()
     {
       $userid = Auth::user();
-      $user_id = Auth::user()->id;
       if ($userid) {
           $cart = Cart::session($userid->id)->getContent();
 
@@ -44,9 +43,9 @@ class FilmController extends Controller
       // $user_id = Auth::user()->id;
       $genre = Genre::all();
       $data = Film::paginate(20);
-      $data2 = Film::join('tokens', 'films.id', '=', 'tokens.film_id')
-      ->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')
-      ->where('pembayarans.user_id', '=', $user_id)->where('films.id', '=', 1)->exists();
+    //   $data2 = Film::join('tokens', 'films.id', '=', 'tokens.film_id')
+    //   ->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')
+    //   ->where('pembayarans.user_id', '=', $user_id)->where('films.id', '=', 1)->exists();
     //   if ($data2) {
     //     echo "watch this movie";
     //   }else {
@@ -75,7 +74,7 @@ class FilmController extends Controller
       //   }
 
 
-      return view('dashboard', compact('data', 'data2', 'cart', 'genre'));
+      return view('dashboard', compact('data', 'cart', 'genre'));
     }
 
     public function dashboard2()
