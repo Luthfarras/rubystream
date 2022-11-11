@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Film;
+use App\Models\Genre;
 use App\Models\Pay;
 use App\Models\Pembayaran;
 use App\Models\Token;
@@ -22,9 +23,10 @@ class CartController extends Controller
     $item = Cart::session($userid)->getContent();
     $total = Cart::session($userid)->getTotal();
     $aa = Cart::session($userid);
+    $genre = Genre::all();
     // dd($crt);
 
-    return view('cart', compact('item'));
+    return view('cart', compact('item','genre'));
   }
 
   public function midt(Request $request)
