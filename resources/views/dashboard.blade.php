@@ -90,8 +90,12 @@
                                                             @endif
                                                         @else
                                                             @if (Auth::user()->role == 'user')
+                                                                @if(DB::table('films')->join('tokens', 'films.id', '=', 'tokens.film_id')->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')->where('pembayarans.user_id', '=', Auth::user()->id)->where('films.id', '=', $d->id)->exists())
+                                                                <a href="{{route('watch',$d->id)}}" class="btn btn-secondary">Watch this Movie</a>
+                                                                @else
                                                                 <button class="btn btn-sm btn-primary mt-2" type="submit">Add
                                                                     to Cart</button>
+                                                                @endif
                                                             @endif
                                                         @endguest
                                                     </div>

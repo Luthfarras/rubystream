@@ -24,6 +24,7 @@ class FilmController extends Controller
     public function dashboard()
     {
       $userid = Auth::user();
+      $user_id = Auth::user()->id;
       if ($userid) {
           $cart = Cart::session($userid->id)->getContent();
 
@@ -43,6 +44,15 @@ class FilmController extends Controller
       // $user_id = Auth::user()->id;
       $genre = Genre::all();
       $data = Film::paginate(20);
+      $data2 = Film::join('tokens', 'films.id', '=', 'tokens.film_id')
+      ->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')
+      ->where('pembayarans.user_id', '=', $user_id)->where('films.id', '=', 1)->exists();
+    //   if ($data2) {
+    //     echo "watch this movie";
+    //   }else {
+    //     echo "add to cart";
+    //   }
+
       // $data = DB::table('films')->select('films.id')->join('tokens', 'films.id', '=', 'tokens.film_id')
       // ->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')->where('pembayarans.user_id', '=', $user_id)->get();
       // $data2 = DB::table('films')->select('*')->where('films.id', '<>', $data)->get();
@@ -65,7 +75,7 @@ class FilmController extends Controller
       //   }
 
 
-      return view('dashboard', compact('data', 'cart', 'genre'));
+      return view('dashboard', compact('data', 'data2', 'cart', 'genre'));
     }
 
     public function dashboard2()
@@ -77,14 +87,19 @@ class FilmController extends Controller
         }else{
             $cart = Cart::getContent();
         }
+
+        $data2 = Film::join('tokens', 'films.id', '=', 'tokens.film_id')
+        ->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')
+        ->where('pembayarans.user_id', '=', Auth::user()->id)->get();
         //
+        // Film::join('tokens', 'films.id', '=', 'tokens.film_id')->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')->where('pembayarans.user_id', '=', Auth::user()->id)->where('films.id', '=', $d->id)->exists()
         // $get = [];
 
         // dd($get);
         $genre = Genre::all();
         $data = Film::paginate(20);
 
-        return view('dashboard2', compact('data', 'cart', 'genre'));
+        return view('dashboard2', compact('data', 'data2', 'cart', 'genre'));
     }
 
     public function detail($id)
