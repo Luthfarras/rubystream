@@ -68,9 +68,9 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="product__pagination">
+                    {{-- <div class="product__pagination"> --}}
                         {{ $data->links() }}
-                    </div>
+                    {{-- </div> --}}
                 </div>
             </div>
         </div>
