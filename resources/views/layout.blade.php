@@ -116,6 +116,10 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul class="position-absolute">
+                            @guest
+                                @if (Route::has('login'))
+                                @endif
+                                @else
                                 <li>
                                     <a href="/cart" class="text-light">
                                         <i class="icon_cart"></i>
@@ -123,6 +127,7 @@
                                             style="font-size:12px;">{{ Cart::getTotalQuantity() }}</span>
                                     </a>
                                 </li>
+                            @endguest
                                 <a href="#" class="search-switch text-light"><span class="icon_search"></span></a>
                                 <li>
                                     <a> <span class="icon_profile"></span> </a>
