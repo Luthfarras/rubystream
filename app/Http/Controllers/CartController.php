@@ -29,6 +29,11 @@ class CartController extends Controller
     $total = Cart::session($userid)->getTotal();
     $aa = Cart::session($userid);
 
+    if ($total == 0) {
+      Alert::error('Warning', 'Your cart is empty');
+      return redirect('/');
+  }else{
+
     Config::$serverKey = 'SB-Mid-server-FgSMRXe6gp7YP34lYPxa3knw';
     Config::$isProduction = false;
     Config::$isSanitized = true;
@@ -66,6 +71,7 @@ class CartController extends Controller
 
     // dd($crt);
     return view('cart', ['snap_token'=>$snapToken], compact('item','genre'));
+    }
   }
 
   public function list_post(Request $request)

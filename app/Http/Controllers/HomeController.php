@@ -28,7 +28,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $genre = Genre::all();
+        return view('home',compact('genre'));
     }
 
     public function template()
