@@ -2,10 +2,11 @@
 
 @section('content')
     <!-- start modal add -->
-    <div class="form-group container mt-3">
+    <div class="form-group container mt-5">
+        @if (Auth::user()->role == 'admin')
         <a class="btn btn-dark " href="" data-toggle="modal" data-target="#inputModal">Input Genre</a>
+        @endif
     </div>
-
     @include('genre.create')
     <!-- end modal add -->
 
@@ -31,16 +32,10 @@
                             </td>
                             @if (Auth::user()->role == 'admin')
                                 <td scope="row" class="border border-0 text-center">
-                                    <a class="btn btn-success" href="" data-toggle="modal"
-                                        data-target="#editgenre{{ $g->id }}">Edit</a>
+                                    <a class="btn btn-success" href="" data-toggle="modal" data-target="#editgenre{{ $g->id }}">Edit</a>
                                     @include('genre.edit')
-                                    <!-- start delete -->
-                                    <!-- <a class="btn btn-danger" href="{{ route('deletegenre', $g->id) }}">Delete</a> -->
-                                    <a class="btn btn-danger" href="" data-toggle="modal"
-                                        data-target="#deletegenre{{ $g->id }}">Delete</a>
+                                    <a class="btn btn-danger" href="" data-toggle="modal"data-target="#deletegenre{{ $g->id }}">Delete</a>
                                     @include('genre.delete')
-                                    <!-- end delete -->
-
                                 </td>
                             @endif
                         </tr>

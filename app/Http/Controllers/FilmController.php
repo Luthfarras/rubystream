@@ -42,7 +42,7 @@ class FilmController extends Controller
       // dd($get);
       // $user_id = Auth::user()->id;
       $genre = Genre::all();
-      $data = Film::paginate(20);
+      $data = Film::paginate(24);
     //   $data2 = Film::join('tokens', 'films.id', '=', 'tokens.film_id')
     //   ->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')
     //   ->where('pembayarans.user_id', '=', $user_id)->where('films.id', '=', 1)->exists();
@@ -96,7 +96,7 @@ class FilmController extends Controller
 
         // dd($get);
         $genre = Genre::all();
-        $data = Film::paginate(20);
+        $data = Film::paginate(24);
 
         return view('dashboard2', compact('data', 'data2', 'cart', 'genre'));
     }
@@ -150,7 +150,7 @@ class FilmController extends Controller
 
     public function category($id)
     {
-        $data = Film::select('*')->join('genres', 'genres.id', '=', 'films.genre_id')->where('genres.id', '=', $id)->paginate(10);
+        $data = Film::select('*')->join('genres', 'genres.id', '=', 'films.genre_id')->where('genres.id', '=', $id)->paginate(18);
         // $data = Film::where('films.id','>',100)->paginate(10);
         $genre = Genre::all();
         return view('category', compact('data', 'genre'));

@@ -1,7 +1,9 @@
 @extends('template')
 @section('content')
-    <div class="form-group container mt-3">
+    <div class="form-group container mt-5">
+        @if (Auth::user()->role == 'admin')
         <a class="btn btn-dark" href="" data-toggle="modal" data-target="#createfilm">Input Film</a>
+        @endif
     </div>
     @include('film.create')
 

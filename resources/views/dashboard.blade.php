@@ -9,6 +9,18 @@
     #myImg:hover {
         opacity: 0.5;
     }
+    
+    .pagination li a {
+            /* border: solid 2px rgb(255, 0, 0) ; */
+            background-color: rgb(0, 0, 69);
+            /* background-color:none !important;  */
+            margin: 5px;
+        }
+
+        .pagination li .active {
+            background-color: none;
+            display: none;
+        }
 </style>
 @section('content')
 
@@ -70,6 +82,7 @@
                                 @if (!empty($data))
                                     @foreach ($data as $d)
                                         <div class="col-lg-2">
+                                        <!-- <div class="col-lg-3 col-md-3 col-sm-3"> -->
                                             <form class="" action="{{ url('cartlist/' . $d->id) }}" method="post"
                                                 enctype="multipart/form-data">
                                                 @csrf
@@ -118,7 +131,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="product__sidebar__comment">
+                </div class="mt-3" >
+                    {{-- <div class="product__pagination"> --}}
+                        {{ $data->links() }}
+                    {{-- </div> --}}
+                </div>
+                <div class="product__sidebar__comment mt-5">
                     <div class="section-title">
                         <h5>New Comment</h5>
                     </div>
