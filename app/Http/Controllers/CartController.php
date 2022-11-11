@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Film;
+use App\Models\Genre;
 use App\Models\Pembayaran;
 use App\Models\Token;
 use Midtrans\Config;
@@ -60,11 +61,11 @@ class CartController extends Controller
             'phone' => rand(),
         ),
     );
-
+    $genre = Genre::all();
     $snapToken = Snap::getSnapToken($params);
 
     // dd($crt);
-    return view('cart', ['snap_token'=>$snapToken], compact('item'));
+    return view('cart', ['snap_token'=>$snapToken], compact('item','genre'));
   }
 
   public function list_post(Request $request)

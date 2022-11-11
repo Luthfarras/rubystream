@@ -57,23 +57,26 @@
             text-align: center;
             text-transform: uppercase;
             padding: 20px 0;
-          }
-          .rating-css input {
+        }
+
+        .rating-css input {
             display: none;
-          }
-          .rating-css input + label {
+        }
+
+        .rating-css input+label {
             font-size: 20px;
             text-shadow: 1px 1px 0 #8f8420;
             cursor: pointer;
-          }
-          .rating-css input:checked + label ~ label {
+        }
+
+        .rating-css input:checked+label~label {
             color: #b4afaf;
-          }
-          .rating-css label:active {
+        }
+
+        .rating-css label:active {
             transform: scale(0.8);
             transition: 0.3s ease;
-          }
-
+        }
     </style>
 </head>
 
@@ -104,13 +107,10 @@
                                                 href="/">Homepage</a></li>
                                         <li><a>Categories <span class="arrow_carrot-down"></span></a>
                                             <ul class="dropdown">
-                                                {{-- @foreach ($genre as $g)
-                                                <li><a href="">{{$g['genre']}}</a></li>
-                                                @endforeach --}}
-                                                <li><a href="/category">Category</a></li>
-                                                <li><a href="">Film Details</a></li>
-                                                <li><a href="">Film Watching</a></li>
-                                                <li><a href="">Blog Details</a></li>
+                                                @foreach ($genre as $g)
+                                                    <li><a href="{{ url('category/' . $g->id) }}">{{ $g['genre'] }}</a>
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </li>
                                     @endif
@@ -119,17 +119,17 @@
                                             href="/">Homepage</a></li>
                                     <li><a>Categories <span class="arrow_carrot-down"></span></a>
                                         <ul class="dropdown">
-                                            {{-- @foreach ($genre as $g)
-                                            <li><a href="">{{$g['genre']}}</a></li>
-                                            @endforeach --}}
-                                            <li><a href="/category">Category</a></li>
+                                            @foreach ($genre as $g)
+                                                <li><a href="{{ url('category/' . $g->id) }}">{{ $g['genre'] }}</a></li>
+                                            @endforeach
+                                            {{-- <li><a href="/category">Category</a></li>
                                             <li><a href="">Film Details</a></li>
                                             <li><a href="">Film Watching</a></li>
-                                            <li><a href="">Blog Details</a></li>
+                                            <li><a href="">Blog Details</a></li> --}}
                                         </ul>
                                     </li>
                                     <li class="@if (Request::is('film*')) active @endif"><a href="/film">List
-                                              Film</a></li>
+                                            Film</a></li>
                                     <li class="@if (Request::is('genre*')) active @endif"><a href="/genre">Genre</a>
                                     </li>
                                 @endguest
@@ -145,7 +145,8 @@
                                 <li>
                                     <a href="/cart" class="text-light">
                                         <i class="icon_cart"></i>
-                                        <span class="position-absolute badge rounded-pill bg-danger" style="font-size:12px;">{{ Cart::getTotalQuantity() }}</span>
+                                        <span class="position-absolute badge rounded-pill bg-danger"
+                                            style="font-size:12px;">{{ Cart::getTotalQuantity() }}</span>
                                     </a>
                                 </li>
                                 <a href="#" class="search-switch text-light"><span class="icon_search"></span></a>
@@ -155,19 +156,23 @@
                                         <li>
                                             @guest
                                                 @if (Route::has('login'))
-                                                    <a class="dropdown-item text-dark"
-                                                        href="{{ route('login') }}"><span class="fa fa-key"></span> Login</a>
-                                                    <a class="dropdown-item text-dark"
-                                                        href="{{ route('register') }}"><span class="fa fa-address-card-o"></span> Register</a>
+                                                    <a class="dropdown-item text-dark" href="{{ route('login') }}"><span
+                                                            class="fa fa-key"></span> Login</a>
+                                                    <a class="dropdown-item text-dark" href="{{ route('register') }}"><span
+                                                            class="fa fa-address-card-o"></span> Register</a>
                                                 @endif
                                             @else
-                                                <a class="dropdown-item text-dark"><span class="fa fa-circle text-success"></span> <b>{{ Str::limit(Auth::user()->name, 10) }}</b></a>
-                                                <a class="dropdown-item text-dark" href="{{ route('home') }}"><span class="fa fa-user-circle-o"></span> Profile</a>
-                                                <a class="dropdown-item text-dark"
-                                                    href="{{ route('history') }}"><span class="fa fa-history"></span> History</a>
+                                                <a class="dropdown-item text-dark"><span
+                                                        class="fa fa-circle text-success"></span>
+                                                    <b>{{ Str::limit(Auth::user()->name, 10) }}</b></a>
+                                                <a class="dropdown-item text-dark" href="{{ route('home') }}"><span
+                                                        class="fa fa-user-circle-o"></span> Profile</a>
+                                                <a class="dropdown-item text-dark" href="{{ route('history') }}"><span
+                                                        class="fa fa-history"></span> History</a>
                                                 <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span>
+                                                     document.getElementById('logout-form').submit();"><span
+                                                        class="fa fa-sign-out"></span>
                                                     {{ __('Logout') }}
                                                 </a>
                                             @endguest
