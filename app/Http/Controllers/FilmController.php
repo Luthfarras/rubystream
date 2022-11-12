@@ -200,11 +200,19 @@ class FilmController extends Controller
 
     public function search(Request $request)
   	{
-      $genre = Genre::all();
-  		$cari = $request->search;
-          $data = Film::where('nama_film', 'like', "%" . $cari . "%")->paginate();
+        $userid = Auth::user();
+        if ($userid) {
+            $cart = Cart::session($userid->id)->getContent();
+  
+        }else{
+            $cart = Cart::getContent();
+        }
 
-  		return view('dashboard', compact('data', 'genre'));
+        $genre = Genre::all();
+  		$cari = $request->search;
+        $data = Film::where('nama_film', 'like', "%" . $cari . "%")->paginate();
+
+  		return view('dashboard', compact('data', 'genre', 'cart'));
 
   	}
 

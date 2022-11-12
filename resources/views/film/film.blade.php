@@ -1,5 +1,19 @@
 @extends('template')
 @section('content')
+    <style type="text/css">
+        .pagination li a {
+            /* border: solid 2px rgb(255, 0, 0) ; */
+            background-color: rgb(0, 0, 69);
+            /* background-color:black;  */
+            margin: 5px;
+        }
+
+        .pagination li .active {
+            background-color: none;
+            display: none;
+        }
+    </style>
+
     <div class="form-group container mt-5">
         @if (Auth::user()->role == 'admin')
         <a class="btn btn-dark" href="" data-toggle="modal" data-target="#createfilm">Input Film</a>
