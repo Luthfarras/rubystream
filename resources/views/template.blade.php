@@ -122,10 +122,6 @@
                                             @foreach ($genre as $g)
                                                 <li><a href="{{ url('category/' . $g->id) }}">{{ $g['genre'] }}</a></li>
                                             @endforeach
-                                            <!-- <li><a href="/category">Category</a></li>
-                                            <li><a href="">Film Details</a></li>
-                                            <li><a href="">Film Watching</a></li>
-                                            <li><a href="">Blog Details</a></li> -->
                                         </ul>
                                     </li>
                                     <li class="@if (Request::is('film*')) active @endif"><a href="/film">List

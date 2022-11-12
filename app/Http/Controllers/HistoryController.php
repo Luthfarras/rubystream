@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Genre;
+use App\Models\Film;
 use App\Models\Pembayaran;
 use App\Models\Token;
 use Illuminate\Http\Request;
@@ -31,12 +32,13 @@ class HistoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index2()
+    public function trans()
     {
         $genre = Genre::all();
-        $trans = Pembayaran::select('*')->join('tokens', 'tokens.pembayaran_id', '=', 'pembayarans.id')
-        ->join('films', 'tokens.film_id', '=', 'films.id')->get();
-        return view('trans', compact('genre', 'trans'));
+        $trans = Pembayaran::select('user_id')->get();
+        $film = Film::select('*')->join('tokens', 'tokens.film_id', '=', 'films.id')
+        ->join('pembayarans', 'tokens.pembayaran_id', '=', 'pembayarans.id')->get();
+        return view('trans', compact('genre', 'trans', 'film'));
     }
 
     /**

@@ -108,6 +108,5 @@ class GenreController extends Controller
 
         Alert::success('Congratulations','Success Delete Genre');
         return redirect('genre');
-        // dd($id);
     }
 }

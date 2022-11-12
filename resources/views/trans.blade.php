@@ -1,12 +1,12 @@
 @extends('template')
 
 @section('content')
-    <div class="container">
+    <div class="container mb-5">
         <h2 class="text-center text-white mt-5">
             Transaction History
         </h2>
         @foreach ($trans as $dd)
-            <table class="table text-white mt-5">
+            <table class="table text-white mt-5 mb-5">
                 <thead>
                     <tr>
                         <td style="border: 0;" scope="row">{{ $dd->user->name }}</td>
@@ -21,7 +21,7 @@
                     @php
                         $total = 0;
                     @endphp
-                    @foreach ($trans as $d)
+                    @foreach ($film as $d)
                         @if ($d->user_id == $dd->user_id)
                             <tr class="text-center">
                                 <td style="border: 0;" class="align-middle text-left" scope="row"><a href="{{route('detail',$d->id)}}">{{ $d->nama_film }}</a>

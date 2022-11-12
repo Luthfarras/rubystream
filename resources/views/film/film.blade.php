@@ -40,7 +40,7 @@
                     @foreach ($data as $dt)
                         <tr class="text-white">
                             <td scope="col" class="border border-0 align-middle text-center">{{ $dt->id }}</td>
-                            <td scope="col" class="border border-0 align-middle">{{ $dt->nama_film }}</td>
+                            <td scope="col" class="border border-0 align-middle"><a href="{{ route('detail', $dt->id) }}">{{ $dt->nama_film }}</a></td>
                             <td scope="col" class="border border-0 align-middle text-center">{{ $dt->genre->genre }}</td>
                             <td scope="col" class="border border-0 align-middle text-center">{{ $dt->harga }}</td>
                             <td scope="col" class="border border-0 align-middle text-center">{{ $dt->tahun_rilis }}</td>

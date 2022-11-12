@@ -83,7 +83,6 @@ class HomeController extends Controller
         $data->update([
             'ava' => $file,
         ]);
-
         return redirect('home');
     }
 }

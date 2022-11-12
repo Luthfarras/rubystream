@@ -15,7 +15,6 @@ class Pembayaran extends Model
     {
         return $this->hasMany(Token::class);
     }
-
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -26,7 +26,6 @@ class FilmController extends Controller
       $userid = Auth::user();
       if ($userid) {
           $cart = Cart::session($userid->id)->getContent();
-
       }else{
           $cart = Cart::getContent();
       }
@@ -35,7 +34,6 @@ class FilmController extends Controller
       $data = Film::paginate(24);
       return view('dashboard', compact('data', 'cart', 'genre', 'trend'));
     }
-
 
     public function detail($id)
     {
@@ -48,7 +46,6 @@ class FilmController extends Controller
         $userid = Auth::user();
         if ($userid) {
             $cart = Cart::session($userid->id)->getContent();
-
         }else{
             $cart = Cart::getContent();
         }
@@ -116,7 +113,6 @@ class FilmController extends Controller
         $userid = Auth::user();
         if ($userid) {
             $cart = Cart::session($userid->id)->getContent();
-
         }else{
             $cart = Cart::getContent();
         }
@@ -128,7 +124,6 @@ class FilmController extends Controller
   		return view('dashboard', compact('data', 'genre', 'cart'));
 
   	}
-
 
     public function index()
     {

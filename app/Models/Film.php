@@ -10,11 +10,11 @@ class Film extends Model
     use HasFactory;
     protected $table = 'films';
     protected $guarded = ['submit'];
+
     public function genre()
     {
         return $this->belongsTo(Genre::class);
     }
-
     public function token()
     {
         return $this->hasOne(Token::class);

@@ -15,7 +15,6 @@ class Token extends Model
     {
         return $this->belongsTo(Film::class);
     }
-
     public function pembayaran()
     {
         return $this->belongsTo(Pembayaran::class);
