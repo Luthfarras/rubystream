@@ -92,7 +92,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo p-1">
-                        <a href="">
+                        <a href="/">
                             <img src="{{ asset('anime-main/img/logo.png') }}" alt="">
                         </a>
                     </div>

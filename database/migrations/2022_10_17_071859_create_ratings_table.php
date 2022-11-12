@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->string('ulasan');
-            $table->integer('rating');
+            $table->string('ulasan')->nullable();
+            $table->integer('rating')->nullable();
             $table->foreignId('film_id');
             $table->foreignId('users_id')->constrained();
             $table->foreign('film_id')->references('id')->on('films');

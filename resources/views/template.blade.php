@@ -92,7 +92,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo p-1">
-                        <a href="">
+                        <a href="/">
                             <img src="{{ asset('anime-main/img/logo.png') }}" alt="">
                         </a>
                     </div>
@@ -146,13 +146,15 @@
                                 @if (Route::has('login'))
                                 @endif
                                 @else
-                                <li>
-                                    <a href="/cart" class="text-light">
-                                        <i class="icon_cart"></i>
-                                        <span class="position-absolute badge rounded-pill bg-danger"
-                                            style="font-size:12px;">{{ Cart::getTotalQuantity() }}</span>
-                                    </a>
-                                </li>
+                                  @if(Auth::user()->role == 'user')
+                                    <li>
+                                        <a href="/cart" class="text-light">
+                                            <i class="icon_cart"></i>
+                                            <span class="position-absolute badge rounded-pill bg-danger"
+                                                style="font-size:12px;">{{ Cart::getTotalQuantity() }}</span>
+                                        </a>
+                                    </li>
+                                  @endif
                             @endguest
                                 <a href="#" class="search-switch text-light"><span class="icon_search"></span></a>
                                 <li>
@@ -172,8 +174,10 @@
                                                     <b>{{ Str::limit(Auth::user()->name, 10) }}</b></a>
                                                 <a class="dropdown-item text-dark" href="{{ route('home') }}"><span
                                                         class="fa fa-user-circle-o"></span> Profile</a>
+                                                        @if(Auth::user()->role == 'user')
                                                 <a class="dropdown-item text-dark" href="{{ route('history') }}"><span
                                                         class="fa fa-history"></span> History</a>
+                                                        @endif
                                                 <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><span
@@ -218,7 +222,7 @@
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="footer__logo">
-                            <a href="./index.html"><img src="{{ asset('anime-main/img/logo.png') }}"
+                            <a href="/"><img src="{{ asset('anime-main/img/logo.png') }}"
                                     alt=""></a>
                         </div>
                     </div>

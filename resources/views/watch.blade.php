@@ -9,7 +9,7 @@
                     <div class="breadcrumb__links">
                         <a href="/"><i class="fa fa-home"></i> Home</a>
                         <a href="/genre">Categories</a>
-                        <a href="#">{{ $data->genre->genre }}</a>
+                        <a href="{{ url('category/' . $data->genre->id) }}">{{ $data->genre->genre }}</a>
                         <span>{{ $data['nama_film'] }}</span>
                     </div>
                 </div>

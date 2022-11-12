@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
+use Cart;
 
 class GenreController extends Controller
 {
@@ -15,8 +17,15 @@ class GenreController extends Controller
      */
     public function index()
     {
+        $userid = Auth::user();
+        if ($userid) {
+            $cart = Cart::session($userid->id)->getContent();
+
+        }else{
+            $cart = Cart::getContent();
+        }
         $genre = Genre::all();
-        return view('genre/genre', compact('genre'));
+        return view('genre/genre', compact('genre', 'cart'));
     }
 
     /**

@@ -117,19 +117,25 @@ class FilmController extends Controller
         // dd($id);
         // $filmid = $id;
         $user_id = Auth::user()->id;
+        $data2 = Pembayaran::select('user_id')->join('tokens','tokens.pembayaran_id','=','pembayarans.id')
+        ->where('pembayarans.user_id','=', $user_id)->where('tokens.film_id', '=', $id)->exists();
+
+        if (Auth::user()->role == 'admin') {
+          return view('watch', compact('data', 'genre'));
+        }elseif (Auth::user()->role == 'user' && $data2 === true) {
+          return view('watch', compact('data', 'genre'));
+        }else {
+          Alert::error('Warning', 'This film is not purcashed yet!');
+          return redirect('detail/'.$id);
+        }
         // dd($user_id);
         // $data4 = Pembayaran::where('user_id','=', 3)->exists();
         // dd($data4);
                 // dd($data4);
-        $data2 = Pembayaran::select('user_id')->join('tokens','tokens.pembayaran_id','=','pembayarans.id')
-        ->where('pembayarans.user_id','=', $user_id)->where('tokens.film_id', '=', $id)->exists();
         //  dd($data2);
-        if ($data2 === true) {
-            return view('watch', compact('data', 'genre'));
-        }else{
-            Alert::error('Warning', 'This film is not purcashed yet!');
-            return redirect('detail/'.$id);
-        }
+        // if ($data2 === true) {
+        // }else{
+        // }
         // foreach ($data2 as $d2) {
         //     if ($d2->user_id == $user_id) {
         //         $datasatu = $d2->user_id;
@@ -150,12 +156,26 @@ class FilmController extends Controller
         // return view('watch', compact('data', 'id', 'datasatu', 'datatiga', 'genre'));
     }
 
+    public function trailer($id)
+    {
+      $data = Film::findOrFail($id);
+      $genre = Genre::all();
+      return view('trailer', compact('data', 'genre'));
+    }
+
     public function category($id)
     {
+        $userid = Auth::user();
+        if ($userid) {
+            $cart = Cart::session($userid->id)->getContent();
+
+        }else{
+            $cart = Cart::getContent();
+        }
         $data = Film::select('*')->join('genres', 'genres.id', '=', 'films.genre_id')->where('genres.id', '=', $id)->paginate(18);
         // $data = Film::where('films.id','>',100)->paginate(10);
         $genre = Genre::all();
-        return view('category', compact('data', 'genre'));
+        return view('category', compact('data', 'genre', 'cart'));
     }
 
     // public function category(Request $request)
@@ -191,9 +211,16 @@ class FilmController extends Controller
 
     public function index()
     {
+        $userid = Auth::user();
+        if ($userid) {
+            $cart = Cart::session($userid->id)->getContent();
+
+        }else{
+            $cart = Cart::getContent();
+        }
         $data = Film::all();
         $genre = Genre::all();
-        return view('film.film', compact('data', 'genre'));
+        return view('film.film', compact('data', 'cart', 'genre'));
     }
 
     /**

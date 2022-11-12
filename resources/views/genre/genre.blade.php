@@ -28,7 +28,7 @@
                         <tr>
                             <th scope="row" class="border border-0">{{ $loop->iteration }}</th>
                             <td scope="row" class="border border-0 text-center">
-                                <a href="/">{{ $g['genre'] }}</a>
+                                <a href="{{ url('category/' . $g->id) }}">{{ $g['genre'] }}</a>
                             </td>
                             @if (Auth::user()->role == 'admin')
                                 <td scope="row" class="border border-0 text-center">
