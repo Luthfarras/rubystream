@@ -39,12 +39,12 @@ class FilmSeeder extends Seeder
              'tahun_rilis' => $item['description'],
              'aktor' => $item['stars'],
              'sinopsis' => $item['plot'],
-             'trailer' => 'haha.mp4',
-             'full_movie' => 'hihi.mp4',
+             'trailer' => 'upload/haha.mp4',
+             'full_movie' => 'upload/hihi.mp4',
              'genre_id' => 5
             ]);
         }
-        
+
         foreach ($diti['results'] as $item) {
             Film::create([
              'nama_film' => $item['title'],
@@ -54,8 +54,8 @@ class FilmSeeder extends Seeder
              'tahun_rilis' => $item['description'],
              'aktor' => $item['stars'],
              'sinopsis' => $item['plot'],
-             'trailer' => 'hihi.mp4',
-             'full_movie' => 'hihi.mp4',
+             'trailer' => 'upload/hihi.mp4',
+             'full_movie' => 'upload/hihi.mp4',
              'genre_id' => 2
             ]);
         }
@@ -69,8 +69,8 @@ class FilmSeeder extends Seeder
              'tahun_rilis' => $item['description'],
              'aktor' => $item['stars'],
              'sinopsis' => $item['plot'],
-             'trailer' => 'haha.mp4',
-             'full_movie' => 'hihi.mp4',
+             'trailer' => 'upload/haha.mp4',
+             'full_movie' => 'upload/hihi.mp4',
              'genre_id' => 1
             ]);
         }
@@ -84,8 +84,8 @@ class FilmSeeder extends Seeder
              'tahun_rilis' => $item['description'],
              'aktor' => $item['stars'],
              'sinopsis' => $item['plot'],
-             'trailer' => 'haha.mp4',
-             'full_movie' => 'hihi.mp4',
+             'trailer' => 'upload/haha.mp4',
+             'full_movie' => 'upload/hihi.mp4',
              'genre_id' => 3
             ]);
         }
@@ -98,8 +98,8 @@ class FilmSeeder extends Seeder
              'tahun_rilis' => $item['description'],
              'aktor' => $item['stars'],
              'sinopsis' => $item['plot'],
-             'trailer' => 'haha.mp4',
-             'full_movie' => 'hihi.mp4',
+             'trailer' => 'upload/haha.mp4',
+             'full_movie' => 'upload/hihi.mp4',
              'genre_id' => 4
             ]);
         }

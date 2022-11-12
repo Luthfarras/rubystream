@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Film;
+use App\Models\Genre;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Genre;
-use App\Models\Film;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
@@ -29,7 +30,9 @@ class HomeController extends Controller
     public function index()
     {
         $genre = Genre::all();
-        return view('home',compact('genre'));
+        $user = Auth::user()->id;
+        $data = Profile::where('user_id', $user)->get();
+        return view('home',compact('genre', 'user', 'data'));
     }
 
     public function template()
@@ -60,6 +63,27 @@ class HomeController extends Controller
         ]);
 
         Alert::success('Congratulations', 'Update Profil Success');
+        return redirect('home');
+    }
+
+    public function uploadstore(Request $request)
+    {
+        $file = $request->file('ava')->store('upload');
+        Profile::create([
+            'user_id' => Auth::user()->id,
+            'ava' => $file,
+        ]);
+        return redirect('home');
+    }
+
+    public function uploadedit(Request $request, $id)
+    {
+        $data = Profile::findOrFail($id);
+        $file = $request->file('ava')->store('upload');
+        $data->update([
+            'ava' => $file,
+        ]);
+
         return redirect('home');
     }
 }

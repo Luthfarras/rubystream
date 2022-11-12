@@ -177,6 +177,9 @@
                                                         @if(Auth::user()->role == 'user')
                                                 <a class="dropdown-item text-dark" href="{{ route('history') }}"><span
                                                         class="fa fa-history"></span> History</a>
+                                                        @else
+                                                <a class="dropdown-item text-dark" href="{{ route('trans') }}"><span
+                                                        class="fa fa-history"></span> Transaction</a>
                                                         @endif
                                                 <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();

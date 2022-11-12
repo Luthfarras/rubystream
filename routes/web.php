@@ -23,14 +23,6 @@ use App\Http\Controllers\HistoryController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('dashboard');
-// });
-
-// Route::get('dashboard', function () {
-//     return view('dashboard');
-// });
-
 // Route::get('template', function () {
 //     return view('template');
 // });
@@ -38,6 +30,8 @@ use App\Http\Controllers\HistoryController;
 // Route::get('/login', [LoginController::class, 'sendLoginResponse']);
 // Route::get('/login', [LoginController::class, 'sendFailedLoginResponse']);
 Route::get('template', [HomeController::class, 'template']);
+Route::post('uploadstore', [HomeController::class, 'uploadstore']);
+Route::put('upava/{id}', [HomeController::class, 'uploadedit'])->name('upava');
 Route::get('/', [FilmController::class, 'dashboard']);
 Route::get('/dash', [FilmController::class, 'dashboard2']);
 
@@ -74,3 +68,4 @@ Route::get('checkout', [CartController::class, 'checkout']);
 Route::get('/aa',[ApiFilmController::class,'aaa']);
 
 Route::get('history', [HistoryController::class,'index'])->name('history');
+Route::get('trans', [HistoryController::class,'index2'])->name('trans');

@@ -31,9 +31,12 @@ class HistoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function index2()
     {
-        //
+        $genre = Genre::all();
+        $trans = Pembayaran::select('*')->join('tokens', 'tokens.pembayaran_id', '=', 'pembayarans.id')
+        ->join('films', 'tokens.film_id', '=', 'films.id')->get();
+        return view('trans', compact('genre', 'trans'));
     }
 
     /**
