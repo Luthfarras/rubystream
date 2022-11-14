@@ -45,9 +45,11 @@
                         </select>
                     </div>
                     <div class="form-group mt-2">
-                        <label for="cover" class="form-label">Cover</label><br>
-                        <input type="file" class=" @error('cover') is-invalid @enderror" id="cover"
-                            placeholder="Release Year" name="cover">
+                        <input type="text" class="form-control form-control-sm @error('cover') is-invalid @enderror" id="cover"
+                            placeholder="Cover" name="cover">
+                            <div class="">
+                                <p>File harus dalam format link.</p>
+                            </div>
                     </div>
                     <div class="form-group mt-2">
                         <label for="trailer" class="form-label">Trailer</label><br>

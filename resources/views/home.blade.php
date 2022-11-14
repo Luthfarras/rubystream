@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="login__form">
-                        <h3>You Profil</h3>
+                        <h3>Your Profil</h3>
                         <form action="{{ route('update') }}" method="POST">
                             @csrf
                             @method('PUT')
@@ -53,14 +53,33 @@
                 </div>
                 
                 <div class="col-lg-6">
-                    <div class="login__social__links">
-                        <h3>php artisan inspire</h3>
-                        <ul class="text-white">
-                        “ Simplicity is the essence of happiness. ”
-                        </ul>
-                        <ul class="text-secondary">
-                        — Cedric Bledsoe
-                        </ul>
+                    <div class="text-center">
+                        @if(DB::table('profiles')->where('user_id', '=', Auth::user()->id)->exists())
+                        @foreach ($data as $item)
+                        <img src="{{asset('storage/' . $item->ava)}}" alt="" class="rounded-circle mb-5" width="200px">
+                        @endforeach
+                        <form action="{{ route('upava',$item->id) }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('put')
+                            <div class="input__item mb-3">
+                                <input id="" type="file" class="form-control" name="ava" required>
+                            </div>
+                            <div class="mt-5 mx-auto">
+                                <button type="submit" class="site-btn"><a class="text-white">Edit</a></button>
+                            </div>
+                        </form>
+                        @else
+                        <h3>Add your profile</h3>
+                        <div class="login-form">
+                        <form action="{{url('uploadstore')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="input__item mb-3">
+                                <input id="" type="file" class="form-control" name="ava" required>
+                            </div>
+                            <button type="submit" class="site-btn"><a class="text-white" href="">Add</a></button>
+                        </form>
+                        @endif
+                    </div>
                     </div>
                 </div>
 

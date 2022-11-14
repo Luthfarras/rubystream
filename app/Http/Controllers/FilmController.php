@@ -26,96 +26,36 @@ class FilmController extends Controller
       $userid = Auth::user();
       if ($userid) {
           $cart = Cart::session($userid->id)->getContent();
-
       }else{
           $cart = Cart::getContent();
       }
-
-      // foreach ($cart as $c) {
-      //   $a = $c['id'];
-      // }
-      // dd($a);
-
-      //
-      // $get = [];
-
-      // dd($get);
-      // $user_id = Auth::user()->id;
+      $trend = Film::select('*')->orderBy('id', 'desc')->limit(3)->get();
       $genre = Genre::all();
       $data = Film::paginate(24);
-    //   $data2 = Film::join('tokens', 'films.id', '=', 'tokens.film_id')
-    //   ->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')
-    //   ->where('pembayarans.user_id', '=', $user_id)->where('films.id', '=', 1)->exists();
-    //   if ($data2) {
-    //     echo "watch this movie";
-    //   }else {
-    //     echo "add to cart";
-    //   }
-
-      // $data = DB::table('films')->select('films.id')->join('tokens', 'films.id', '=', 'tokens.film_id')
-      // ->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')->where('pembayarans.user_id', '=', $user_id)->get();
-      // $data2 = DB::table('films')->select('*')->where('films.id', '<>', $data)->get();
-      // $data2 = Film::select('films.id')->get();
-      // if ($data2 != $data) {
-      //   // echo $data2;
-      //   return view('dashboard', compact('data2', 'cart', 'genre'));
-      //
-      // }
-      // dd($data2);
-      // foreach($data as $d){
-      //     // echo $dd['id'];
-      //     foreach($cart as $c){
-      //         if($d['id'] != $c['id']){
-      //             echo $c['id'];
-      //
-      //         }
-      //         // $get[] = $a['id'];
-      //     }
-      //   }
-
-
-      return view('dashboard', compact('data', 'cart', 'genre'));
-    }
-
-    public function dashboard2()
-    {
-        $userid = Auth::user();
-        if ($userid) {
-            $cart = Cart::session($userid->id)->getContent();
-
-        }else{
-            $cart = Cart::getContent();
-        }
-
-        $data2 = Film::join('tokens', 'films.id', '=', 'tokens.film_id')
-        ->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')
-        ->where('pembayarans.user_id', '=', Auth::user()->id)->get();
-        //
-        // Film::join('tokens', 'films.id', '=', 'tokens.film_id')->join('pembayarans', 'pembayarans.id', '=', 'tokens.pembayaran_id')->where('pembayarans.user_id', '=', Auth::user()->id)->where('films.id', '=', $d->id)->exists()
-        // $get = [];
-
-        // dd($get);
-        $genre = Genre::all();
-        $data = Film::paginate(24);
-
-        return view('dashboard2', compact('data', 'data2', 'cart', 'genre'));
+      return view('dashboard', compact('data', 'cart', 'genre', 'trend'));
     }
 
     public function detail($id)
     {
         $data = Film::findOrFail($id);
         $genre = Genre::all();
-        $rate = Rating::all();
-        $cart = Cart::session(Auth::user()->id)->getContent();
-        return view('detail', compact('data', 'genre', 'rate', 'cart'));
+        $rate = Rating::where('film_id', $id)->get();
+        $rate2 = Rating::where('film_id', $id)->avg('rating');
+        $rate3 = (float)$rate2;
+
+        $userid = Auth::user();
+        if ($userid) {
+            $cart = Cart::session($userid->id)->getContent();
+        }else{
+            $cart = Cart::getContent();
+        }
+        return view('detail', compact('data', 'genre', 'rate', 'rate3', 'cart'));
     }
 
     public function watch($id)
     {
         $data = Film::findOrFail($id);
         $genre = Genre::all();
-        // dd($id);
-        // $filmid = $id;
         $user_id = Auth::user()->id;
         $data2 = Pembayaran::select('user_id')->join('tokens','tokens.pembayaran_id','=','pembayarans.id')
         ->where('pembayarans.user_id','=', $user_id)->where('tokens.film_id', '=', $id)->exists();
@@ -128,32 +68,6 @@ class FilmController extends Controller
           Alert::error('Warning', 'This film is not purcashed yet!');
           return redirect('detail/'.$id);
         }
-        // dd($user_id);
-        // $data4 = Pembayaran::where('user_id','=', 3)->exists();
-        // dd($data4);
-                // dd($data4);
-        //  dd($data2);
-        // if ($data2 === true) {
-        // }else{
-        // }
-        // foreach ($data2 as $d2) {
-        //     if ($d2->user_id == $user_id) {
-        //         $datasatu = $d2->user_id;
-        //     }
-        // }
-
-        // $data3 = Token::select('film_id')->join('pembayarans','tokens.pembayaran_id','=','pembayarans.id')
-        // ->where('tokens.film_id', '=', $id)->get();
-        // foreach ($data3 as $d3) {
-
-        //     if ($d3->film_id == $id) {
-        //         $datatiga = $d3->film_id;
-        //     }
-        // }
-        // // dd($data3);
-        // $genre = Genre::all();
-        // $genre = DB::table('films')->select('genre_id')->join('genres','films.genre_id','=','genres.id');
-        // return view('watch', compact('data', 'id', 'datasatu', 'datatiga', 'genre'));
     }
 
     public function trailer($id)
@@ -178,16 +92,11 @@ class FilmController extends Controller
         return view('category', compact('data', 'genre', 'cart'));
     }
 
-    // public function category(Request $request)
-    // {
-    //   $data = Film::all();
-    //     return view('watch', compact('data'));
-    // }
-    //
-
     public function rating(Request $request)
     {
-      // dd($request);
+      if (!Auth::user()) {
+        Alert::warning('Failed', 'You should login first!');
+      }else{
       $userid = Auth::user()->id;
       Rating::create([
         'ulasan' => $request->ulasan,
@@ -195,6 +104,7 @@ class FilmController extends Controller
         'film_id' => $request->film_id,
         'users_id' => $userid,
       ]);
+      }
       return redirect()->back();
     }
 
@@ -203,7 +113,6 @@ class FilmController extends Controller
         $userid = Auth::user();
         if ($userid) {
             $cart = Cart::session($userid->id)->getContent();
-  
         }else{
             $cart = Cart::getContent();
         }
@@ -215,7 +124,6 @@ class FilmController extends Controller
   		return view('dashboard', compact('data', 'genre', 'cart'));
 
   	}
-
 
     public function index()
     {
@@ -249,8 +157,20 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        $film = Film::create($request->all());
-        $film = $request->file('cover','trailer','full_movie')->store('upload');
+        $file_tr = $request->file('trailer')->store('upload');
+        $file_fm = $request->file('full_movie')->store('upload');
+        $film = Film::create([
+            'nama_film' => $request->nama_film,
+            'studio' => $request->studio,
+            'cover' => $request->cover,
+            'harga' => $request->harga,
+            'tahun_rilis' => $request->tahun_rilis,
+            'aktor' => $request->aktor,
+            'sinopsis' => $request->sinopsis,
+            'trailer' => $file_tr,
+            'full_movie' => $file_fm,
+            'genre_id' => $request->genre_id,
+        ]);
         Alert::success('Congratulations', 'Create Film Success');
         return redirect('/film');
     }
@@ -292,8 +212,35 @@ class FilmController extends Controller
     public function update(Request $request, $id)
     {
         $data = Film::findOrFail($id);
-        $data->update($request->all());
-
+        if ($request->file('trailer') && $request->file('full_movie')) {
+            $file_tr = $request->file('trailer')->store('upload');
+            $file_fm = $request->file('full_movie')->store('upload');
+            $data->update([
+                'nama_film' => $request->nama_film,
+                'studio' => $request->studio,
+                'cover' => $request->cover,
+                'harga' => $request->harga,
+                'tahun_rilis' => $request->tahun_rilis,
+                'aktor' => $request->aktor,
+                'sinopsis' => $request->sinopsis,
+                'trailer' => $file_tr,
+                'full_movie' => $file_fm,
+                'genre_id' => $request->genre_id,
+            ]);
+        } else {
+            $data->update([
+                'nama_film' => $request->nama_film,
+                'studio' => $request->studio,
+                'cover' => $request->cover,
+                'harga' => $request->harga,
+                'tahun_rilis' => $request->tahun_rilis,
+                'aktor' => $request->aktor,
+                'sinopsis' => $request->sinopsis,
+                'trailer' => $data->trailer,
+                'full_movie' => $data->full_movie,
+                'genre_id' => $request->genre_id,
+            ]);
+        }
         Alert::success('Congratulations', 'Update Film Success');
         return redirect('film');
     }

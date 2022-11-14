@@ -122,10 +122,6 @@
                                             @foreach ($genre as $g)
                                                 <li><a href="{{ url('category/' . $g->id) }}">{{ $g['genre'] }}</a></li>
                                             @endforeach
-                                            <!-- <li><a href="/category">Category</a></li>
-                                            <li><a href="">Film Details</a></li>
-                                            <li><a href="">Film Watching</a></li>
-                                            <li><a href="">Blog Details</a></li> -->
                                         </ul>
                                     </li>
                                     <li class="@if (Request::is('film*')) active @endif"><a href="/film">List
@@ -177,6 +173,9 @@
                                                         @if(Auth::user()->role == 'user')
                                                 <a class="dropdown-item text-dark" href="{{ route('history') }}"><span
                                                         class="fa fa-history"></span> History</a>
+                                                        @else
+                                                <a class="dropdown-item text-dark" href="{{ route('trans') }}"><span
+                                                        class="fa fa-history"></span> Transaction</a>
                                                         @endif
                                                 <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();

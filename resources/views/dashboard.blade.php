@@ -27,42 +27,24 @@
     <section class="hero">
         <div class="container">
             <div class="hero__slider owl-carousel">
-                <div class="hero__items set-bg" data-setbg="{{ asset('anime-main/img/hero/hero-1.jpg') }}">
+                @foreach ($trend as $hero)
+                <div class="hero__items set-bg" data-setbg="{{ $hero->cover }}">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
-                                <div class="label">Adventure</div>
-                                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
-                                <p>After 30 days of travel across the world...</p>
-                                <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                                <div class="label">{{$hero->genre->genre}}</div>
+                                <h2>{{$hero->nama_film}}</h2>
+                                <p>{{$hero->sinopsis}}</p>
+                                @if(Route::has('login'))
+                                <a href="/login"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                                @else
+                                <a href="{{route('watch',$hero->id)}}"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="hero__items set-bg" data-setbg="{{ asset('anime-main/img/hero/hero-1.jpg') }}">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label">Adventure</div>
-                                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
-                                <p>After 30 days of travel across the world...</p>
-                                <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero__items set-bg" data-setbg="{{ asset('anime-main/img/hero/hero-1.jpg') }}">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label">Adventure</div>
-                                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
-                                <p>After 30 days of travel across the world...</p>
-                                <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -120,7 +102,7 @@
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content text-white footer">
-                                        <video src="{{ asset('vid/' . $d->trailer) }}" controls></video>
+                                        <video src="{{ asset('storage/' . $d->trailer) }}" controls></video>
                                     </div>
                                 </div>
                             </div>

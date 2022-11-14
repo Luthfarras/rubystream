@@ -9,7 +9,7 @@
                 <div class="col-lg-12 text-center">
                     <div class="normal__breadcrumb__text">
                         <h2>Sign Up</h2>
-                        <p>Welcome to the official Film blog.</p>
+                        <p>Welcome to the Film blog.</p>
                     </div>
                 </div>
             </div>
@@ -68,18 +68,12 @@
                             </div>
                             <button type="submit" class="site-btn">Register Now</button>
                         </form>
-                        <h5>Already have an account? <a href="/login">Log In!</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="login__social__links">
-                        <h3>Login With:</h3>
-                        <ul>
-                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With Facebook</a>
-                            </li>
-                            <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
-                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a></li>
-                        </ul>
+                    <div class="login__register">
+                        <h3>Already have an account?</h3>
+                        <a href="/login" class="primary-btn">Log In</a>
                     </div>
                 </div>
             </div>
