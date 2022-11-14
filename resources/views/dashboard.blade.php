@@ -82,7 +82,7 @@
                                 @if (!empty($data))
                                     @foreach ($data as $d)
                                         <div class="col-lg-2">
-                                        <!-- <div class="col-lg-3 col-md-3 col-sm-3"> -->
+                                        <!-- <div class="col-lg-3 col-md-2 col-sm-2"> -->
                                             <form class="" action="{{ url('cartlist/' . $d->id) }}" method="post"
                                                 enctype="multipart/form-data">
                                                 @csrf
